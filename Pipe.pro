@@ -26,13 +26,15 @@ SOURCES += \
     customcontrol.cpp \
     dialog.cpp \
     main.cpp \
-    mainwindow.cpp
+    mainwindow.cpp \
+    pythonworker.cpp
 
 HEADERS += \
     control.h \
     customcontrol.h \
     include/dialog.h \
-    mainwindow.h
+    mainwindow.h \
+    pythonworker.h
 
 FORMS += \
     control.ui \
@@ -50,6 +52,9 @@ DEPENDPATH += $$PWD/qucsdk
 INCLUDEPATH += $$PWD/qucinclude
 DEPENDPATH += $$PWD/qucinclude
 
+#python
+INCLUDEPATH += D:/Tools/Python/Python39/include
+LIBS += -LD:/Tools/Python/Python39/libs -lpython39
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin

@@ -33,6 +33,12 @@ MainWindow::MainWindow(QWidget *parent)
 
     configWindow->setWindowFlags(Qt::Window); // 避免继承父窗口样式
 
+    qDebug() << QDir::cleanPath(QCoreApplication::applicationDirPath() + QDir::separator() + logFilePath);
+
+    // pythonworker = new PythonWorker(this);
+    // pythonworker->setScriptPath("../../../ardusub_control/connect_main.py");
+    // // pythonworker->setScriptPath("./release/connect_main.py");
+    // pythonworker->start();
 
 
     control = new Control();

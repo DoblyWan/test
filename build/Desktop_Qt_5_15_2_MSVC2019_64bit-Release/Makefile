@@ -270,6 +270,7 @@ Makefile: ..\..\Pipe.pro D:\Tools\QT\5.15.2\msvc2019_64\mkspecs\win32-msvc\qmake
 		D:\Tools\QT\5.15.2\msvc2019_64\mkspecs\features\qt_config.prf \
 		D:\Tools\QT\5.15.2\msvc2019_64\mkspecs\win32-msvc\qmake.conf \
 		D:\Tools\QT\5.15.2\msvc2019_64\mkspecs\features\spec_post.prf \
+		.qmake.stash \
 		D:\Tools\QT\5.15.2\msvc2019_64\mkspecs\features\exclusive_builds.prf \
 		D:\Tools\QT\5.15.2\msvc2019_64\mkspecs\common\msvc-version.conf \
 		D:\Tools\QT\5.15.2\msvc2019_64\mkspecs\features\toolchain.prf \
@@ -311,7 +312,6 @@ Makefile: ..\..\Pipe.pro D:\Tools\QT\5.15.2\msvc2019_64\mkspecs\win32-msvc\qmake
 		D:\Tools\QT\5.15.2\msvc2019_64\lib\Qt5Positioning.prl \
 		D:\Tools\QT\5.15.2\msvc2019_64\lib\Qt5Core.prl \
 		D:\Tools\QT\5.15.2\msvc2019_64\lib\qtmain.prl \
-		.qmake.stash \
 		D:\Tools\QT\5.15.2\msvc2019_64\mkspecs\features\build_pass.prf \
 		..\..\res.qrc \
 		D:\Tools\QT\5.15.2\msvc2019_64\lib\Qt5WebEngineWidgetsd.prl \
@@ -516,6 +516,7 @@ D:\Tools\QT\5.15.2\msvc2019_64\mkspecs\features\qt_functions.prf:
 D:\Tools\QT\5.15.2\msvc2019_64\mkspecs\features\qt_config.prf:
 D:\Tools\QT\5.15.2\msvc2019_64\mkspecs\win32-msvc\qmake.conf:
 D:\Tools\QT\5.15.2\msvc2019_64\mkspecs\features\spec_post.prf:
+.qmake.stash:
 D:\Tools\QT\5.15.2\msvc2019_64\mkspecs\features\exclusive_builds.prf:
 D:\Tools\QT\5.15.2\msvc2019_64\mkspecs\common\msvc-version.conf:
 D:\Tools\QT\5.15.2\msvc2019_64\mkspecs\features\toolchain.prf:
@@ -557,7 +558,6 @@ D:\Tools\QT\5.15.2\msvc2019_64\lib\Qt5Network.prl:
 D:\Tools\QT\5.15.2\msvc2019_64\lib\Qt5Positioning.prl:
 D:\Tools\QT\5.15.2\msvc2019_64\lib\Qt5Core.prl:
 D:\Tools\QT\5.15.2\msvc2019_64\lib\qtmain.prl:
-.qmake.stash:
 D:\Tools\QT\5.15.2\msvc2019_64\mkspecs\features\build_pass.prf:
 ..\..\res.qrc:
 D:\Tools\QT\5.15.2\msvc2019_64\lib\Qt5WebEngineWidgetsd.prl:

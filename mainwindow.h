@@ -1,6 +1,8 @@
 ﻿#ifndef MAINWINDOW_H
 #define MAINWINDOW_H
 
+#include "pythonworker.h"
+
 #include <QMainWindow>
 #include <QPropertyAnimation>
 #include <QDialog>
@@ -96,6 +98,9 @@ private:
     QString videoPath;
     QString databasePath;
     QString logPath;
+
+    // python文件
+    PythonWorker *pythonworker;
 
 
     void initControl();
