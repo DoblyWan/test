@@ -414,7 +414,12 @@ public:
         gridLayout_26->setContentsMargins(5, 0, 5, 5);
         frame_3 = new QFrame(frame);
         frame_3->setObjectName(QString::fromUtf8("frame_3"));
-        frame_3->setStyleSheet(QString::fromUtf8("font-size: 14px;"));
+        QFont font1;
+        font1.setBold(true);
+        frame_3->setFont(font1);
+        frame_3->setStyleSheet(QString::fromUtf8("font-size: 15px;\n"
+"font-weight: 700;\n"
+""));
         frame_3->setFrameShape(QFrame::StyledPanel);
         frame_3->setFrameShadow(QFrame::Raised);
         gridLayout_10 = new QGridLayout(frame_3);
@@ -637,7 +642,7 @@ public:
         QIcon icon7;
         icon7.addFile(QString::fromUtf8(":/images/A.png"), QSize(), QIcon::Normal, QIcon::Off);
         pushButton_front->setIcon(icon7);
-        pushButton_front->setIconSize(QSize(50, 50));
+        pushButton_front->setIconSize(QSize(55, 55));
         pushButton_front->setFlat(true);
 
         verticalLayout_12->addWidget(pushButton_front);
@@ -674,7 +679,7 @@ public:
         QIcon icon8;
         icon8.addFile(QString::fromUtf8(":/images/B.png"), QSize(), QIcon::Normal, QIcon::Off);
         pushButton_behind->setIcon(icon8);
-        pushButton_behind->setIconSize(QSize(50, 50));
+        pushButton_behind->setIconSize(QSize(55, 55));
         pushButton_behind->setCheckable(false);
         pushButton_behind->setChecked(false);
         pushButton_behind->setFlat(true);
@@ -708,9 +713,9 @@ public:
 "   border:none;\n"
 "}"));
         QIcon icon9;
-        icon9.addFile(QString::fromUtf8(":/images/camera-switching.png"), QSize(), QIcon::Normal, QIcon::Off);
+        icon9.addFile(QString::fromUtf8(":/images/report.png"), QSize(), QIcon::Normal, QIcon::Off);
         pushButton_location->setIcon(icon9);
-        pushButton_location->setIconSize(QSize(55, 55));
+        pushButton_location->setIconSize(QSize(50, 50));
         pushButton_location->setAutoDefault(false);
         pushButton_location->setFlat(true);
 
@@ -1372,9 +1377,9 @@ public:
 
         groupBox_8 = new QGroupBox(page_setting);
         groupBox_8->setObjectName(QString::fromUtf8("groupBox_8"));
-        QFont font1;
-        font1.setPointSize(15);
-        groupBox_8->setFont(font1);
+        QFont font2;
+        font2.setPointSize(15);
+        groupBox_8->setFont(font2);
         verticalLayout_2 = new QVBoxLayout(groupBox_8);
         verticalLayout_2->setObjectName(QString::fromUtf8("verticalLayout_2"));
         frame_2 = new QFrame(groupBox_8);
@@ -1386,14 +1391,14 @@ public:
         label_38 = new QLabel(frame_2);
         label_38->setObjectName(QString::fromUtf8("label_38"));
         label_38->setMinimumSize(QSize(100, 0));
-        label_38->setFont(font1);
+        label_38->setFont(font2);
         label_38->setAlignment(Qt::AlignCenter);
 
         horizontalLayout_6->addWidget(label_38);
 
         line_username = new QLineEdit(frame_2);
         line_username->setObjectName(QString::fromUtf8("line_username"));
-        line_username->setFont(font1);
+        line_username->setFont(font2);
         line_username->setStyleSheet(QString::fromUtf8("background-color: rgb(255, 255, 255);\n"
 "color: rgb(0, 0, 0);"));
         line_username->setAlignment(Qt::AlignCenter);
@@ -1412,14 +1417,14 @@ public:
         label_48 = new QLabel(frame_24);
         label_48->setObjectName(QString::fromUtf8("label_48"));
         label_48->setMinimumSize(QSize(100, 0));
-        label_48->setFont(font1);
+        label_48->setFont(font2);
         label_48->setAlignment(Qt::AlignCenter);
 
         horizontalLayout_8->addWidget(label_48);
 
         line_password = new QLineEdit(frame_24);
         line_password->setObjectName(QString::fromUtf8("line_password"));
-        line_password->setFont(font1);
+        line_password->setFont(font2);
         line_password->setStyleSheet(QString::fromUtf8("background-color: rgb(255, 255, 255);\n"
 "color: rgb(0, 0, 0);"));
         line_password->setAlignment(Qt::AlignCenter);
@@ -1431,7 +1436,7 @@ public:
 
         frame_25 = new QFrame(groupBox_8);
         frame_25->setObjectName(QString::fromUtf8("frame_25"));
-        frame_25->setFont(font1);
+        frame_25->setFont(font2);
         frame_25->setFrameShape(QFrame::StyledPanel);
         frame_25->setFrameShadow(QFrame::Raised);
         horizontalLayout_15 = new QHBoxLayout(frame_25);
@@ -1439,14 +1444,14 @@ public:
         label_50 = new QLabel(frame_25);
         label_50->setObjectName(QString::fromUtf8("label_50"));
         label_50->setMinimumSize(QSize(100, 0));
-        label_50->setFont(font1);
+        label_50->setFont(font2);
         label_50->setAlignment(Qt::AlignCenter);
 
         horizontalLayout_15->addWidget(label_50);
 
         line_unit = new QLineEdit(frame_25);
         line_unit->setObjectName(QString::fromUtf8("line_unit"));
-        line_unit->setFont(font1);
+        line_unit->setFont(font2);
         line_unit->setStyleSheet(QString::fromUtf8("background-color: rgb(255, 255, 255);\n"
 "color: rgb(0, 0, 0);"));
         line_unit->setAlignment(Qt::AlignCenter);
@@ -1459,7 +1464,7 @@ public:
         pushButton_testnetwork = new QPushButton(groupBox_8);
         pushButton_testnetwork->setObjectName(QString::fromUtf8("pushButton_testnetwork"));
         pushButton_testnetwork->setMinimumSize(QSize(0, 60));
-        pushButton_testnetwork->setFont(font1);
+        pushButton_testnetwork->setFont(font2);
 
         verticalLayout_2->addWidget(pushButton_testnetwork);
 
@@ -1468,7 +1473,7 @@ public:
 
         groupBox_5 = new QGroupBox(page_setting);
         groupBox_5->setObjectName(QString::fromUtf8("groupBox_5"));
-        groupBox_5->setFont(font1);
+        groupBox_5->setFont(font2);
         verticalLayout_4 = new QVBoxLayout(groupBox_5);
         verticalLayout_4->setObjectName(QString::fromUtf8("verticalLayout_4"));
         frame_26 = new QFrame(groupBox_5);
@@ -1480,14 +1485,14 @@ public:
         label_51 = new QLabel(frame_26);
         label_51->setObjectName(QString::fromUtf8("label_51"));
         label_51->setMinimumSize(QSize(100, 0));
-        label_51->setFont(font1);
+        label_51->setFont(font2);
         label_51->setAlignment(Qt::AlignCenter);
 
         horizontalLayout_16->addWidget(label_51);
 
         lineEdit = new QLineEdit(frame_26);
         lineEdit->setObjectName(QString::fromUtf8("lineEdit"));
-        lineEdit->setFont(font1);
+        lineEdit->setFont(font2);
         lineEdit->setStyleSheet(QString::fromUtf8("background-color: rgb(255, 255, 255);\n"
 "color: rgb(0, 0, 0);"));
         lineEdit->setAlignment(Qt::AlignCenter);
@@ -1506,14 +1511,14 @@ public:
         label_52 = new QLabel(frame_27);
         label_52->setObjectName(QString::fromUtf8("label_52"));
         label_52->setMinimumSize(QSize(100, 0));
-        label_52->setFont(font1);
+        label_52->setFont(font2);
         label_52->setAlignment(Qt::AlignCenter);
 
         horizontalLayout_24->addWidget(label_52);
 
         lineEdit_2 = new QLineEdit(frame_27);
         lineEdit_2->setObjectName(QString::fromUtf8("lineEdit_2"));
-        lineEdit_2->setFont(font1);
+        lineEdit_2->setFont(font2);
         lineEdit_2->setStyleSheet(QString::fromUtf8("background-color: rgb(255, 255, 255);\n"
 "color: rgb(0, 0, 0);"));
         lineEdit_2->setAlignment(Qt::AlignCenter);
@@ -1532,14 +1537,14 @@ public:
         label_53 = new QLabel(frame_28);
         label_53->setObjectName(QString::fromUtf8("label_53"));
         label_53->setMinimumSize(QSize(100, 0));
-        label_53->setFont(font1);
+        label_53->setFont(font2);
         label_53->setAlignment(Qt::AlignCenter);
 
         horizontalLayout_25->addWidget(label_53);
 
         lineEdit_3 = new QLineEdit(frame_28);
         lineEdit_3->setObjectName(QString::fromUtf8("lineEdit_3"));
-        lineEdit_3->setFont(font1);
+        lineEdit_3->setFont(font2);
         lineEdit_3->setStyleSheet(QString::fromUtf8("background-color: rgb(255, 255, 255);\n"
 "color: rgb(0, 0, 0);"));
         lineEdit_3->setAlignment(Qt::AlignCenter);
@@ -1574,10 +1579,10 @@ public:
         label_14->setObjectName(QString::fromUtf8("label_14"));
         sizePolicy2.setHeightForWidth(label_14->sizePolicy().hasHeightForWidth());
         label_14->setSizePolicy(sizePolicy2);
-        QFont font2;
-        font2.setPointSize(18);
-        font2.setBold(true);
-        label_14->setFont(font2);
+        QFont font3;
+        font3.setPointSize(18);
+        font3.setBold(true);
+        label_14->setFont(font3);
         label_14->setStyleSheet(QString::fromUtf8("background-color: rgb(32, 74, 135);\n"
 "color: rgb(254, 105, 105);"));
         label_14->setAlignment(Qt::AlignCenter);
@@ -1601,9 +1606,9 @@ public:
         label_15->setObjectName(QString::fromUtf8("label_15"));
         sizePolicy1.setHeightForWidth(label_15->sizePolicy().hasHeightForWidth());
         label_15->setSizePolicy(sizePolicy1);
-        QFont font3;
-        font3.setPointSize(18);
-        label_15->setFont(font3);
+        QFont font4;
+        font4.setPointSize(18);
+        label_15->setFont(font4);
 
         gridLayout_14->addWidget(label_15, 0, 0, 1, 1);
 
@@ -1614,9 +1619,9 @@ public:
         sizePolicy4.setVerticalStretch(0);
         sizePolicy4.setHeightForWidth(label_17->sizePolicy().hasHeightForWidth());
         label_17->setSizePolicy(sizePolicy4);
-        QFont font4;
-        font4.setPointSize(14);
-        label_17->setFont(font4);
+        QFont font5;
+        font5.setPointSize(14);
+        label_17->setFont(font5);
 
         gridLayout_14->addWidget(label_17, 0, 2, 1, 1);
 
@@ -1631,7 +1636,7 @@ public:
         gridLayout_15->setObjectName(QString::fromUtf8("gridLayout_15"));
         label_16 = new QLabel(frame_10);
         label_16->setObjectName(QString::fromUtf8("label_16"));
-        label_16->setFont(font3);
+        label_16->setFont(font4);
 
         gridLayout_15->addWidget(label_16, 0, 0, 1, 1);
 
@@ -1645,7 +1650,7 @@ public:
         label_18->setObjectName(QString::fromUtf8("label_18"));
         sizePolicy4.setHeightForWidth(label_18->sizePolicy().hasHeightForWidth());
         label_18->setSizePolicy(sizePolicy4);
-        label_18->setFont(font4);
+        label_18->setFont(font5);
 
         gridLayout_15->addWidget(label_18, 0, 2, 1, 1);
 
@@ -1669,23 +1674,23 @@ public:
         gridLayout_13->setObjectName(QString::fromUtf8("gridLayout_13"));
         label_10 = new QLabel(frame_7);
         label_10->setObjectName(QString::fromUtf8("label_10"));
-        QFont font5;
-        font5.setPointSize(16);
-        label_10->setFont(font5);
+        QFont font6;
+        font6.setPointSize(16);
+        label_10->setFont(font6);
         label_10->setAlignment(Qt::AlignCenter);
 
         gridLayout_13->addWidget(label_10, 0, 0, 1, 1);
 
         label_11 = new QLabel(frame_7);
         label_11->setObjectName(QString::fromUtf8("label_11"));
-        label_11->setFont(font4);
+        label_11->setFont(font5);
         label_11->setAlignment(Qt::AlignCenter);
 
         gridLayout_13->addWidget(label_11, 1, 0, 1, 1);
 
         label_13 = new QLabel(frame_7);
         label_13->setObjectName(QString::fromUtf8("label_13"));
-        label_13->setFont(font4);
+        label_13->setFont(font5);
         label_13->setAlignment(Qt::AlignCenter);
 
         gridLayout_13->addWidget(label_13, 2, 0, 1, 1);
@@ -1701,21 +1706,21 @@ public:
         gridLayout_12->setObjectName(QString::fromUtf8("gridLayout_12"));
         label_9 = new QLabel(frame_6);
         label_9->setObjectName(QString::fromUtf8("label_9"));
-        label_9->setFont(font5);
+        label_9->setFont(font6);
         label_9->setAlignment(Qt::AlignCenter);
 
         gridLayout_12->addWidget(label_9, 1, 0, 1, 1);
 
         label_12 = new QLabel(frame_6);
         label_12->setObjectName(QString::fromUtf8("label_12"));
-        label_12->setFont(font5);
+        label_12->setFont(font6);
         label_12->setAlignment(Qt::AlignCenter);
 
         gridLayout_12->addWidget(label_12, 2, 0, 1, 1);
 
         label_6 = new QLabel(frame_6);
         label_6->setObjectName(QString::fromUtf8("label_6"));
-        label_6->setFont(font5);
+        label_6->setFont(font6);
         label_6->setAlignment(Qt::AlignCenter);
 
         gridLayout_12->addWidget(label_6, 0, 0, 1, 1);
@@ -1727,7 +1732,7 @@ public:
         label_4->setObjectName(QString::fromUtf8("label_4"));
         sizePolicy2.setHeightForWidth(label_4->sizePolicy().hasHeightForWidth());
         label_4->setSizePolicy(sizePolicy2);
-        label_4->setFont(font2);
+        label_4->setFont(font3);
         label_4->setStyleSheet(QString::fromUtf8("background-color: rgb(32, 74, 135);\n"
 "color: rgb(254, 105, 105);"));
         label_4->setAlignment(Qt::AlignCenter);
@@ -1751,21 +1756,21 @@ public:
         gridLayout_17->setObjectName(QString::fromUtf8("gridLayout_17"));
         label_21 = new QLabel(frame_13);
         label_21->setObjectName(QString::fromUtf8("label_21"));
-        label_21->setFont(font5);
+        label_21->setFont(font6);
         label_21->setAlignment(Qt::AlignCenter);
 
         gridLayout_17->addWidget(label_21, 1, 0, 1, 1);
 
         label_22 = new QLabel(frame_13);
         label_22->setObjectName(QString::fromUtf8("label_22"));
-        label_22->setFont(font5);
+        label_22->setFont(font6);
         label_22->setAlignment(Qt::AlignCenter);
 
         gridLayout_17->addWidget(label_22, 2, 0, 1, 1);
 
         label_20 = new QLabel(frame_13);
         label_20->setObjectName(QString::fromUtf8("label_20"));
-        label_20->setFont(font5);
+        label_20->setFont(font6);
         label_20->setAlignment(Qt::AlignCenter);
 
         gridLayout_17->addWidget(label_20, 0, 0, 1, 1);
@@ -1781,21 +1786,21 @@ public:
         gridLayout_18->setObjectName(QString::fromUtf8("gridLayout_18"));
         label_24 = new QLabel(frame_14);
         label_24->setObjectName(QString::fromUtf8("label_24"));
-        label_24->setFont(font5);
+        label_24->setFont(font6);
         label_24->setAlignment(Qt::AlignCenter);
 
         gridLayout_18->addWidget(label_24, 2, 0, 1, 1);
 
         label_23 = new QLabel(frame_14);
         label_23->setObjectName(QString::fromUtf8("label_23"));
-        label_23->setFont(font5);
+        label_23->setFont(font6);
         label_23->setAlignment(Qt::AlignCenter);
 
         gridLayout_18->addWidget(label_23, 1, 0, 1, 1);
 
         label_25 = new QLabel(frame_14);
         label_25->setObjectName(QString::fromUtf8("label_25"));
-        label_25->setFont(font5);
+        label_25->setFont(font6);
         label_25->setAlignment(Qt::AlignCenter);
 
         gridLayout_18->addWidget(label_25, 0, 0, 1, 1);
@@ -1807,7 +1812,7 @@ public:
         label_26->setObjectName(QString::fromUtf8("label_26"));
         sizePolicy2.setHeightForWidth(label_26->sizePolicy().hasHeightForWidth());
         label_26->setSizePolicy(sizePolicy2);
-        label_26->setFont(font2);
+        label_26->setFont(font3);
         label_26->setStyleSheet(QString::fromUtf8("background-color: rgb(32, 74, 135);\n"
 "color: rgb(254, 105, 105);"));
         label_26->setAlignment(Qt::AlignCenter);
@@ -1825,7 +1830,7 @@ public:
         verticalLayout_6->setObjectName(QString::fromUtf8("verticalLayout_6"));
         label_19 = new QLabel(frame_11);
         label_19->setObjectName(QString::fromUtf8("label_19"));
-        label_19->setFont(font2);
+        label_19->setFont(font3);
         label_19->setStyleSheet(QString::fromUtf8("background-color: rgb(32, 74, 135);\n"
 "color: rgb(254, 105, 105);"));
         label_19->setAlignment(Qt::AlignCenter);
@@ -1834,7 +1839,7 @@ public:
 
         textBrowser_2 = new QTextBrowser(frame_11);
         textBrowser_2->setObjectName(QString::fromUtf8("textBrowser_2"));
-        textBrowser_2->setFont(font4);
+        textBrowser_2->setFont(font5);
         textBrowser_2->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
         textBrowser_2->setSizeAdjustPolicy(QAbstractScrollArea::AdjustToContents);
         textBrowser_2->setOpenExternalLinks(false);
@@ -2163,7 +2168,7 @@ public:
         groupBox = new QGroupBox(centralwidget);
         groupBox->setObjectName(QString::fromUtf8("groupBox"));
         groupBox->setMaximumSize(QSize(16777215, 500));
-        groupBox->setFont(font4);
+        groupBox->setFont(font5);
         groupBox->setStyleSheet(QString::fromUtf8("color: rgb(255, 244, 163);"));
         groupBox->setAlignment(Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter);
         gridLayout = new QGridLayout(groupBox);
@@ -2362,7 +2367,7 @@ public:
         pushButton_location_2->setDefault(true);
         pushButton->setDefault(true);
         pushButton_exit->setDefault(true);
-        stackedWidget->setCurrentIndex(6);
+        stackedWidget->setCurrentIndex(8);
         pushButton_transfor_2->setDefault(true);
         pushButton_transforToMono_3->setDefault(true);
 
@@ -2393,7 +2398,7 @@ public:
         pushButton_behind->setText(QString());
         label_cloudUpload_3->setText(QCoreApplication::translate("MainWindow", "B\351\235\242", nullptr));
         pushButton_location->setText(QString());
-        label_cloudUpload_4->setText(QCoreApplication::translate("MainWindow", "\346\221\204\345\203\217\345\244\264\346\265\213\350\257\225", nullptr));
+        label_cloudUpload_4->setText(QCoreApplication::translate("MainWindow", "\346\212\245\345\221\212\347\224\237\346\210\220", nullptr));
         pushButton_location_2->setText(QString());
         label_cloudUpload_5->setText(QCoreApplication::translate("MainWindow", "\347\212\266\346\200\201\346\230\276\347\244\272", nullptr));
         pushButton->setText(QString());

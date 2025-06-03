@@ -204,8 +204,16 @@ color: rgb(114, 159, 207);
        </property>
        <item row="0" column="0">
         <widget class="QFrame" name="frame_3">
+         <property name="font">
+          <font>
+           <pointsize>-1</pointsize>
+           <bold>true</bold>
+          </font>
+         </property>
          <property name="styleSheet">
-          <string notr="true">font-size: 14px;</string>
+          <string notr="true">font-size: 15px;
+font-weight: 700;
+</string>
          </property>
          <property name="frameShape">
           <enum>QFrame::StyledPanel</enum>
@@ -658,8 +666,8 @@ color: rgb(114, 159, 207);
               </property>
               <property name="iconSize">
                <size>
-                <width>50</width>
-                <height>50</height>
+                <width>55</width>
+                <height>55</height>
                </size>
               </property>
               <property name="default">
@@ -738,8 +746,8 @@ color: rgb(114, 159, 207);
               </property>
               <property name="iconSize">
                <size>
-                <width>50</width>
-                <height>50</height>
+                <width>55</width>
+                <height>55</height>
                </size>
               </property>
               <property name="checkable">
@@ -808,12 +816,12 @@ color: rgb(114, 159, 207);
               </property>
               <property name="icon">
                <iconset resource="res.qrc">
-                <normaloff>:/images/camera-switching.png</normaloff>:/images/camera-switching.png</iconset>
+                <normaloff>:/images/report.png</normaloff>:/images/report.png</iconset>
               </property>
               <property name="iconSize">
                <size>
-                <width>55</width>
-                <height>55</height>
+                <width>50</width>
+                <height>50</height>
                </size>
               </property>
               <property name="autoDefault">
@@ -841,7 +849,7 @@ color: rgb(114, 159, 207);
 }</string>
               </property>
               <property name="text">
-               <string>摄像头测试</string>
+               <string>报告生成</string>
               </property>
               <property name="alignment">
                <set>Qt::AlignHCenter|Qt::AlignTop</set>
@@ -1133,7 +1141,7 @@ color: rgb(114, 159, 207);
        <item row="1" column="0">
         <widget class="QStackedWidget" name="stackedWidget">
          <property name="currentIndex">
-          <number>6</number>
+          <number>8</number>
          </property>
          <widget class="QWidget" name="page">
           <layout class="QGridLayout" name="gridLayout_6">

@@ -35,23 +35,15 @@ MainWindow::MainWindow(QWidget *parent)
 
     qDebug() << QDir::cleanPath(QCoreApplication::applicationDirPath() + QDir::separator() + logFilePath);
 
-    // pythonworker = new PythonWorker(this);
-    // pythonworker->setScriptPath("../../../ardusub_control/connect_main.py");
-    // // pythonworker->setScriptPath("./release/connect_main.py");
-    // pythonworker->start();
+    pythonworker = new PythonWorker(this);
+    pythonworker->setScriptPath("../../../ardusub_control/connect_main.py");
+    // pythonworker->setScriptPath("./release/connect_main.py");
+    pythonworker->start();
 
 
     control = new Control();
     ui->gridLayout_20->addWidget(control);
     // qDebug() << QCoreApplication::applicationDirPath();
-
-    //初始化  设置预置的用户名密码；
-    // ui->UserEdit_2->setText("admin");
-    // ui->Pass_Edit_2->setText("Deye123456");
-    ui->IP_Edit_2->setText("192.168.2.61");
-    ui->IP_Edit_3->setText("192.168.2.62");
-
-
 
 }
 
@@ -63,7 +55,11 @@ MainWindow::~MainWindow()
     rtsp4->close();
     rtsp5->close();
 
+    pythonworker->terminate();
+    pythonworker->wait();
+
     qDebug() << "Application ended.";
+    qInfo() << "--------------------------------------------------";
     delete ui;
 }
 
@@ -362,7 +358,72 @@ void MainWindow::on_pushButton_transforToMono_3_clicked()
 
 void MainWindow::on_pushButton_location_clicked()
 {
-    ui->stackedWidget->setCurrentIndex(7);
+    // ui->stackedWidget->setCurrentIndex(7);
+    QMessageBox::warning(this, "警告", "生成报告失败！请检查系统设置并重启系统！");
+
+
+    // QVariantMap data;
+    // data["report_title"] = "系统监控报告";
+    // data["heading"] = "2023年第三季度性能分析";
+    // data["timestamp"] = QDateTime::currentDateTime().toString();
+    // data["cpu_usage"] = 42.5;  // 自动转换为字符串
+
+    // QString result = renderTemplate("../../../report/test.html", data);
+
+
+    // // 1. 获取目录路径
+    // QString tempDir = "../../../report";
+
+    // // 2. 创建唯一文件名
+    // QString fileName = QString("report_%1.html")
+    //                        .arg(QDateTime::currentDateTime().toString("yyyyMMdd_hhmmsszzz"));
+    // QString filePath = tempDir + "/" + fileName;
+
+    // // 3. 写入文件
+    // QFile file(filePath);
+    // if (!file.open(QIODevice::WriteOnly | QIODevice::Text)) {
+    //     QMessageBox::critical(nullptr, "文件错误",
+    //                           QString("无法创建临时文件:\n%1\n错误: %2")
+    //                               .arg(filePath, file.errorString()));
+    // }
+
+    // QTextStream out(&file);
+    // out.setCodec("UTF-8");  // 确保中文支持
+    // out << result;
+    // file.close();
+
+    // // 4. 设置文件权限（跨平台兼容）
+    // file.setPermissions(QFile::ReadOwner | QFile::WriteOwner | QFile::ReadUser |
+    //                     QFile::ReadGroup | QFile::ReadOther);
+
+    // // 5. 使用默认浏览器打开
+    // // QString path = QFileInfo(QDir::currentPath(), filePath).absoluteFilePath());
+    // // qDebug() << QFileInfo(QDir::currentPath(), filePath).absoluteFilePath();
+    // // QUrl url = QUrl::fromLocalFile(QFileInfo(QDir::currentPath(), filePath).absoluteFilePath());
+    // QUrl url = QUrl::fromLocalFile(QFileInfo(QDir::currentPath(), "../../../report/report.html").absoluteFilePath());
+
+    // // QDesktopServices::openUrl(QUrl(url));
+
+    // // 创建 Web 视图
+    // QWebEngineView *webView = new QWebEngineView(ui->report);
+
+
+    // // 加载网页
+    // webView->load(QUrl(url));
+
+    // // // 创建开发者工具窗口
+    // // QWebEngineView *devToolsView = new QWebEngineView();
+
+    // // // 关联到主视图
+    // // webView->page()->setDevToolsPage(devToolsView->page());
+
+    // // // 显示开发者工具
+    // // devToolsView->show();
+
+    // // 设置窗口大小并显示
+    // webView->resize(1600, 800);
+    // // webView->show();
+    // ui->stackedWidget->setCurrentIndex(8);
 }
 
 
@@ -534,68 +595,7 @@ void MainWindow::resizeEvent(QResizeEvent *event)
 
 void MainWindow::on_pushButton_utrans_clicked()
 {
-    QVariantMap data;
-    data["report_title"] = "系统监控报告";
-    data["heading"] = "2023年第三季度性能分析";
-    data["timestamp"] = QDateTime::currentDateTime().toString();
-    data["cpu_usage"] = 42.5;  // 自动转换为字符串
-
-    QString result = renderTemplate("../../../report/test.html", data);
-
-
-    // 1. 获取目录路径
-    QString tempDir = "../../../report";
-
-    // 2. 创建唯一文件名
-    QString fileName = QString("report_%1.html")
-                           .arg(QDateTime::currentDateTime().toString("yyyyMMdd_hhmmsszzz"));
-    QString filePath = tempDir + "/" + fileName;
-
-    // 3. 写入文件
-    QFile file(filePath);
-    if (!file.open(QIODevice::WriteOnly | QIODevice::Text)) {
-        QMessageBox::critical(nullptr, "文件错误",
-                              QString("无法创建临时文件:\n%1\n错误: %2")
-                                  .arg(filePath, file.errorString()));
-    }
-
-    QTextStream out(&file);
-    out.setCodec("UTF-8");  // 确保中文支持
-    out << result;
-    file.close();
-
-    // 4. 设置文件权限（跨平台兼容）
-    file.setPermissions(QFile::ReadOwner | QFile::WriteOwner | QFile::ReadUser |
-                        QFile::ReadGroup | QFile::ReadOther);
-
-    // 5. 使用默认浏览器打开
-    // QString path = QFileInfo(QDir::currentPath(), filePath).absoluteFilePath());
-    // qDebug() << QFileInfo(QDir::currentPath(), filePath).absoluteFilePath();
-    // QUrl url = QUrl::fromLocalFile(QFileInfo(QDir::currentPath(), filePath).absoluteFilePath());
-    QUrl url = QUrl::fromLocalFile(QFileInfo(QDir::currentPath(), "../../../report/report.html").absoluteFilePath());
-
-    // QDesktopServices::openUrl(QUrl(url));
-
-    // 创建 Web 视图
-    QWebEngineView *webView = new QWebEngineView(ui->report);
-
-
-    // 加载网页
-    webView->load(QUrl(url));
-
-    // // 创建开发者工具窗口
-    // QWebEngineView *devToolsView = new QWebEngineView();
-
-    // // 关联到主视图
-    // webView->page()->setDevToolsPage(devToolsView->page());
-
-    // // 显示开发者工具
-    // devToolsView->show();
-
-    // 设置窗口大小并显示
-    webView->resize(1600, 800);
-    // webView->show();
-    ui->stackedWidget->setCurrentIndex(8);
+    QMessageBox::warning(this, "警告", "U盘打开失败！请检查U盘插入并重启系统！");
 }
 
 
@@ -757,5 +757,11 @@ void MainWindow::on_Open_BT_8_clicked()
         ui->Open_BT_8->setText("打开");
         rtsp3->close();
     }
+}
+
+
+void MainWindow::on_pushButton_upload_clicked()
+{
+    QMessageBox::warning(this, "错误", "云端打开失败！请检查云端服务并重启系统！");
 }
 

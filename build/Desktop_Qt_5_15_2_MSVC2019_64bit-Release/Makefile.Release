@@ -228,43 +228,44 @@ compiler_rcc_clean:
 release\qrc_res.cpp: ..\..\res.qrc \
 		D:\Tools\QT\5.15.2\msvc2019_64\bin\rcc.exe \
 		..\..\style.qss \
-		..\..\images\USB.png \
-		..\..\images\robot2.png \
-		..\..\images\robot3.png \
-		..\..\images\Exit.png \
-		..\..\images\unconnected1.png \
-		..\..\images\Input.png \
-		..\..\images\robot4.png \
-		..\..\images\A.png \
-		..\..\images\piperobot1.png \
-		..\..\images\B.png \
-		..\..\images\piperobot2.png \
-		..\..\images\datainput.png \
+		..\..\images\hand.png \
+		..\..\images\auto.png \
 		..\..\images\front.png \
-		..\..\images\suspension.png \
+		..\..\images\Input.png \
+		..\..\images\datainput.png \
+		..\..\images\location.png \
+		..\..\images\piperobot2.png \
+		..\..\images\UbderWaterMode.png \
+		..\..\images\SystemState.png \
+		..\..\images\piperobot1.png \
+		..\..\images\log.png \
 		..\..\images\Search.png \
 		..\..\images\icon.jpg \
-		..\..\images\location.png \
-		..\..\images\connected.png \
-		..\..\images\cloudUpload.png \
-		..\..\images\hand.png \
-		..\..\images\piperobot.png \
-		..\..\images\UbderWaterMode.png \
-		..\..\images\Video.png \
-		..\..\images\robot.png \
-		..\..\images\Setting.png \
-		..\..\images\unconnected.png \
-		..\..\images\MainUI.png \
-		..\..\images\behind.png \
-		..\..\images\connect.png \
-		..\..\images\VCG211389539661.jpg \
-		..\..\images\camera-switching.png \
-		..\..\images\log.png \
-		..\..\images\SystemState.png \
-		..\..\images\auto.png \
 		..\..\images\robot_state.png \
+		..\..\images\unconnected1.png \
+		..\..\images\suspension.png \
+		..\..\images\robot.png \
+		..\..\images\MainUI.png \
+		..\..\images\cloudUpload.png \
+		..\..\images\unconnected.png \
+		..\..\images\B.png \
+		..\..\images\robot4.png \
+		..\..\images\connect.png \
+		..\..\images\camera-switching.png \
+		..\..\images\VCG211389539661.jpg \
+		..\..\images\USB.png \
+		..\..\images\A.png \
+		..\..\images\robot3.png \
+		..\..\images\UnderWaterCamera.png \
+		..\..\images\Video.png \
+		..\..\images\robot2.png \
+		..\..\images\behind.png \
+		..\..\images\Setting.png \
+		..\..\images\piperobot.png \
+		..\..\images\Exit.png \
 		..\..\images\pipe1.png \
-		..\..\images\UnderWaterCamera.png
+		..\..\images\connected.png \
+		..\..\images\report.png
 	D:\Tools\QT\5.15.2\msvc2019_64\bin\rcc.exe -name res ..\..\res.qrc -o release\qrc_res.cpp
 
 compiler_moc_predefs_make_all: release\moc_predefs.h
@@ -654,10 +655,109 @@ release\moc_dialog.cpp: ..\..\include\dialog.h \
 	D:\Tools\QT\5.15.2\msvc2019_64\bin\moc.exe $(DEFINES) --compiler-flavor=msvc --include C:/Users/BotSystem/Desktop/Pipe/build/Desktop_Qt_5_15_2_MSVC2019_64bit-Release/release/moc_predefs.h -ID:/Tools/QT/5.15.2/msvc2019_64/mkspecs/win32-msvc -IC:/Users/BotSystem/Desktop/Pipe -IC:/Users/BotSystem/Desktop/Pipe/qucsdk -IC:/Users/BotSystem/Desktop/Pipe/qucinclude -ID:/Tools/Python/Python39/include -IC:/Users/BotSystem/Desktop/Pipe/ffmpeg -IC:/Users/BotSystem/Desktop/Pipe/ffmpeg/ffmpeg4/include64 -ID:/Tools/QT/5.15.2/msvc2019_64/include -ID:/Tools/QT/5.15.2/msvc2019_64/include/QtWebEngineWidgets -ID:/Tools/QT/5.15.2/msvc2019_64/include/QtWebEngineCore -ID:/Tools/QT/5.15.2/msvc2019_64/include/QtQuick -ID:/Tools/QT/5.15.2/msvc2019_64/include/QtPrintSupport -ID:/Tools/QT/5.15.2/msvc2019_64/include/QtWidgets -ID:/Tools/QT/5.15.2/msvc2019_64/include/QtGamepad -ID:/Tools/QT/5.15.2/msvc2019_64/include/QtGui -ID:/Tools/QT/5.15.2/msvc2019_64/include/QtANGLE -ID:/Tools/QT/5.15.2/msvc2019_64/include/QtSql -ID:/Tools/QT/5.15.2/msvc2019_64/include/QtQmlModels -ID:/Tools/QT/5.15.2/msvc2019_64/include/QtWebChannel -ID:/Tools/QT/5.15.2/msvc2019_64/include/QtQml -ID:/Tools/QT/5.15.2/msvc2019_64/include/QtNetwork -ID:/Tools/QT/5.15.2/msvc2019_64/include/QtPositioning -ID:/Tools/QT/5.15.2/msvc2019_64/include/QtCore -I. -I"D:\Tools\Visual Studio\2022\Community\VC\Tools\MSVC\14.44.35207\include" -I"D:\Tools\Visual Studio\2022\Community\VC\Tools\MSVC\14.44.35207\ATLMFC\include" -I"D:\Tools\Visual Studio\2022\Community\VC\Auxiliary\VS\include" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.26100.0\ucrt" -I"C:\Program Files (x86)\Windows Kits\10\\include\10.0.26100.0\\um" -I"C:\Program Files (x86)\Windows Kits\10\\include\10.0.26100.0\\shared" -I"C:\Program Files (x86)\Windows Kits\10\\include\10.0.26100.0\\winrt" -I"C:\Program Files (x86)\Windows Kits\10\\include\10.0.26100.0\\cppwinrt" -I"C:\Program Files (x86)\Windows Kits\NETFXSDK\4.8\include\um" ..\..\include\dialog.h -o release\moc_dialog.cpp
 
 release\moc_mainwindow.cpp: ..\..\mainwindow.h \
-		D:\Tools\QT\5.15.2\msvc2019_64\include\QtWidgets\QMainWindow \
-		D:\Tools\QT\5.15.2\msvc2019_64\include\QtWidgets\qmainwindow.h \
-		D:\Tools\QT\5.15.2\msvc2019_64\include\QtWidgets\qtwidgetsglobal.h \
-		D:\Tools\QT\5.15.2\msvc2019_64\include\QtGui\qtguiglobal.h \
+		..\..\pythonworker.h \
+		D:\Tools\Python\Python39\include\Python.h \
+		D:\Tools\Python\Python39\include\patchlevel.h \
+		D:\Tools\Python\Python39\include\pyconfig.h \
+		D:\Tools\Python\Python39\include\pymacconfig.h \
+		D:\Tools\Python\Python39\include\pyport.h \
+		D:\Tools\Python\Python39\include\exports.h \
+		D:\Tools\Python\Python39\include\pymacro.h \
+		D:\Tools\Python\Python39\include\pymath.h \
+		D:\Tools\Python\Python39\include\pytime.h \
+		D:\Tools\Python\Python39\include\object.h \
+		D:\Tools\Python\Python39\include\cpython\object.h \
+		D:\Tools\Python\Python39\include\pymem.h \
+		D:\Tools\Python\Python39\include\cpython\pymem.h \
+		D:\Tools\Python\Python39\include\objimpl.h \
+		D:\Tools\Python\Python39\include\cpython\objimpl.h \
+		D:\Tools\Python\Python39\include\typeslots.h \
+		D:\Tools\Python\Python39\include\pyhash.h \
+		D:\Tools\Python\Python39\include\pydebug.h \
+		D:\Tools\Python\Python39\include\bytearrayobject.h \
+		D:\Tools\Python\Python39\include\cpython\bytearrayobject.h \
+		D:\Tools\Python\Python39\include\bytesobject.h \
+		D:\Tools\Python\Python39\include\cpython\bytesobject.h \
+		D:\Tools\Python\Python39\include\unicodeobject.h \
+		D:\Tools\Python\Python39\include\cpython\unicodeobject.h \
+		D:\Tools\Python\Python39\include\longobject.h \
+		D:\Tools\Python\Python39\include\longintrepr.h \
+		D:\Tools\Python\Python39\include\boolobject.h \
+		D:\Tools\Python\Python39\include\floatobject.h \
+		D:\Tools\Python\Python39\include\complexobject.h \
+		D:\Tools\Python\Python39\include\rangeobject.h \
+		D:\Tools\Python\Python39\include\memoryobject.h \
+		D:\Tools\Python\Python39\include\tupleobject.h \
+		D:\Tools\Python\Python39\include\cpython\tupleobject.h \
+		D:\Tools\Python\Python39\include\listobject.h \
+		D:\Tools\Python\Python39\include\cpython\listobject.h \
+		D:\Tools\Python\Python39\include\dictobject.h \
+		D:\Tools\Python\Python39\include\cpython\dictobject.h \
+		D:\Tools\Python\Python39\include\odictobject.h \
+		D:\Tools\Python\Python39\include\enumobject.h \
+		D:\Tools\Python\Python39\include\setobject.h \
+		D:\Tools\Python\Python39\include\methodobject.h \
+		D:\Tools\Python\Python39\include\cpython\methodobject.h \
+		D:\Tools\Python\Python39\include\moduleobject.h \
+		D:\Tools\Python\Python39\include\funcobject.h \
+		D:\Tools\Python\Python39\include\classobject.h \
+		D:\Tools\Python\Python39\include\fileobject.h \
+		D:\Tools\Python\Python39\include\cpython\fileobject.h \
+		D:\Tools\Python\Python39\include\pycapsule.h \
+		D:\Tools\Python\Python39\include\code.h \
+		D:\Tools\Python\Python39\include\cpython\code.h \
+		D:\Tools\Python\Python39\include\pyframe.h \
+		D:\Tools\Python\Python39\include\traceback.h \
+		D:\Tools\Python\Python39\include\cpython\traceback.h \
+		D:\Tools\Python\Python39\include\sliceobject.h \
+		D:\Tools\Python\Python39\include\cellobject.h \
+		D:\Tools\Python\Python39\include\iterobject.h \
+		D:\Tools\Python\Python39\include\genobject.h \
+		D:\Tools\Python\Python39\include\pystate.h \
+		D:\Tools\Python\Python39\include\cpython\pystate.h \
+		D:\Tools\Python\Python39\include\cpython\initconfig.h \
+		D:\Tools\Python\Python39\include\descrobject.h \
+		D:\Tools\Python\Python39\include\genericaliasobject.h \
+		D:\Tools\Python\Python39\include\warnings.h \
+		D:\Tools\Python\Python39\include\weakrefobject.h \
+		D:\Tools\Python\Python39\include\structseq.h \
+		D:\Tools\Python\Python39\include\namespaceobject.h \
+		D:\Tools\Python\Python39\include\picklebufobject.h \
+		D:\Tools\Python\Python39\include\codecs.h \
+		D:\Tools\Python\Python39\include\pyerrors.h \
+		D:\Tools\Python\Python39\include\cpython\pyerrors.h \
+		D:\Tools\Python\Python39\include\pythread.h \
+		D:\Tools\Python\Python39\include\context.h \
+		D:\Tools\Python\Python39\include\pyarena.h \
+		D:\Tools\Python\Python39\include\modsupport.h \
+		D:\Tools\Python\Python39\include\compile.h \
+		D:\Tools\Python\Python39\include\pythonrun.h \
+		D:\Tools\Python\Python39\include\pylifecycle.h \
+		D:\Tools\Python\Python39\include\cpython\pylifecycle.h \
+		D:\Tools\Python\Python39\include\ceval.h \
+		D:\Tools\Python\Python39\include\cpython\ceval.h \
+		D:\Tools\Python\Python39\include\sysmodule.h \
+		D:\Tools\Python\Python39\include\cpython\sysmodule.h \
+		D:\Tools\Python\Python39\include\osmodule.h \
+		D:\Tools\Python\Python39\include\intrcheck.h \
+		D:\Tools\Python\Python39\include\import.h \
+		D:\Tools\Python\Python39\include\cpython\import.h \
+		D:\Tools\Python\Python39\include\abstract.h \
+		D:\Tools\Python\Python39\include\cpython\abstract.h \
+		D:\Tools\Python\Python39\include\bltinmodule.h \
+		D:\Tools\Python\Python39\include\eval.h \
+		D:\Tools\Python\Python39\include\pyctype.h \
+		D:\Tools\Python\Python39\include\pystrtod.h \
+		D:\Tools\Python\Python39\include\pystrcmp.h \
+		D:\Tools\Python\Python39\include\fileutils.h \
+		D:\Tools\Python\Python39\include\cpython\fileutils.h \
+		D:\Tools\Python\Python39\include\pyfpe.h \
+		D:\Tools\Python\Python39\include\tracemalloc.h \
+		D:\Tools\QT\5.15.2\msvc2019_64\include\QtCore\QThread \
+		D:\Tools\QT\5.15.2\msvc2019_64\include\QtCore\qthread.h \
+		D:\Tools\QT\5.15.2\msvc2019_64\include\QtCore\qobject.h \
+		D:\Tools\QT\5.15.2\msvc2019_64\include\QtCore\qobjectdefs.h \
+		D:\Tools\QT\5.15.2\msvc2019_64\include\QtCore\qnamespace.h \
 		D:\Tools\QT\5.15.2\msvc2019_64\include\QtCore\qglobal.h \
 		D:\Tools\QT\5.15.2\msvc2019_64\include\QtCore\qconfig-bootstrapped.h \
 		D:\Tools\QT\5.15.2\msvc2019_64\include\QtCore\qconfig.h \
@@ -679,15 +779,7 @@ release\moc_mainwindow.cpp: ..\..\mainwindow.h \
 		D:\Tools\QT\5.15.2\msvc2019_64\include\QtCore\qmutex.h \
 		D:\Tools\QT\5.15.2\msvc2019_64\include\QtCore\qnumeric.h \
 		D:\Tools\QT\5.15.2\msvc2019_64\include\QtCore\qversiontagging.h \
-		D:\Tools\QT\5.15.2\msvc2019_64\include\QtGui\qtgui-config.h \
-		D:\Tools\QT\5.15.2\msvc2019_64\include\QtWidgets\qtwidgets-config.h \
-		D:\Tools\QT\5.15.2\msvc2019_64\include\QtWidgets\qwidget.h \
-		D:\Tools\QT\5.15.2\msvc2019_64\include\QtGui\qwindowdefs.h \
-		D:\Tools\QT\5.15.2\msvc2019_64\include\QtCore\qobjectdefs.h \
-		D:\Tools\QT\5.15.2\msvc2019_64\include\QtCore\qnamespace.h \
 		D:\Tools\QT\5.15.2\msvc2019_64\include\QtCore\qobjectdefs_impl.h \
-		D:\Tools\QT\5.15.2\msvc2019_64\include\QtGui\qwindowdefs_win.h \
-		D:\Tools\QT\5.15.2\msvc2019_64\include\QtCore\qobject.h \
 		D:\Tools\QT\5.15.2\msvc2019_64\include\QtCore\qstring.h \
 		D:\Tools\QT\5.15.2\msvc2019_64\include\QtCore\qchar.h \
 		D:\Tools\QT\5.15.2\msvc2019_64\include\QtCore\qbytearray.h \
@@ -715,6 +807,37 @@ release\moc_mainwindow.cpp: ..\..\mainwindow.h \
 		D:\Tools\QT\5.15.2\msvc2019_64\include\QtCore\qvarlengtharray.h \
 		D:\Tools\QT\5.15.2\msvc2019_64\include\QtCore\qcontainerfwd.h \
 		D:\Tools\QT\5.15.2\msvc2019_64\include\QtCore\qobject_impl.h \
+		D:\Tools\QT\5.15.2\msvc2019_64\include\QtCore\qdeadlinetimer.h \
+		D:\Tools\QT\5.15.2\msvc2019_64\include\QtCore\qelapsedtimer.h \
+		D:\Tools\QT\5.15.2\msvc2019_64\include\QtCore\QDir \
+		D:\Tools\QT\5.15.2\msvc2019_64\include\QtCore\qdir.h \
+		D:\Tools\QT\5.15.2\msvc2019_64\include\QtCore\qfileinfo.h \
+		D:\Tools\QT\5.15.2\msvc2019_64\include\QtCore\qfile.h \
+		D:\Tools\QT\5.15.2\msvc2019_64\include\QtCore\qfiledevice.h \
+		D:\Tools\QT\5.15.2\msvc2019_64\include\QtCore\qiodevice.h \
+		D:\Tools\QT\5.15.2\msvc2019_64\include\QtCore\qshareddata.h \
+		D:\Tools\QT\5.15.2\msvc2019_64\include\QtCore\qhash.h \
+		D:\Tools\QT\5.15.2\msvc2019_64\include\QtCore\QDebug \
+		D:\Tools\QT\5.15.2\msvc2019_64\include\QtCore\qdebug.h \
+		D:\Tools\QT\5.15.2\msvc2019_64\include\QtCore\qmap.h \
+		D:\Tools\QT\5.15.2\msvc2019_64\include\QtCore\qtextstream.h \
+		D:\Tools\QT\5.15.2\msvc2019_64\include\QtCore\qlocale.h \
+		D:\Tools\QT\5.15.2\msvc2019_64\include\QtCore\qvariant.h \
+		D:\Tools\QT\5.15.2\msvc2019_64\include\QtCore\qset.h \
+		D:\Tools\QT\5.15.2\msvc2019_64\include\QtCore\qcontiguouscache.h \
+		D:\Tools\QT\5.15.2\msvc2019_64\include\QtCore\qsharedpointer.h \
+		D:\Tools\QT\5.15.2\msvc2019_64\include\QtCore\qsharedpointer_impl.h \
+		D:\Tools\QT\5.15.2\msvc2019_64\include\QtCore\QProcess \
+		D:\Tools\QT\5.15.2\msvc2019_64\include\QtCore\qprocess.h \
+		D:\Tools\QT\5.15.2\msvc2019_64\include\QtWidgets\QMainWindow \
+		D:\Tools\QT\5.15.2\msvc2019_64\include\QtWidgets\qmainwindow.h \
+		D:\Tools\QT\5.15.2\msvc2019_64\include\QtWidgets\qtwidgetsglobal.h \
+		D:\Tools\QT\5.15.2\msvc2019_64\include\QtGui\qtguiglobal.h \
+		D:\Tools\QT\5.15.2\msvc2019_64\include\QtGui\qtgui-config.h \
+		D:\Tools\QT\5.15.2\msvc2019_64\include\QtWidgets\qtwidgets-config.h \
+		D:\Tools\QT\5.15.2\msvc2019_64\include\QtWidgets\qwidget.h \
+		D:\Tools\QT\5.15.2\msvc2019_64\include\QtGui\qwindowdefs.h \
+		D:\Tools\QT\5.15.2\msvc2019_64\include\QtGui\qwindowdefs_win.h \
 		D:\Tools\QT\5.15.2\msvc2019_64\include\QtCore\qmargins.h \
 		D:\Tools\QT\5.15.2\msvc2019_64\include\QtGui\qpaintdevice.h \
 		D:\Tools\QT\5.15.2\msvc2019_64\include\QtCore\qrect.h \
@@ -728,16 +851,11 @@ release\moc_mainwindow.cpp: ..\..\mainwindow.h \
 		D:\Tools\QT\5.15.2\msvc2019_64\include\QtGui\qpolygon.h \
 		D:\Tools\QT\5.15.2\msvc2019_64\include\QtGui\qregion.h \
 		D:\Tools\QT\5.15.2\msvc2019_64\include\QtCore\qdatastream.h \
-		D:\Tools\QT\5.15.2\msvc2019_64\include\QtCore\qiodevice.h \
 		D:\Tools\QT\5.15.2\msvc2019_64\include\QtCore\qline.h \
 		D:\Tools\QT\5.15.2\msvc2019_64\include\QtGui\qtransform.h \
 		D:\Tools\QT\5.15.2\msvc2019_64\include\QtGui\qimage.h \
 		D:\Tools\QT\5.15.2\msvc2019_64\include\QtGui\qpixelformat.h \
 		D:\Tools\QT\5.15.2\msvc2019_64\include\QtGui\qpixmap.h \
-		D:\Tools\QT\5.15.2\msvc2019_64\include\QtCore\qsharedpointer.h \
-		D:\Tools\QT\5.15.2\msvc2019_64\include\QtCore\qshareddata.h \
-		D:\Tools\QT\5.15.2\msvc2019_64\include\QtCore\qhash.h \
-		D:\Tools\QT\5.15.2\msvc2019_64\include\QtCore\qsharedpointer_impl.h \
 		D:\Tools\QT\5.15.2\msvc2019_64\include\QtGui\qfont.h \
 		D:\Tools\QT\5.15.2\msvc2019_64\include\QtGui\qfontmetrics.h \
 		D:\Tools\QT\5.15.2\msvc2019_64\include\QtGui\qfontinfo.h \
@@ -745,17 +863,8 @@ release\moc_mainwindow.cpp: ..\..\mainwindow.h \
 		D:\Tools\QT\5.15.2\msvc2019_64\include\QtGui\qcursor.h \
 		D:\Tools\QT\5.15.2\msvc2019_64\include\QtGui\qkeysequence.h \
 		D:\Tools\QT\5.15.2\msvc2019_64\include\QtGui\qevent.h \
-		D:\Tools\QT\5.15.2\msvc2019_64\include\QtCore\qvariant.h \
-		D:\Tools\QT\5.15.2\msvc2019_64\include\QtCore\qmap.h \
-		D:\Tools\QT\5.15.2\msvc2019_64\include\QtCore\qdebug.h \
-		D:\Tools\QT\5.15.2\msvc2019_64\include\QtCore\qtextstream.h \
-		D:\Tools\QT\5.15.2\msvc2019_64\include\QtCore\qlocale.h \
-		D:\Tools\QT\5.15.2\msvc2019_64\include\QtCore\qset.h \
-		D:\Tools\QT\5.15.2\msvc2019_64\include\QtCore\qcontiguouscache.h \
 		D:\Tools\QT\5.15.2\msvc2019_64\include\QtCore\qurl.h \
 		D:\Tools\QT\5.15.2\msvc2019_64\include\QtCore\qurlquery.h \
-		D:\Tools\QT\5.15.2\msvc2019_64\include\QtCore\qfile.h \
-		D:\Tools\QT\5.15.2\msvc2019_64\include\QtCore\qfiledevice.h \
 		D:\Tools\QT\5.15.2\msvc2019_64\include\QtGui\qvector2d.h \
 		D:\Tools\QT\5.15.2\msvc2019_64\include\QtGui\qtouchdevice.h \
 		D:\Tools\QT\5.15.2\msvc2019_64\include\QtWidgets\qtabwidget.h \
@@ -768,9 +877,6 @@ release\moc_mainwindow.cpp: ..\..\mainwindow.h \
 		D:\Tools\QT\5.15.2\msvc2019_64\include\QtWidgets\QDialog \
 		D:\Tools\QT\5.15.2\msvc2019_64\include\QtWidgets\qdialog.h \
 		D:\Tools\QT\5.15.2\msvc2019_64\include\QtGui\QImage \
-		D:\Tools\QT\5.15.2\msvc2019_64\include\QtCore\QDir \
-		D:\Tools\QT\5.15.2\msvc2019_64\include\QtCore\qdir.h \
-		D:\Tools\QT\5.15.2\msvc2019_64\include\QtCore\qfileinfo.h \
 		D:\Tools\QT\5.15.2\msvc2019_64\include\QtGui\QDesktopServices \
 		D:\Tools\QT\5.15.2\msvc2019_64\include\QtGui\qdesktopservices.h \
 		D:\Tools\QT\5.15.2\msvc2019_64\include\QtCore\qstandardpaths.h \
@@ -786,7 +892,6 @@ release\moc_mainwindow.cpp: ..\..\mainwindow.h \
 		D:\Tools\QT\5.15.2\msvc2019_64\include\QtCore\QMutex \
 		D:\Tools\QT\5.15.2\msvc2019_64\include\QtCore\QDateTime \
 		D:\Tools\QT\5.15.2\msvc2019_64\include\QtCore\qdatetime.h \
-		D:\Tools\QT\5.15.2\msvc2019_64\include\QtCore\QDebug \
 		D:\Tools\QT\5.15.2\msvc2019_64\include\QtCore\QFileSystemWatcher \
 		D:\Tools\QT\5.15.2\msvc2019_64\include\QtCore\qfilesystemwatcher.h \
 		D:\Tools\QT\5.15.2\msvc2019_64\include\QtGui\QFont \
@@ -917,8 +1022,6 @@ release\moc_mainwindow.cpp: ..\..\mainwindow.h \
 		D:\Tools\QT\5.15.2\msvc2019_64\include\QtCore\qcommandlineoption.h \
 		D:\Tools\QT\5.15.2\msvc2019_64\include\QtCore\qcommandlineparser.h \
 		D:\Tools\QT\5.15.2\msvc2019_64\include\QtCore\qconcatenatetablesproxymodel.h \
-		D:\Tools\QT\5.15.2\msvc2019_64\include\QtCore\qdeadlinetimer.h \
-		D:\Tools\QT\5.15.2\msvc2019_64\include\QtCore\qelapsedtimer.h \
 		D:\Tools\QT\5.15.2\msvc2019_64\include\QtCore\qdiriterator.h \
 		D:\Tools\QT\5.15.2\msvc2019_64\include\QtCore\qendian.h \
 		D:\Tools\QT\5.15.2\msvc2019_64\include\QtCore\qeventtransition.h \
@@ -959,7 +1062,6 @@ release\moc_mainwindow.cpp: ..\..\mainwindow.h \
 		D:\Tools\QT\5.15.2\msvc2019_64\include\QtCore\qplugin.h \
 		D:\Tools\QT\5.15.2\msvc2019_64\include\QtCore\qpointer.h \
 		D:\Tools\QT\5.15.2\msvc2019_64\include\QtCore\qpluginloader.h \
-		D:\Tools\QT\5.15.2\msvc2019_64\include\QtCore\qprocess.h \
 		D:\Tools\QT\5.15.2\msvc2019_64\include\QtCore\qqueue.h \
 		D:\Tools\QT\5.15.2\msvc2019_64\include\QtCore\qreadwritelock.h \
 		D:\Tools\QT\5.15.2\msvc2019_64\include\QtCore\qresource.h \
@@ -983,7 +1085,6 @@ release\moc_mainwindow.cpp: ..\..\mainwindow.h \
 		D:\Tools\QT\5.15.2\msvc2019_64\include\QtCore\qtemporaryfile.h \
 		D:\Tools\QT\5.15.2\msvc2019_64\include\QtCore\qtextboundaryfinder.h \
 		D:\Tools\QT\5.15.2\msvc2019_64\include\QtCore\qtextcodec.h \
-		D:\Tools\QT\5.15.2\msvc2019_64\include\QtCore\qthread.h \
 		D:\Tools\QT\5.15.2\msvc2019_64\include\QtCore\qthreadpool.h \
 		D:\Tools\QT\5.15.2\msvc2019_64\include\QtCore\qthreadstorage.h \
 		D:\Tools\QT\5.15.2\msvc2019_64\include\QtCore\qtimeline.h \
@@ -2630,10 +2731,109 @@ release\dialog.obj: ..\..\dialog.cpp ..\..\include\dialog.h \
 		D:\Tools\QT\5.15.2\msvc2019_64\include\QtWidgets\qmessagebox.h
 
 release\main.obj: ..\..\main.cpp ..\..\mainwindow.h \
-		D:\Tools\QT\5.15.2\msvc2019_64\include\QtWidgets\QMainWindow \
-		D:\Tools\QT\5.15.2\msvc2019_64\include\QtWidgets\qmainwindow.h \
-		D:\Tools\QT\5.15.2\msvc2019_64\include\QtWidgets\qtwidgetsglobal.h \
-		D:\Tools\QT\5.15.2\msvc2019_64\include\QtGui\qtguiglobal.h \
+		..\..\pythonworker.h \
+		D:\Tools\Python\Python39\include\Python.h \
+		D:\Tools\Python\Python39\include\patchlevel.h \
+		D:\Tools\Python\Python39\include\pyconfig.h \
+		D:\Tools\Python\Python39\include\pymacconfig.h \
+		D:\Tools\Python\Python39\include\pyport.h \
+		D:\Tools\Python\Python39\include\exports.h \
+		D:\Tools\Python\Python39\include\pymacro.h \
+		D:\Tools\Python\Python39\include\pymath.h \
+		D:\Tools\Python\Python39\include\pytime.h \
+		D:\Tools\Python\Python39\include\object.h \
+		D:\Tools\Python\Python39\include\cpython\object.h \
+		D:\Tools\Python\Python39\include\pymem.h \
+		D:\Tools\Python\Python39\include\cpython\pymem.h \
+		D:\Tools\Python\Python39\include\objimpl.h \
+		D:\Tools\Python\Python39\include\cpython\objimpl.h \
+		D:\Tools\Python\Python39\include\typeslots.h \
+		D:\Tools\Python\Python39\include\pyhash.h \
+		D:\Tools\Python\Python39\include\pydebug.h \
+		D:\Tools\Python\Python39\include\bytearrayobject.h \
+		D:\Tools\Python\Python39\include\cpython\bytearrayobject.h \
+		D:\Tools\Python\Python39\include\bytesobject.h \
+		D:\Tools\Python\Python39\include\cpython\bytesobject.h \
+		D:\Tools\Python\Python39\include\unicodeobject.h \
+		D:\Tools\Python\Python39\include\cpython\unicodeobject.h \
+		D:\Tools\Python\Python39\include\longobject.h \
+		D:\Tools\Python\Python39\include\longintrepr.h \
+		D:\Tools\Python\Python39\include\boolobject.h \
+		D:\Tools\Python\Python39\include\floatobject.h \
+		D:\Tools\Python\Python39\include\complexobject.h \
+		D:\Tools\Python\Python39\include\rangeobject.h \
+		D:\Tools\Python\Python39\include\memoryobject.h \
+		D:\Tools\Python\Python39\include\tupleobject.h \
+		D:\Tools\Python\Python39\include\cpython\tupleobject.h \
+		D:\Tools\Python\Python39\include\listobject.h \
+		D:\Tools\Python\Python39\include\cpython\listobject.h \
+		D:\Tools\Python\Python39\include\dictobject.h \
+		D:\Tools\Python\Python39\include\cpython\dictobject.h \
+		D:\Tools\Python\Python39\include\odictobject.h \
+		D:\Tools\Python\Python39\include\enumobject.h \
+		D:\Tools\Python\Python39\include\setobject.h \
+		D:\Tools\Python\Python39\include\methodobject.h \
+		D:\Tools\Python\Python39\include\cpython\methodobject.h \
+		D:\Tools\Python\Python39\include\moduleobject.h \
+		D:\Tools\Python\Python39\include\funcobject.h \
+		D:\Tools\Python\Python39\include\classobject.h \
+		D:\Tools\Python\Python39\include\fileobject.h \
+		D:\Tools\Python\Python39\include\cpython\fileobject.h \
+		D:\Tools\Python\Python39\include\pycapsule.h \
+		D:\Tools\Python\Python39\include\code.h \
+		D:\Tools\Python\Python39\include\cpython\code.h \
+		D:\Tools\Python\Python39\include\pyframe.h \
+		D:\Tools\Python\Python39\include\traceback.h \
+		D:\Tools\Python\Python39\include\cpython\traceback.h \
+		D:\Tools\Python\Python39\include\sliceobject.h \
+		D:\Tools\Python\Python39\include\cellobject.h \
+		D:\Tools\Python\Python39\include\iterobject.h \
+		D:\Tools\Python\Python39\include\genobject.h \
+		D:\Tools\Python\Python39\include\pystate.h \
+		D:\Tools\Python\Python39\include\cpython\pystate.h \
+		D:\Tools\Python\Python39\include\cpython\initconfig.h \
+		D:\Tools\Python\Python39\include\descrobject.h \
+		D:\Tools\Python\Python39\include\genericaliasobject.h \
+		D:\Tools\Python\Python39\include\warnings.h \
+		D:\Tools\Python\Python39\include\weakrefobject.h \
+		D:\Tools\Python\Python39\include\structseq.h \
+		D:\Tools\Python\Python39\include\namespaceobject.h \
+		D:\Tools\Python\Python39\include\picklebufobject.h \
+		D:\Tools\Python\Python39\include\codecs.h \
+		D:\Tools\Python\Python39\include\pyerrors.h \
+		D:\Tools\Python\Python39\include\cpython\pyerrors.h \
+		D:\Tools\Python\Python39\include\pythread.h \
+		D:\Tools\Python\Python39\include\context.h \
+		D:\Tools\Python\Python39\include\pyarena.h \
+		D:\Tools\Python\Python39\include\modsupport.h \
+		D:\Tools\Python\Python39\include\compile.h \
+		D:\Tools\Python\Python39\include\pythonrun.h \
+		D:\Tools\Python\Python39\include\pylifecycle.h \
+		D:\Tools\Python\Python39\include\cpython\pylifecycle.h \
+		D:\Tools\Python\Python39\include\ceval.h \
+		D:\Tools\Python\Python39\include\cpython\ceval.h \
+		D:\Tools\Python\Python39\include\sysmodule.h \
+		D:\Tools\Python\Python39\include\cpython\sysmodule.h \
+		D:\Tools\Python\Python39\include\osmodule.h \
+		D:\Tools\Python\Python39\include\intrcheck.h \
+		D:\Tools\Python\Python39\include\import.h \
+		D:\Tools\Python\Python39\include\cpython\import.h \
+		D:\Tools\Python\Python39\include\abstract.h \
+		D:\Tools\Python\Python39\include\cpython\abstract.h \
+		D:\Tools\Python\Python39\include\bltinmodule.h \
+		D:\Tools\Python\Python39\include\eval.h \
+		D:\Tools\Python\Python39\include\pyctype.h \
+		D:\Tools\Python\Python39\include\pystrtod.h \
+		D:\Tools\Python\Python39\include\pystrcmp.h \
+		D:\Tools\Python\Python39\include\fileutils.h \
+		D:\Tools\Python\Python39\include\cpython\fileutils.h \
+		D:\Tools\Python\Python39\include\pyfpe.h \
+		D:\Tools\Python\Python39\include\tracemalloc.h \
+		D:\Tools\QT\5.15.2\msvc2019_64\include\QtCore\QThread \
+		D:\Tools\QT\5.15.2\msvc2019_64\include\QtCore\qthread.h \
+		D:\Tools\QT\5.15.2\msvc2019_64\include\QtCore\qobject.h \
+		D:\Tools\QT\5.15.2\msvc2019_64\include\QtCore\qobjectdefs.h \
+		D:\Tools\QT\5.15.2\msvc2019_64\include\QtCore\qnamespace.h \
 		D:\Tools\QT\5.15.2\msvc2019_64\include\QtCore\qglobal.h \
 		D:\Tools\QT\5.15.2\msvc2019_64\include\QtCore\qconfig-bootstrapped.h \
 		D:\Tools\QT\5.15.2\msvc2019_64\include\QtCore\qconfig.h \
@@ -2655,15 +2855,7 @@ release\main.obj: ..\..\main.cpp ..\..\mainwindow.h \
 		D:\Tools\QT\5.15.2\msvc2019_64\include\QtCore\qmutex.h \
 		D:\Tools\QT\5.15.2\msvc2019_64\include\QtCore\qnumeric.h \
 		D:\Tools\QT\5.15.2\msvc2019_64\include\QtCore\qversiontagging.h \
-		D:\Tools\QT\5.15.2\msvc2019_64\include\QtGui\qtgui-config.h \
-		D:\Tools\QT\5.15.2\msvc2019_64\include\QtWidgets\qtwidgets-config.h \
-		D:\Tools\QT\5.15.2\msvc2019_64\include\QtWidgets\qwidget.h \
-		D:\Tools\QT\5.15.2\msvc2019_64\include\QtGui\qwindowdefs.h \
-		D:\Tools\QT\5.15.2\msvc2019_64\include\QtCore\qobjectdefs.h \
-		D:\Tools\QT\5.15.2\msvc2019_64\include\QtCore\qnamespace.h \
 		D:\Tools\QT\5.15.2\msvc2019_64\include\QtCore\qobjectdefs_impl.h \
-		D:\Tools\QT\5.15.2\msvc2019_64\include\QtGui\qwindowdefs_win.h \
-		D:\Tools\QT\5.15.2\msvc2019_64\include\QtCore\qobject.h \
 		D:\Tools\QT\5.15.2\msvc2019_64\include\QtCore\qstring.h \
 		D:\Tools\QT\5.15.2\msvc2019_64\include\QtCore\qchar.h \
 		D:\Tools\QT\5.15.2\msvc2019_64\include\QtCore\qbytearray.h \
@@ -2691,6 +2883,37 @@ release\main.obj: ..\..\main.cpp ..\..\mainwindow.h \
 		D:\Tools\QT\5.15.2\msvc2019_64\include\QtCore\qvarlengtharray.h \
 		D:\Tools\QT\5.15.2\msvc2019_64\include\QtCore\qcontainerfwd.h \
 		D:\Tools\QT\5.15.2\msvc2019_64\include\QtCore\qobject_impl.h \
+		D:\Tools\QT\5.15.2\msvc2019_64\include\QtCore\qdeadlinetimer.h \
+		D:\Tools\QT\5.15.2\msvc2019_64\include\QtCore\qelapsedtimer.h \
+		D:\Tools\QT\5.15.2\msvc2019_64\include\QtCore\QDir \
+		D:\Tools\QT\5.15.2\msvc2019_64\include\QtCore\qdir.h \
+		D:\Tools\QT\5.15.2\msvc2019_64\include\QtCore\qfileinfo.h \
+		D:\Tools\QT\5.15.2\msvc2019_64\include\QtCore\qfile.h \
+		D:\Tools\QT\5.15.2\msvc2019_64\include\QtCore\qfiledevice.h \
+		D:\Tools\QT\5.15.2\msvc2019_64\include\QtCore\qiodevice.h \
+		D:\Tools\QT\5.15.2\msvc2019_64\include\QtCore\qshareddata.h \
+		D:\Tools\QT\5.15.2\msvc2019_64\include\QtCore\qhash.h \
+		D:\Tools\QT\5.15.2\msvc2019_64\include\QtCore\QDebug \
+		D:\Tools\QT\5.15.2\msvc2019_64\include\QtCore\qdebug.h \
+		D:\Tools\QT\5.15.2\msvc2019_64\include\QtCore\qmap.h \
+		D:\Tools\QT\5.15.2\msvc2019_64\include\QtCore\qtextstream.h \
+		D:\Tools\QT\5.15.2\msvc2019_64\include\QtCore\qlocale.h \
+		D:\Tools\QT\5.15.2\msvc2019_64\include\QtCore\qvariant.h \
+		D:\Tools\QT\5.15.2\msvc2019_64\include\QtCore\qset.h \
+		D:\Tools\QT\5.15.2\msvc2019_64\include\QtCore\qcontiguouscache.h \
+		D:\Tools\QT\5.15.2\msvc2019_64\include\QtCore\qsharedpointer.h \
+		D:\Tools\QT\5.15.2\msvc2019_64\include\QtCore\qsharedpointer_impl.h \
+		D:\Tools\QT\5.15.2\msvc2019_64\include\QtCore\QProcess \
+		D:\Tools\QT\5.15.2\msvc2019_64\include\QtCore\qprocess.h \
+		D:\Tools\QT\5.15.2\msvc2019_64\include\QtWidgets\QMainWindow \
+		D:\Tools\QT\5.15.2\msvc2019_64\include\QtWidgets\qmainwindow.h \
+		D:\Tools\QT\5.15.2\msvc2019_64\include\QtWidgets\qtwidgetsglobal.h \
+		D:\Tools\QT\5.15.2\msvc2019_64\include\QtGui\qtguiglobal.h \
+		D:\Tools\QT\5.15.2\msvc2019_64\include\QtGui\qtgui-config.h \
+		D:\Tools\QT\5.15.2\msvc2019_64\include\QtWidgets\qtwidgets-config.h \
+		D:\Tools\QT\5.15.2\msvc2019_64\include\QtWidgets\qwidget.h \
+		D:\Tools\QT\5.15.2\msvc2019_64\include\QtGui\qwindowdefs.h \
+		D:\Tools\QT\5.15.2\msvc2019_64\include\QtGui\qwindowdefs_win.h \
 		D:\Tools\QT\5.15.2\msvc2019_64\include\QtCore\qmargins.h \
 		D:\Tools\QT\5.15.2\msvc2019_64\include\QtGui\qpaintdevice.h \
 		D:\Tools\QT\5.15.2\msvc2019_64\include\QtCore\qrect.h \
@@ -2704,16 +2927,11 @@ release\main.obj: ..\..\main.cpp ..\..\mainwindow.h \
 		D:\Tools\QT\5.15.2\msvc2019_64\include\QtGui\qpolygon.h \
 		D:\Tools\QT\5.15.2\msvc2019_64\include\QtGui\qregion.h \
 		D:\Tools\QT\5.15.2\msvc2019_64\include\QtCore\qdatastream.h \
-		D:\Tools\QT\5.15.2\msvc2019_64\include\QtCore\qiodevice.h \
 		D:\Tools\QT\5.15.2\msvc2019_64\include\QtCore\qline.h \
 		D:\Tools\QT\5.15.2\msvc2019_64\include\QtGui\qtransform.h \
 		D:\Tools\QT\5.15.2\msvc2019_64\include\QtGui\qimage.h \
 		D:\Tools\QT\5.15.2\msvc2019_64\include\QtGui\qpixelformat.h \
 		D:\Tools\QT\5.15.2\msvc2019_64\include\QtGui\qpixmap.h \
-		D:\Tools\QT\5.15.2\msvc2019_64\include\QtCore\qsharedpointer.h \
-		D:\Tools\QT\5.15.2\msvc2019_64\include\QtCore\qshareddata.h \
-		D:\Tools\QT\5.15.2\msvc2019_64\include\QtCore\qhash.h \
-		D:\Tools\QT\5.15.2\msvc2019_64\include\QtCore\qsharedpointer_impl.h \
 		D:\Tools\QT\5.15.2\msvc2019_64\include\QtGui\qfont.h \
 		D:\Tools\QT\5.15.2\msvc2019_64\include\QtGui\qfontmetrics.h \
 		D:\Tools\QT\5.15.2\msvc2019_64\include\QtGui\qfontinfo.h \
@@ -2721,17 +2939,8 @@ release\main.obj: ..\..\main.cpp ..\..\mainwindow.h \
 		D:\Tools\QT\5.15.2\msvc2019_64\include\QtGui\qcursor.h \
 		D:\Tools\QT\5.15.2\msvc2019_64\include\QtGui\qkeysequence.h \
 		D:\Tools\QT\5.15.2\msvc2019_64\include\QtGui\qevent.h \
-		D:\Tools\QT\5.15.2\msvc2019_64\include\QtCore\qvariant.h \
-		D:\Tools\QT\5.15.2\msvc2019_64\include\QtCore\qmap.h \
-		D:\Tools\QT\5.15.2\msvc2019_64\include\QtCore\qdebug.h \
-		D:\Tools\QT\5.15.2\msvc2019_64\include\QtCore\qtextstream.h \
-		D:\Tools\QT\5.15.2\msvc2019_64\include\QtCore\qlocale.h \
-		D:\Tools\QT\5.15.2\msvc2019_64\include\QtCore\qset.h \
-		D:\Tools\QT\5.15.2\msvc2019_64\include\QtCore\qcontiguouscache.h \
 		D:\Tools\QT\5.15.2\msvc2019_64\include\QtCore\qurl.h \
 		D:\Tools\QT\5.15.2\msvc2019_64\include\QtCore\qurlquery.h \
-		D:\Tools\QT\5.15.2\msvc2019_64\include\QtCore\qfile.h \
-		D:\Tools\QT\5.15.2\msvc2019_64\include\QtCore\qfiledevice.h \
 		D:\Tools\QT\5.15.2\msvc2019_64\include\QtGui\qvector2d.h \
 		D:\Tools\QT\5.15.2\msvc2019_64\include\QtGui\qtouchdevice.h \
 		D:\Tools\QT\5.15.2\msvc2019_64\include\QtWidgets\qtabwidget.h \
@@ -2744,9 +2953,6 @@ release\main.obj: ..\..\main.cpp ..\..\mainwindow.h \
 		D:\Tools\QT\5.15.2\msvc2019_64\include\QtWidgets\QDialog \
 		D:\Tools\QT\5.15.2\msvc2019_64\include\QtWidgets\qdialog.h \
 		D:\Tools\QT\5.15.2\msvc2019_64\include\QtGui\QImage \
-		D:\Tools\QT\5.15.2\msvc2019_64\include\QtCore\QDir \
-		D:\Tools\QT\5.15.2\msvc2019_64\include\QtCore\qdir.h \
-		D:\Tools\QT\5.15.2\msvc2019_64\include\QtCore\qfileinfo.h \
 		D:\Tools\QT\5.15.2\msvc2019_64\include\QtGui\QDesktopServices \
 		D:\Tools\QT\5.15.2\msvc2019_64\include\QtGui\qdesktopservices.h \
 		D:\Tools\QT\5.15.2\msvc2019_64\include\QtCore\qstandardpaths.h \
@@ -2762,7 +2968,6 @@ release\main.obj: ..\..\main.cpp ..\..\mainwindow.h \
 		D:\Tools\QT\5.15.2\msvc2019_64\include\QtCore\QMutex \
 		D:\Tools\QT\5.15.2\msvc2019_64\include\QtCore\QDateTime \
 		D:\Tools\QT\5.15.2\msvc2019_64\include\QtCore\qdatetime.h \
-		D:\Tools\QT\5.15.2\msvc2019_64\include\QtCore\QDebug \
 		D:\Tools\QT\5.15.2\msvc2019_64\include\QtCore\QFileSystemWatcher \
 		D:\Tools\QT\5.15.2\msvc2019_64\include\QtCore\qfilesystemwatcher.h \
 		D:\Tools\QT\5.15.2\msvc2019_64\include\QtGui\QFont \
@@ -2893,8 +3098,6 @@ release\main.obj: ..\..\main.cpp ..\..\mainwindow.h \
 		D:\Tools\QT\5.15.2\msvc2019_64\include\QtCore\qcommandlineoption.h \
 		D:\Tools\QT\5.15.2\msvc2019_64\include\QtCore\qcommandlineparser.h \
 		D:\Tools\QT\5.15.2\msvc2019_64\include\QtCore\qconcatenatetablesproxymodel.h \
-		D:\Tools\QT\5.15.2\msvc2019_64\include\QtCore\qdeadlinetimer.h \
-		D:\Tools\QT\5.15.2\msvc2019_64\include\QtCore\qelapsedtimer.h \
 		D:\Tools\QT\5.15.2\msvc2019_64\include\QtCore\qdiriterator.h \
 		D:\Tools\QT\5.15.2\msvc2019_64\include\QtCore\qendian.h \
 		D:\Tools\QT\5.15.2\msvc2019_64\include\QtCore\qeventtransition.h \
@@ -2935,7 +3138,6 @@ release\main.obj: ..\..\main.cpp ..\..\mainwindow.h \
 		D:\Tools\QT\5.15.2\msvc2019_64\include\QtCore\qplugin.h \
 		D:\Tools\QT\5.15.2\msvc2019_64\include\QtCore\qpointer.h \
 		D:\Tools\QT\5.15.2\msvc2019_64\include\QtCore\qpluginloader.h \
-		D:\Tools\QT\5.15.2\msvc2019_64\include\QtCore\qprocess.h \
 		D:\Tools\QT\5.15.2\msvc2019_64\include\QtCore\qqueue.h \
 		D:\Tools\QT\5.15.2\msvc2019_64\include\QtCore\qreadwritelock.h \
 		D:\Tools\QT\5.15.2\msvc2019_64\include\QtCore\qresource.h \
@@ -2959,7 +3161,6 @@ release\main.obj: ..\..\main.cpp ..\..\mainwindow.h \
 		D:\Tools\QT\5.15.2\msvc2019_64\include\QtCore\qtemporaryfile.h \
 		D:\Tools\QT\5.15.2\msvc2019_64\include\QtCore\qtextboundaryfinder.h \
 		D:\Tools\QT\5.15.2\msvc2019_64\include\QtCore\qtextcodec.h \
-		D:\Tools\QT\5.15.2\msvc2019_64\include\QtCore\qthread.h \
 		D:\Tools\QT\5.15.2\msvc2019_64\include\QtCore\qthreadpool.h \
 		D:\Tools\QT\5.15.2\msvc2019_64\include\QtCore\qthreadstorage.h \
 		D:\Tools\QT\5.15.2\msvc2019_64\include\QtCore\qtimeline.h \
@@ -3223,10 +3424,109 @@ release\main.obj: ..\..\main.cpp ..\..\mainwindow.h \
 		..\..\ffmpeg\ffmpeg4\include64\mfx\mfxdefs.h
 
 release\mainwindow.obj: ..\..\mainwindow.cpp ..\..\mainwindow.h \
-		D:\Tools\QT\5.15.2\msvc2019_64\include\QtWidgets\QMainWindow \
-		D:\Tools\QT\5.15.2\msvc2019_64\include\QtWidgets\qmainwindow.h \
-		D:\Tools\QT\5.15.2\msvc2019_64\include\QtWidgets\qtwidgetsglobal.h \
-		D:\Tools\QT\5.15.2\msvc2019_64\include\QtGui\qtguiglobal.h \
+		..\..\pythonworker.h \
+		D:\Tools\Python\Python39\include\Python.h \
+		D:\Tools\Python\Python39\include\patchlevel.h \
+		D:\Tools\Python\Python39\include\pyconfig.h \
+		D:\Tools\Python\Python39\include\pymacconfig.h \
+		D:\Tools\Python\Python39\include\pyport.h \
+		D:\Tools\Python\Python39\include\exports.h \
+		D:\Tools\Python\Python39\include\pymacro.h \
+		D:\Tools\Python\Python39\include\pymath.h \
+		D:\Tools\Python\Python39\include\pytime.h \
+		D:\Tools\Python\Python39\include\object.h \
+		D:\Tools\Python\Python39\include\cpython\object.h \
+		D:\Tools\Python\Python39\include\pymem.h \
+		D:\Tools\Python\Python39\include\cpython\pymem.h \
+		D:\Tools\Python\Python39\include\objimpl.h \
+		D:\Tools\Python\Python39\include\cpython\objimpl.h \
+		D:\Tools\Python\Python39\include\typeslots.h \
+		D:\Tools\Python\Python39\include\pyhash.h \
+		D:\Tools\Python\Python39\include\pydebug.h \
+		D:\Tools\Python\Python39\include\bytearrayobject.h \
+		D:\Tools\Python\Python39\include\cpython\bytearrayobject.h \
+		D:\Tools\Python\Python39\include\bytesobject.h \
+		D:\Tools\Python\Python39\include\cpython\bytesobject.h \
+		D:\Tools\Python\Python39\include\unicodeobject.h \
+		D:\Tools\Python\Python39\include\cpython\unicodeobject.h \
+		D:\Tools\Python\Python39\include\longobject.h \
+		D:\Tools\Python\Python39\include\longintrepr.h \
+		D:\Tools\Python\Python39\include\boolobject.h \
+		D:\Tools\Python\Python39\include\floatobject.h \
+		D:\Tools\Python\Python39\include\complexobject.h \
+		D:\Tools\Python\Python39\include\rangeobject.h \
+		D:\Tools\Python\Python39\include\memoryobject.h \
+		D:\Tools\Python\Python39\include\tupleobject.h \
+		D:\Tools\Python\Python39\include\cpython\tupleobject.h \
+		D:\Tools\Python\Python39\include\listobject.h \
+		D:\Tools\Python\Python39\include\cpython\listobject.h \
+		D:\Tools\Python\Python39\include\dictobject.h \
+		D:\Tools\Python\Python39\include\cpython\dictobject.h \
+		D:\Tools\Python\Python39\include\odictobject.h \
+		D:\Tools\Python\Python39\include\enumobject.h \
+		D:\Tools\Python\Python39\include\setobject.h \
+		D:\Tools\Python\Python39\include\methodobject.h \
+		D:\Tools\Python\Python39\include\cpython\methodobject.h \
+		D:\Tools\Python\Python39\include\moduleobject.h \
+		D:\Tools\Python\Python39\include\funcobject.h \
+		D:\Tools\Python\Python39\include\classobject.h \
+		D:\Tools\Python\Python39\include\fileobject.h \
+		D:\Tools\Python\Python39\include\cpython\fileobject.h \
+		D:\Tools\Python\Python39\include\pycapsule.h \
+		D:\Tools\Python\Python39\include\code.h \
+		D:\Tools\Python\Python39\include\cpython\code.h \
+		D:\Tools\Python\Python39\include\pyframe.h \
+		D:\Tools\Python\Python39\include\traceback.h \
+		D:\Tools\Python\Python39\include\cpython\traceback.h \
+		D:\Tools\Python\Python39\include\sliceobject.h \
+		D:\Tools\Python\Python39\include\cellobject.h \
+		D:\Tools\Python\Python39\include\iterobject.h \
+		D:\Tools\Python\Python39\include\genobject.h \
+		D:\Tools\Python\Python39\include\pystate.h \
+		D:\Tools\Python\Python39\include\cpython\pystate.h \
+		D:\Tools\Python\Python39\include\cpython\initconfig.h \
+		D:\Tools\Python\Python39\include\descrobject.h \
+		D:\Tools\Python\Python39\include\genericaliasobject.h \
+		D:\Tools\Python\Python39\include\warnings.h \
+		D:\Tools\Python\Python39\include\weakrefobject.h \
+		D:\Tools\Python\Python39\include\structseq.h \
+		D:\Tools\Python\Python39\include\namespaceobject.h \
+		D:\Tools\Python\Python39\include\picklebufobject.h \
+		D:\Tools\Python\Python39\include\codecs.h \
+		D:\Tools\Python\Python39\include\pyerrors.h \
+		D:\Tools\Python\Python39\include\cpython\pyerrors.h \
+		D:\Tools\Python\Python39\include\pythread.h \
+		D:\Tools\Python\Python39\include\context.h \
+		D:\Tools\Python\Python39\include\pyarena.h \
+		D:\Tools\Python\Python39\include\modsupport.h \
+		D:\Tools\Python\Python39\include\compile.h \
+		D:\Tools\Python\Python39\include\pythonrun.h \
+		D:\Tools\Python\Python39\include\pylifecycle.h \
+		D:\Tools\Python\Python39\include\cpython\pylifecycle.h \
+		D:\Tools\Python\Python39\include\ceval.h \
+		D:\Tools\Python\Python39\include\cpython\ceval.h \
+		D:\Tools\Python\Python39\include\sysmodule.h \
+		D:\Tools\Python\Python39\include\cpython\sysmodule.h \
+		D:\Tools\Python\Python39\include\osmodule.h \
+		D:\Tools\Python\Python39\include\intrcheck.h \
+		D:\Tools\Python\Python39\include\import.h \
+		D:\Tools\Python\Python39\include\cpython\import.h \
+		D:\Tools\Python\Python39\include\abstract.h \
+		D:\Tools\Python\Python39\include\cpython\abstract.h \
+		D:\Tools\Python\Python39\include\bltinmodule.h \
+		D:\Tools\Python\Python39\include\eval.h \
+		D:\Tools\Python\Python39\include\pyctype.h \
+		D:\Tools\Python\Python39\include\pystrtod.h \
+		D:\Tools\Python\Python39\include\pystrcmp.h \
+		D:\Tools\Python\Python39\include\fileutils.h \
+		D:\Tools\Python\Python39\include\cpython\fileutils.h \
+		D:\Tools\Python\Python39\include\pyfpe.h \
+		D:\Tools\Python\Python39\include\tracemalloc.h \
+		D:\Tools\QT\5.15.2\msvc2019_64\include\QtCore\QThread \
+		D:\Tools\QT\5.15.2\msvc2019_64\include\QtCore\qthread.h \
+		D:\Tools\QT\5.15.2\msvc2019_64\include\QtCore\qobject.h \
+		D:\Tools\QT\5.15.2\msvc2019_64\include\QtCore\qobjectdefs.h \
+		D:\Tools\QT\5.15.2\msvc2019_64\include\QtCore\qnamespace.h \
 		D:\Tools\QT\5.15.2\msvc2019_64\include\QtCore\qglobal.h \
 		D:\Tools\QT\5.15.2\msvc2019_64\include\QtCore\qconfig-bootstrapped.h \
 		D:\Tools\QT\5.15.2\msvc2019_64\include\QtCore\qconfig.h \
@@ -3248,15 +3548,7 @@ release\mainwindow.obj: ..\..\mainwindow.cpp ..\..\mainwindow.h \
 		D:\Tools\QT\5.15.2\msvc2019_64\include\QtCore\qmutex.h \
 		D:\Tools\QT\5.15.2\msvc2019_64\include\QtCore\qnumeric.h \
 		D:\Tools\QT\5.15.2\msvc2019_64\include\QtCore\qversiontagging.h \
-		D:\Tools\QT\5.15.2\msvc2019_64\include\QtGui\qtgui-config.h \
-		D:\Tools\QT\5.15.2\msvc2019_64\include\QtWidgets\qtwidgets-config.h \
-		D:\Tools\QT\5.15.2\msvc2019_64\include\QtWidgets\qwidget.h \
-		D:\Tools\QT\5.15.2\msvc2019_64\include\QtGui\qwindowdefs.h \
-		D:\Tools\QT\5.15.2\msvc2019_64\include\QtCore\qobjectdefs.h \
-		D:\Tools\QT\5.15.2\msvc2019_64\include\QtCore\qnamespace.h \
 		D:\Tools\QT\5.15.2\msvc2019_64\include\QtCore\qobjectdefs_impl.h \
-		D:\Tools\QT\5.15.2\msvc2019_64\include\QtGui\qwindowdefs_win.h \
-		D:\Tools\QT\5.15.2\msvc2019_64\include\QtCore\qobject.h \
 		D:\Tools\QT\5.15.2\msvc2019_64\include\QtCore\qstring.h \
 		D:\Tools\QT\5.15.2\msvc2019_64\include\QtCore\qchar.h \
 		D:\Tools\QT\5.15.2\msvc2019_64\include\QtCore\qbytearray.h \
@@ -3284,6 +3576,37 @@ release\mainwindow.obj: ..\..\mainwindow.cpp ..\..\mainwindow.h \
 		D:\Tools\QT\5.15.2\msvc2019_64\include\QtCore\qvarlengtharray.h \
 		D:\Tools\QT\5.15.2\msvc2019_64\include\QtCore\qcontainerfwd.h \
 		D:\Tools\QT\5.15.2\msvc2019_64\include\QtCore\qobject_impl.h \
+		D:\Tools\QT\5.15.2\msvc2019_64\include\QtCore\qdeadlinetimer.h \
+		D:\Tools\QT\5.15.2\msvc2019_64\include\QtCore\qelapsedtimer.h \
+		D:\Tools\QT\5.15.2\msvc2019_64\include\QtCore\QDir \
+		D:\Tools\QT\5.15.2\msvc2019_64\include\QtCore\qdir.h \
+		D:\Tools\QT\5.15.2\msvc2019_64\include\QtCore\qfileinfo.h \
+		D:\Tools\QT\5.15.2\msvc2019_64\include\QtCore\qfile.h \
+		D:\Tools\QT\5.15.2\msvc2019_64\include\QtCore\qfiledevice.h \
+		D:\Tools\QT\5.15.2\msvc2019_64\include\QtCore\qiodevice.h \
+		D:\Tools\QT\5.15.2\msvc2019_64\include\QtCore\qshareddata.h \
+		D:\Tools\QT\5.15.2\msvc2019_64\include\QtCore\qhash.h \
+		D:\Tools\QT\5.15.2\msvc2019_64\include\QtCore\QDebug \
+		D:\Tools\QT\5.15.2\msvc2019_64\include\QtCore\qdebug.h \
+		D:\Tools\QT\5.15.2\msvc2019_64\include\QtCore\qmap.h \
+		D:\Tools\QT\5.15.2\msvc2019_64\include\QtCore\qtextstream.h \
+		D:\Tools\QT\5.15.2\msvc2019_64\include\QtCore\qlocale.h \
+		D:\Tools\QT\5.15.2\msvc2019_64\include\QtCore\qvariant.h \
+		D:\Tools\QT\5.15.2\msvc2019_64\include\QtCore\qset.h \
+		D:\Tools\QT\5.15.2\msvc2019_64\include\QtCore\qcontiguouscache.h \
+		D:\Tools\QT\5.15.2\msvc2019_64\include\QtCore\qsharedpointer.h \
+		D:\Tools\QT\5.15.2\msvc2019_64\include\QtCore\qsharedpointer_impl.h \
+		D:\Tools\QT\5.15.2\msvc2019_64\include\QtCore\QProcess \
+		D:\Tools\QT\5.15.2\msvc2019_64\include\QtCore\qprocess.h \
+		D:\Tools\QT\5.15.2\msvc2019_64\include\QtWidgets\QMainWindow \
+		D:\Tools\QT\5.15.2\msvc2019_64\include\QtWidgets\qmainwindow.h \
+		D:\Tools\QT\5.15.2\msvc2019_64\include\QtWidgets\qtwidgetsglobal.h \
+		D:\Tools\QT\5.15.2\msvc2019_64\include\QtGui\qtguiglobal.h \
+		D:\Tools\QT\5.15.2\msvc2019_64\include\QtGui\qtgui-config.h \
+		D:\Tools\QT\5.15.2\msvc2019_64\include\QtWidgets\qtwidgets-config.h \
+		D:\Tools\QT\5.15.2\msvc2019_64\include\QtWidgets\qwidget.h \
+		D:\Tools\QT\5.15.2\msvc2019_64\include\QtGui\qwindowdefs.h \
+		D:\Tools\QT\5.15.2\msvc2019_64\include\QtGui\qwindowdefs_win.h \
 		D:\Tools\QT\5.15.2\msvc2019_64\include\QtCore\qmargins.h \
 		D:\Tools\QT\5.15.2\msvc2019_64\include\QtGui\qpaintdevice.h \
 		D:\Tools\QT\5.15.2\msvc2019_64\include\QtCore\qrect.h \
@@ -3297,16 +3620,11 @@ release\mainwindow.obj: ..\..\mainwindow.cpp ..\..\mainwindow.h \
 		D:\Tools\QT\5.15.2\msvc2019_64\include\QtGui\qpolygon.h \
 		D:\Tools\QT\5.15.2\msvc2019_64\include\QtGui\qregion.h \
 		D:\Tools\QT\5.15.2\msvc2019_64\include\QtCore\qdatastream.h \
-		D:\Tools\QT\5.15.2\msvc2019_64\include\QtCore\qiodevice.h \
 		D:\Tools\QT\5.15.2\msvc2019_64\include\QtCore\qline.h \
 		D:\Tools\QT\5.15.2\msvc2019_64\include\QtGui\qtransform.h \
 		D:\Tools\QT\5.15.2\msvc2019_64\include\QtGui\qimage.h \
 		D:\Tools\QT\5.15.2\msvc2019_64\include\QtGui\qpixelformat.h \
 		D:\Tools\QT\5.15.2\msvc2019_64\include\QtGui\qpixmap.h \
-		D:\Tools\QT\5.15.2\msvc2019_64\include\QtCore\qsharedpointer.h \
-		D:\Tools\QT\5.15.2\msvc2019_64\include\QtCore\qshareddata.h \
-		D:\Tools\QT\5.15.2\msvc2019_64\include\QtCore\qhash.h \
-		D:\Tools\QT\5.15.2\msvc2019_64\include\QtCore\qsharedpointer_impl.h \
 		D:\Tools\QT\5.15.2\msvc2019_64\include\QtGui\qfont.h \
 		D:\Tools\QT\5.15.2\msvc2019_64\include\QtGui\qfontmetrics.h \
 		D:\Tools\QT\5.15.2\msvc2019_64\include\QtGui\qfontinfo.h \
@@ -3314,17 +3632,8 @@ release\mainwindow.obj: ..\..\mainwindow.cpp ..\..\mainwindow.h \
 		D:\Tools\QT\5.15.2\msvc2019_64\include\QtGui\qcursor.h \
 		D:\Tools\QT\5.15.2\msvc2019_64\include\QtGui\qkeysequence.h \
 		D:\Tools\QT\5.15.2\msvc2019_64\include\QtGui\qevent.h \
-		D:\Tools\QT\5.15.2\msvc2019_64\include\QtCore\qvariant.h \
-		D:\Tools\QT\5.15.2\msvc2019_64\include\QtCore\qmap.h \
-		D:\Tools\QT\5.15.2\msvc2019_64\include\QtCore\qdebug.h \
-		D:\Tools\QT\5.15.2\msvc2019_64\include\QtCore\qtextstream.h \
-		D:\Tools\QT\5.15.2\msvc2019_64\include\QtCore\qlocale.h \
-		D:\Tools\QT\5.15.2\msvc2019_64\include\QtCore\qset.h \
-		D:\Tools\QT\5.15.2\msvc2019_64\include\QtCore\qcontiguouscache.h \
 		D:\Tools\QT\5.15.2\msvc2019_64\include\QtCore\qurl.h \
 		D:\Tools\QT\5.15.2\msvc2019_64\include\QtCore\qurlquery.h \
-		D:\Tools\QT\5.15.2\msvc2019_64\include\QtCore\qfile.h \
-		D:\Tools\QT\5.15.2\msvc2019_64\include\QtCore\qfiledevice.h \
 		D:\Tools\QT\5.15.2\msvc2019_64\include\QtGui\qvector2d.h \
 		D:\Tools\QT\5.15.2\msvc2019_64\include\QtGui\qtouchdevice.h \
 		D:\Tools\QT\5.15.2\msvc2019_64\include\QtWidgets\qtabwidget.h \
@@ -3337,9 +3646,6 @@ release\mainwindow.obj: ..\..\mainwindow.cpp ..\..\mainwindow.h \
 		D:\Tools\QT\5.15.2\msvc2019_64\include\QtWidgets\QDialog \
 		D:\Tools\QT\5.15.2\msvc2019_64\include\QtWidgets\qdialog.h \
 		D:\Tools\QT\5.15.2\msvc2019_64\include\QtGui\QImage \
-		D:\Tools\QT\5.15.2\msvc2019_64\include\QtCore\QDir \
-		D:\Tools\QT\5.15.2\msvc2019_64\include\QtCore\qdir.h \
-		D:\Tools\QT\5.15.2\msvc2019_64\include\QtCore\qfileinfo.h \
 		D:\Tools\QT\5.15.2\msvc2019_64\include\QtGui\QDesktopServices \
 		D:\Tools\QT\5.15.2\msvc2019_64\include\QtGui\qdesktopservices.h \
 		D:\Tools\QT\5.15.2\msvc2019_64\include\QtCore\qstandardpaths.h \
@@ -3355,7 +3661,6 @@ release\mainwindow.obj: ..\..\mainwindow.cpp ..\..\mainwindow.h \
 		D:\Tools\QT\5.15.2\msvc2019_64\include\QtCore\QMutex \
 		D:\Tools\QT\5.15.2\msvc2019_64\include\QtCore\QDateTime \
 		D:\Tools\QT\5.15.2\msvc2019_64\include\QtCore\qdatetime.h \
-		D:\Tools\QT\5.15.2\msvc2019_64\include\QtCore\QDebug \
 		D:\Tools\QT\5.15.2\msvc2019_64\include\QtCore\QFileSystemWatcher \
 		D:\Tools\QT\5.15.2\msvc2019_64\include\QtCore\qfilesystemwatcher.h \
 		D:\Tools\QT\5.15.2\msvc2019_64\include\QtGui\QFont \
@@ -3486,8 +3791,6 @@ release\mainwindow.obj: ..\..\mainwindow.cpp ..\..\mainwindow.h \
 		D:\Tools\QT\5.15.2\msvc2019_64\include\QtCore\qcommandlineoption.h \
 		D:\Tools\QT\5.15.2\msvc2019_64\include\QtCore\qcommandlineparser.h \
 		D:\Tools\QT\5.15.2\msvc2019_64\include\QtCore\qconcatenatetablesproxymodel.h \
-		D:\Tools\QT\5.15.2\msvc2019_64\include\QtCore\qdeadlinetimer.h \
-		D:\Tools\QT\5.15.2\msvc2019_64\include\QtCore\qelapsedtimer.h \
 		D:\Tools\QT\5.15.2\msvc2019_64\include\QtCore\qdiriterator.h \
 		D:\Tools\QT\5.15.2\msvc2019_64\include\QtCore\qendian.h \
 		D:\Tools\QT\5.15.2\msvc2019_64\include\QtCore\qeventtransition.h \
@@ -3528,7 +3831,6 @@ release\mainwindow.obj: ..\..\mainwindow.cpp ..\..\mainwindow.h \
 		D:\Tools\QT\5.15.2\msvc2019_64\include\QtCore\qplugin.h \
 		D:\Tools\QT\5.15.2\msvc2019_64\include\QtCore\qpointer.h \
 		D:\Tools\QT\5.15.2\msvc2019_64\include\QtCore\qpluginloader.h \
-		D:\Tools\QT\5.15.2\msvc2019_64\include\QtCore\qprocess.h \
 		D:\Tools\QT\5.15.2\msvc2019_64\include\QtCore\qqueue.h \
 		D:\Tools\QT\5.15.2\msvc2019_64\include\QtCore\qreadwritelock.h \
 		D:\Tools\QT\5.15.2\msvc2019_64\include\QtCore\qresource.h \
@@ -3552,7 +3854,6 @@ release\mainwindow.obj: ..\..\mainwindow.cpp ..\..\mainwindow.h \
 		D:\Tools\QT\5.15.2\msvc2019_64\include\QtCore\qtemporaryfile.h \
 		D:\Tools\QT\5.15.2\msvc2019_64\include\QtCore\qtextboundaryfinder.h \
 		D:\Tools\QT\5.15.2\msvc2019_64\include\QtCore\qtextcodec.h \
-		D:\Tools\QT\5.15.2\msvc2019_64\include\QtCore\qthread.h \
 		D:\Tools\QT\5.15.2\msvc2019_64\include\QtCore\qthreadpool.h \
 		D:\Tools\QT\5.15.2\msvc2019_64\include\QtCore\qthreadstorage.h \
 		D:\Tools\QT\5.15.2\msvc2019_64\include\QtCore\qtimeline.h \

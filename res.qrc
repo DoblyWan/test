@@ -38,5 +38,6 @@
         <file>images/datainput.png</file>
         <file>images/camera-switching.png</file>
         <file>images/icon.jpg</file>
+        <file>images/report.png</file>
     </qresource>
 </RCC>

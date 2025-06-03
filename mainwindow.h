@@ -161,6 +161,8 @@ private slots:
 
     void on_Open_BT_4_clicked();
 
+    void on_pushButton_upload_clicked();
+
 public slots:
     void handleDataModified(const std::unordered_map<std::string, std::string>& modifiedData);
 

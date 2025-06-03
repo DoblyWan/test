@@ -49,6 +49,14 @@ void PythonWorker::run()
     // 重定向Python输出
     redirectPythonOutputToConsole();
 
+    // 保存原始工作目录（在切换目录前执行）
+    QString saveOriginalDirCmd =
+        "import os\n"
+        "__original_dir = os.getcwd()\n"  // 保存原始目录到Python变量
+        "print('Application started')";
+        // "print(f'原始工作目录: {__original_dir}')\n";
+
+    PyRun_SimpleString(saveOriginalDirCmd.toUtf8().constData());
 
     // 获取脚本所在目录（关键步骤）
     QFileInfo scriptFile(m_scriptPath);
@@ -59,7 +67,7 @@ void PythonWorker::run()
                                "import os\n"
                                "script_dir = r'%1'\n"  // 使用原始字符串避免转义问题
                                "os.chdir(script_dir)\n"
-                               "print(f'工作目录已切换到: {os.getcwd()}')\n"  // 调试信息
+                               // "print(f'工作目录已切换到: {os.getcwd()}')\n"  // 调试信息
                                ).arg(scriptDir.replace("'", "\\'"));  // 转义路径中的单引号
 
     // 执行切换目录的命令
@@ -69,10 +77,19 @@ void PythonWorker::run()
     QString addPathCmd = QString(
                              "import sys\n"
                              "sys.path.insert(0, r'%1')\n"
-                             "print(f'Python路径已添加: {sys.path}')\n"  // 调试信息
+                             // "print(f'Python路径已添加: {sys.path}')\n"  // 调试信息
                              ).arg(scriptDir.replace("'", "\\'"));
 
     PyRun_SimpleString(addPathCmd.toUtf8().constData());
+
+
+    // 恢复原始工作目录（操作完成后执行）
+    QString restoreDirCmd =
+        "os.chdir(__original_dir)\n"  // 恢复保存的原始目录
+        // "print(f'已恢复工作目录到: {os.getcwd()}')\n"
+        "del __original_dir\n";  // 清理临时变量（可选）
+
+    PyRun_SimpleString(restoreDirCmd.toUtf8().constData());
 
     // // 设置当前工作目录
     // // 使用QDir处理路径（跨平台安全）
