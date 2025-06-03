@@ -1,0 +1,29 @@
+{
+    "engineerInfo": {
+        "engineerName": "",
+        "engineerLocation": "",
+        "damType": "",
+        "damMeterial": ""
+    },
+
+    "detectInfo": {
+        "videoFile": "",
+        "startMark": "",
+        "endMark": "",
+        "damType": "",
+        "damMeterial": "",
+        "visiblity": "",
+        "detectLocation": "",
+        "waterDepth": "",
+        "principle": "",
+        "detectDate": "",
+        "defectCode": "",
+        "detectPosition": "",
+        "detectSize": "",
+        "level": "",
+        "state": "",
+        "imageIllustrate": "",
+        "imagePath": ""
+    }
+
+}

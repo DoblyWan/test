@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+    <meta charset="UTF-8">
+    <title>工程概况与缺陷等级评定</title>
+    <style>
+        @page {
+            size: A4;
+            margin: 0;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: "SimSun", serif;
+            font-size: 12pt;
+        }
+
+        .page {
+            width: 21cm;
+            height: 29.7cm;
+            box-sizing: border-box;
+            padding: 2cm;
+            margin: 0 auto;
+            position: relative;
+            box-shadow: 0 0 0 1px black inset;
+            page-break-after: always;
+        }
+
+        .corner {
+            width: 20px;
+            height: 20px;
+            position: absolute;
+            box-sizing: border-box;
+            transform: rotate(180deg);
+        }
+
+        .top-left {
+            top: 1.5cm;
+            left: 1.5cm;
+            border-left: 2px solid black;
+            border-top: 2px solid black;
+        }
+
+        .top-right {
+            top: 1.5cm;
+            right: 1.5cm;
+            border-right: 2px solid black;
+            border-top: 2px solid black;
+        }
+
+        .bottom-left {
+            bottom: 1.5cm;
+            left: 1.5cm;
+            border-left: 2px solid black;
+            border-bottom: 2px solid black;
+        }
+
+        .bottom-right {
+            bottom: 1.5cm;
+            right: 1.5cm;
+            border-right: 2px solid black;
+            border-bottom: 2px solid black;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            table-layout: fixed;
+            margin-bottom: 20px;
+        }
+
+        /* 第二页工程概况表格：较大行高 */
+
+        .table-large td,
+        .table-large th {
+            height: 32px;
+            font-size: 10.5pt;
+            text-align: center;
+            vertical-align: middle;
+            border: 1px solid black;
+            padding: 4px;
+            word-wrap: break-word;
+            font-weight: bold;
+        }
+
+        table.model td {
+            padding-top: 10px;
+            padding-bottom: 10px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- 检测模板 -->
+    <div class="page">
+        <div class="corner top-left"></div>
+        <div class="corner top-right"></div>
+        <div class="corner bottom-left"></div>
+        <div class="corner bottom-right"></div>
+
+        <div style="height:25px"></div>
+        <table class="table-large model">
+            <tr>
+                <td>录像文件</td>
+                <td colspan="2">underwater_test1</td>
+                <td>起始标记</td>
+                <td>underwater</td>
+                <td>终止标记</td>
+                <td>test1</td>
+            </tr>
+            <tr>
+                <td>钢体类型</td>
+                <td colspan="2">重力坝</td>
+                <td>坝体材料</td>
+                <td>混凝土</td>
+                <td>能见度</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>检测地点</td>
+                <td colspan="2"></td>
+                <td>检测设备</td>
+                <td>机器人</td>
+                <td>水深位置</td>
+                <td>机器人</td>
+            </tr>
+            <tr>
+                <td>检测负责人</td>
+                <td colspan="2">中环养护</td>
+                <td>检测日期</td>
+                <td colspan="3">2024/11/7<br>10:51:23</td>
+            </tr>
+            <tr>
+                <td>缺陷部位代码</td>
+                <td>缺陷位置</td>
+                <td>缺陷尺寸</td>
+                <td>等级</td>
+                <td>状况描述</td>
+                <td colspan="2">照片编号或说明</td>
+            </tr>
+            <tr>
+                <td>crack裂缝<br>crack裂缝</td>
+                <td>4</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td colspan="2">1_0.jpg</td>
+            </tr>
+            <tr>
+                <td>备注</td>
+                <td colspan="6"></td>
+            </tr>
+
+            <tr>
+                <td colspan="7">
+                    <div style="height:460px; padding:20px">
+                        <img src="./images/logo.png" style="height:460px" alt="">
+                    </div>
+                </td>
+            </tr>
+        </table>
+    </div>
+
+</body>
+
+</html>

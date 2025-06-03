@@ -1,0 +1,539 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+    <meta charset="UTF-8">
+    <title>工程概况与缺陷等级评定</title>
+    <style>
+        @page {
+            size: A4;
+            margin: 0;
+        }
+        
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: "SimSun", serif;
+            font-size: 12pt;
+        }
+        
+        .page {
+            width: 21cm;
+            height: 29.7cm;
+            box-sizing: border-box;
+            padding: 2cm;
+            margin: 0 auto;
+            position: relative;
+            box-shadow: 0 0 0 1px black inset;
+            page-break-after: always;
+        }
+        
+        .corner {
+            width: 20px;
+            height: 20px;
+            position: absolute;
+            box-sizing: border-box;
+            transform: rotate(180deg);
+        }
+        
+        .top-left {
+            top: 1.5cm;
+            left: 1.5cm;
+            border-left: 2px solid black;
+            border-top: 2px solid black;
+        }
+        
+        .top-right {
+            top: 1.5cm;
+            right: 1.5cm;
+            border-right: 2px solid black;
+            border-top: 2px solid black;
+        }
+        
+        .bottom-left {
+            bottom: 1.5cm;
+            left: 1.5cm;
+            border-left: 2px solid black;
+            border-bottom: 2px solid black;
+        }
+        
+        .bottom-right {
+            bottom: 1.5cm;
+            right: 1.5cm;
+            border-right: 2px solid black;
+            border-bottom: 2px solid black;
+        }
+        
+        h2,
+        h3,
+        h4 {
+            margin: 16px 0 10px 0;
+            font-weight: bold;
+        }
+        
+        h2 {
+            font-family: "Microsoft YaHei", sans-serif;
+            font-size: 16pt;
+            text-align: center;
+        }
+        
+        h3 {
+            font-family: "Microsoft YaHei", sans-serif;
+            font-size: 12pt;
+            text-align: left;
+        }
+        
+        h4 {
+            font-family: "DengXian", sans-serif;
+            font-size: 12pt;
+            text-align: center;
+            font-weight: normal;
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            table-layout: fixed;
+            margin-bottom: 20px;
+        }
+        /* 第二页工程概况表格：较大行高 */
+        
+        .table-large td,
+        .table-large th {
+            height: 32px;
+            font-size: 10.5pt;
+            text-align: center;
+            vertical-align: middle;
+            border: 1px solid black;
+            padding: 4px;
+            word-wrap: break-word;
+        }
+        
+        .table-large .row-19 td {
+            height: 110px !important;
+        }
+        /* 第三页缺陷等级表格：紧凑行高 */
+        
+        .table-compact td,
+        .table-compact th {
+            height: 22px;
+            font-size: 10.5pt;
+            text-align: center;
+            vertical-align: middle;
+            border: 1px solid black;
+            padding: 4px;
+            word-wrap: break-word;
+        }
+        
+        th,
+        .gray-bg,
+        .merge-title {
+            background-color: #e6e6e6;
+            font-weight: bold;
+        }
+        
+        .merge-title {
+            font-size: 14pt;
+            height: 28px;
+        }
+        
+        .sign-line {
+            margin-top: 10px;
+            text-align: center;
+            font-family: "DengXian", "SimSun", serif;
+            font-size: 12pt;
+        }
+        
+        .icon {
+            margin-top: 20px;
+            width: 150px;
+            height: 150px;
+        }
+        
+        .icon img {
+            width: 100%;
+            height: 100%;
+        }
+        
+        h1 {
+            text-align: center;
+            font-size: 52px;
+        }
+        
+        .title {
+            margin-bottom: 200px;
+        }
+        
+        .info p {
+            font-size: 18px;
+        }
+        
+        .prodate {
+            position: absolute;
+            width: 642.5px;
+            bottom: 2cm;
+            text-align: center;
+            font-size: 20px;
+            font-weight: 700;
+        }
+        
+        table.model td {
+            padding-top: 10px;
+            padding-bottom: 10px;
+        }
+    </style>
+</head>
+
+<body>
+
+
+    <!-- 第一页 -->
+    <div class="page">
+        <div class="corner top-left"></div>
+        <div class="corner top-right"></div>
+        <div class="corner bottom-left"></div>
+        <div class="corner bottom-right"></div>
+
+        <div class="icon">
+            <img src="./images/logo.png">
+        </div>
+
+        <div class="title">
+            <h1>
+                水下缺陷数据采集系统报告
+            </h1>
+        </div>
+
+        <div class="info">
+            <p>
+                工程名称：横长泾路泵站片区宋家港雨污水
+            </p>
+
+            <p>
+                检测单位：中国建筑第七工程局有限公司
+            </p>
+        </div>
+
+        <footer class="prodate">
+            2019-05-20
+        </footer>
+    </div>
+
+
+
+    <!-- 第二张页：工程概况 -->
+    <div class="page">
+        <div class="corner top-left"></div>
+        <div class="corner top-right"></div>
+        <div class="corner bottom-left"></div>
+        <div class="corner bottom-right"></div>
+
+        <h2>管道视频检测报告</h2>
+
+        <table class="table-large">
+            <tr>
+                <td colspan="6" class="merge-title">工程概况一览表</td>
+            </tr>
+            <tr>
+                <td class="gray-bg">工程名称</td>
+                <td colspan="5">污水管道检测</td>
+            </tr>
+            <tr>
+                <td class="gray-bg">工程地点</td>
+                <td colspan="5"></td>
+            </tr>
+            <tr>
+                <td class="gray-bg">管道类型</td>
+                <td colspan="2">污水管道、雨水管道</td>
+                <td class="gray-bg">管道直径(mm)</td>
+                <td colspan="2">400/500/600</td>
+            </tr>
+            <tr>
+                <td class="gray-bg">管道材质</td>
+                <td colspan="2"></td>
+                <td class="gray-bg">管道年龄</td>
+                <td colspan="2">/</td>
+            </tr>
+            <tr>
+                <td class="gray-bg">长度(m)</td>
+                <td colspan="2"></td>
+                <td class="gray-bg">检测段数/长度(m)</td>
+                <td colspan="2"></td>
+            </tr>
+            <tr>
+                <td class="gray-bg">检测性质</td>
+                <td colspan="2">常规见证检验</td>
+                <td class="gray-bg">检测日期</td>
+                <td colspan="2"></td>
+            </tr>
+            <tr>
+                <td class="gray-bg" rowspan="5">采用仪器设备和技术方法</td>
+                <td colspan="2">检测仪器设备</td>
+                <td colspan="3">双螺旋推进器(管狼一号)</td>
+            </tr>
+            <tr>
+                <td colspan="2">设备移动方式</td>
+                <td colspan="3">爬行器自走</td>
+            </tr>
+            <tr>
+                <td colspan="2">管道封堵方法</td>
+                <td colspan="3">气囊</td>
+            </tr>
+            <tr>
+                <td colspan="2">临时排水方法</td>
+                <td colspan="3">水泵临时抽水</td>
+            </tr>
+            <tr>
+                <td colspan="2">管道清洗方法</td>
+                <td colspan="3">高压水枪</td>
+            </tr>
+            <tr>
+                <td colspan="6" class="merge-title">主要工程量表</td>
+            </tr>
+            <tr>
+                <td class="gray-bg">序号</td>
+                <td class="gray-bg">名称</td>
+                <td class="gray-bg">管径(mm)</td>
+                <td class="gray-bg">管段长度(m)</td>
+                <td class="gray-bg">检测长度(m)</td>
+                <td class="gray-bg">备注</td>
+            </tr>
+            <tr>
+                <td>1</td>
+                <td>污水管道(pvc管)</td>
+                <td>400</td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>2</td>
+                <td>污水管道(pvc管)</td>
+                <td>400</td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>3</td>
+                <td>污水管道(混凝土管)</td>
+                <td>600</td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td colspan="6" class="gray-bg">检测结论</td>
+            </tr>
+            <tr class="row-19">
+                <td colspan="6"></td>
+            </tr>
+        </table>
+
+        <div class="sign-line">
+            批准：&emsp;&emsp;&emsp;&emsp; 审核：&emsp;&emsp;&emsp;&emsp; 编制：&emsp;&emsp;&emsp;&emsp; 检测：
+        </div>
+    </div>
+
+    <!-- 第三张页：缺陷等级评定 -->
+    <div class="page">
+        <div class="corner top-left"></div>
+        <div class="corner top-right"></div>
+        <div class="corner bottom-left"></div>
+        <div class="corner bottom-right"></div>
+
+        <h2>附件一、检测依据说明</h2>
+
+        <h3>1.1、结构性缺陷评定及修复参照表</h3>
+        <h4>管段结构性缺陷等级评定对照表</h4>
+        <table class="table-compact">
+            <tr>
+                <th>等级</th>
+                <th>缺陷参数F</th>
+                <th colspan="3">损坏状况描述</th>
+            </tr>
+            <tr>
+                <td>I</td>
+                <td>F≤1</td>
+                <td colspan="3">无或有轻微缺陷，结构状况基本不受影响，但具有潜在变坏的可能</td>
+            </tr>
+            <tr>
+                <td>II</td>
+                <td>1&lt;F≤3</td>
+                <td colspan="3">管段缺陷明显超过一级，具有变坏的趋势</td>
+            </tr>
+            <tr>
+                <td>III</td>
+                <td>3&lt;F≤6</td>
+                <td colspan="3">管段缺陷严重，结构状况受到影响</td>
+            </tr>
+            <tr>
+                <td>IV</td>
+                <td>F&gt;6</td>
+                <td colspan="3">管段存在重大缺陷，损坏严重或即将导致破坏</td>
+            </tr>
+        </table>
+
+        <h4>管段修复等级划分</h4>
+        <table class="table-compact">
+            <tr>
+                <th>等级</th>
+                <th>修复指数RI</th>
+                <th colspan="3">修复建议及说明</th>
+            </tr>
+            <tr>
+                <td>I</td>
+                <td>RI≤1</td>
+                <td colspan="3">结构条件基本完好，不修复</td>
+            </tr>
+            <tr>
+                <td>II</td>
+                <td>1＜RI≤4</td>
+                <td colspan="3">结构在短期内不会发生破坏现象，但应做修复计划</td>
+            </tr>
+            <tr>
+                <td>III</td>
+                <td>4＜RI≤7</td>
+                <td colspan="3">结构在短期内可能会发生破坏，应尽快修复</td>
+            </tr>
+            <tr>
+                <td>IV</td>
+                <td>RI＞7</td>
+                <td colspan="3">结构已经发生或即将发生破坏，应立即修复</td>
+            </tr>
+        </table>
+
+        <h3>1.2、功能性缺陷评定及养护参照表</h3>
+        <h4>功能性缺陷等级评定</h4>
+        <table class="table-compact">
+            <tr>
+                <th>等级</th>
+                <th>缺陷参数</th>
+                <th colspan="3">运行状况说明</th>
+            </tr>
+            <tr>
+                <td>I</td>
+                <td>G≤1</td>
+                <td colspan="3">无或有轻微影响，管道运行基本不受影响</td>
+            </tr>
+            <tr>
+                <td>II</td>
+                <td>1&lt;G≤3</td>
+                <td colspan="3">管道过流有一定的受阻，运行受影响不大</td>
+            </tr>
+            <tr>
+                <td>III</td>
+                <td>3&lt;G≤6</td>
+                <td colspan="3">管道过流受阻比较严重，运行受到明显影响</td>
+            </tr>
+            <tr>
+                <td>IV</td>
+                <td>G&gt;6</td>
+                <td colspan="3">管道过流受阻很严重，即将或已经导致运行瘫痪</td>
+            </tr>
+        </table>
+
+        <h4>管段养护等级划分</h4>
+        <table class="table-compact">
+            <tr>
+                <th>养护等级</th>
+                <th>养护指数MI</th>
+                <th colspan="3">养护建议及说明</th>
+            </tr>
+            <tr>
+                <td>I</td>
+                <td>MI≤1</td>
+                <td colspan="3">没有明显需要处理的缺陷</td>
+            </tr>
+            <tr>
+                <td>II</td>
+                <td>1＜MI≤4</td>
+                <td colspan="3">没有立即进行处理的必要，但宜安排处理计划</td>
+            </tr>
+            <tr>
+                <td>III</td>
+                <td>4＜MI≤7</td>
+                <td colspan="3">根据基础数据进行全面的考虑，应尽快处理</td>
+            </tr>
+            <tr>
+                <td>IV</td>
+                <td>MI＞7</td>
+                <td colspan="3">输水功能受到严重影响，应立即进行处理</td>
+            </tr>
+        </table>
+
+    </div>
+
+    <!-- 第四页模板 -->
+    <div class="page">
+        <div class="corner top-left"></div>
+        <div class="corner top-right"></div>
+        <div class="corner bottom-left"></div>
+        <div class="corner bottom-right"></div>
+
+        <div style="height:25px"></div>
+        <table class="table-large model">
+            <tr>
+                <td>录像文件</td>
+                <td colspan="2">underwater_test1</td>
+                <td>起始标记</td>
+                <td>underwater</td>
+                <td>终止标记</td>
+                <td>test1</td>
+            </tr>
+            <tr>
+                <td>钢体类型</td>
+                <td colspan="2">重力坝</td>
+                <td>坝体材料</td>
+                <td>混凝土</td>
+                <td>能见度</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>检测地点</td>
+                <td colspan="2"></td>
+                <td>检测设备</td>
+                <td>机器人</td>
+                <td>水深位置</td>
+                <td>机器人</td>
+            </tr>
+            <tr>
+                <td>检测负责人</td>
+                <td colspan="2">中环养护</td>
+                <td>检测日期</td>
+                <td colspan="3">2024/11/7<br>10:51:23</td>
+            </tr>
+            <tr>
+                <td>缺陷部位代码</td>
+                <td>缺陷位置</td>
+                <td>缺陷尺寸</td>
+                <td>等级</td>
+                <td>状况描述</td>
+                <td colspan="2">照片编号或说明</td>
+            </tr>
+            <tr>
+                <td>crack裂缝<br>crack裂缝</td>
+                <td>4</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td colspan="2">1_0.jpg</td>
+            </tr>
+            <tr>
+                <td>备注</td>
+                <td colspan="6"></td>
+            </tr>
+
+            <tr>
+                <td colspan="7">
+                    <div style="height:460px; padding:20px">
+                        <img src="./images/logo.png" style="height:460px" alt="">
+                    </div>
+                </td>
+            </tr>
+        </table>
+    </div>
+
+</body>
+
+</html>

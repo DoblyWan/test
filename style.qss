@@ -1,0 +1,8 @@
+<!DOCTYPE RCC>
+<RCC version="1.0"/>
+
+#configWindow QTextEdit{
+    width: 256px;
+    height: 36px;
+
+}
