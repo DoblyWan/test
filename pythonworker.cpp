@@ -39,6 +39,19 @@ void PythonWorker::redirectPythonOutputToConsole()
 
     // 设置控制台编码为UTF-8
     SetConsoleOutputCP(CP_UTF8);
+
+    HWND consoleHwnd = GetConsoleWindow();
+    if (consoleHwnd) {
+        // // 暂时隐藏控制台窗口
+        // ShowWindow(consoleHwnd, SW_HIDE);
+
+        // // 设置控制台在Qt窗口后面
+        // SetWindowPos(consoleHwnd, HWND_BOTTOM, 0, 0, 0, 0,
+        //              SWP_NOMOVE | SWP_NOSIZE | SWP_NOACTIVATE);
+
+        // 重新显示控制台
+        ShowWindow(consoleHwnd, SW_SHOW);
+    }
 }
 
 void PythonWorker::run()

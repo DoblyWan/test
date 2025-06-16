@@ -22,8 +22,8 @@ QT_BEGIN_MOC_NAMESPACE
 QT_WARNING_PUSH
 QT_WARNING_DISABLE_DEPRECATED
 struct qt_meta_stringdata_MainWindow_t {
-    QByteArrayData data[28];
-    char stringdata0[727];
+    QByteArrayData data[31];
+    char stringdata0[793];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
@@ -59,7 +59,10 @@ QT_MOC_LITERAL(23, 601, 20), // "on_Open_BT_4_clicked"
 QT_MOC_LITERAL(24, 622, 28), // "on_pushButton_upload_clicked"
 QT_MOC_LITERAL(25, 651, 18), // "handleDataModified"
 QT_MOC_LITERAL(26, 670, 43), // "std::unordered_map<std::strin..."
-QT_MOC_LITERAL(27, 714, 12) // "modifiedData"
+QT_MOC_LITERAL(27, 714, 12), // "modifiedData"
+QT_MOC_LITERAL(28, 727, 19), // "handleStateTransfer"
+QT_MOC_LITERAL(29, 747, 35), // "std::unordered_map<QString,QS..."
+QT_MOC_LITERAL(30, 783, 9) // "robotData"
 
     },
     "MainWindow\0on_pushButton_datainput_clicked\0"
@@ -83,7 +86,9 @@ QT_MOC_LITERAL(27, 714, 12) // "modifiedData"
     "on_pushButton_upload_clicked\0"
     "handleDataModified\0"
     "std::unordered_map<std::string,std::string>\0"
-    "modifiedData"
+    "modifiedData\0handleStateTransfer\0"
+    "std::unordered_map<QString,QString>\0"
+    "robotData"
 };
 #undef QT_MOC_LITERAL
 
@@ -93,7 +98,7 @@ static const uint qt_meta_data_MainWindow[] = {
        8,       // revision
        0,       // classname
        0,    0, // classinfo
-      24,   14, // methods
+      25,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
@@ -101,30 +106,31 @@ static const uint qt_meta_data_MainWindow[] = {
        0,       // signalCount
 
  // slots: name, argc, parameters, tag, flags
-       1,    0,  134,    2, 0x08 /* Private */,
-       3,    0,  135,    2, 0x08 /* Private */,
-       4,    0,  136,    2, 0x08 /* Private */,
-       5,    0,  137,    2, 0x08 /* Private */,
-       6,    0,  138,    2, 0x08 /* Private */,
-       7,    0,  139,    2, 0x08 /* Private */,
-       8,    0,  140,    2, 0x08 /* Private */,
-       9,    0,  141,    2, 0x08 /* Private */,
-      10,    0,  142,    2, 0x08 /* Private */,
-      11,    0,  143,    2, 0x08 /* Private */,
-      12,    0,  144,    2, 0x08 /* Private */,
-      13,    0,  145,    2, 0x08 /* Private */,
-      14,    0,  146,    2, 0x08 /* Private */,
-      15,    0,  147,    2, 0x08 /* Private */,
-      16,    0,  148,    2, 0x08 /* Private */,
-      17,    0,  149,    2, 0x08 /* Private */,
-      18,    0,  150,    2, 0x08 /* Private */,
-      19,    0,  151,    2, 0x08 /* Private */,
-      20,    0,  152,    2, 0x08 /* Private */,
-      21,    0,  153,    2, 0x08 /* Private */,
-      22,    0,  154,    2, 0x08 /* Private */,
-      23,    0,  155,    2, 0x08 /* Private */,
-      24,    0,  156,    2, 0x08 /* Private */,
-      25,    1,  157,    2, 0x0a /* Public */,
+       1,    0,  139,    2, 0x08 /* Private */,
+       3,    0,  140,    2, 0x08 /* Private */,
+       4,    0,  141,    2, 0x08 /* Private */,
+       5,    0,  142,    2, 0x08 /* Private */,
+       6,    0,  143,    2, 0x08 /* Private */,
+       7,    0,  144,    2, 0x08 /* Private */,
+       8,    0,  145,    2, 0x08 /* Private */,
+       9,    0,  146,    2, 0x08 /* Private */,
+      10,    0,  147,    2, 0x08 /* Private */,
+      11,    0,  148,    2, 0x08 /* Private */,
+      12,    0,  149,    2, 0x08 /* Private */,
+      13,    0,  150,    2, 0x08 /* Private */,
+      14,    0,  151,    2, 0x08 /* Private */,
+      15,    0,  152,    2, 0x08 /* Private */,
+      16,    0,  153,    2, 0x08 /* Private */,
+      17,    0,  154,    2, 0x08 /* Private */,
+      18,    0,  155,    2, 0x08 /* Private */,
+      19,    0,  156,    2, 0x08 /* Private */,
+      20,    0,  157,    2, 0x08 /* Private */,
+      21,    0,  158,    2, 0x08 /* Private */,
+      22,    0,  159,    2, 0x08 /* Private */,
+      23,    0,  160,    2, 0x08 /* Private */,
+      24,    0,  161,    2, 0x08 /* Private */,
+      25,    1,  162,    2, 0x0a /* Public */,
+      28,    1,  165,    2, 0x0a /* Public */,
 
  // slots: parameters
     QMetaType::Void,
@@ -151,6 +157,7 @@ static const uint qt_meta_data_MainWindow[] = {
     QMetaType::Void,
     QMetaType::Void,
     QMetaType::Void, 0x80000000 | 26,   27,
+    QMetaType::Void, 0x80000000 | 29,   30,
 
        0        // eod
 };
@@ -185,6 +192,7 @@ void MainWindow::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, 
         case 21: _t->on_Open_BT_4_clicked(); break;
         case 22: _t->on_pushButton_upload_clicked(); break;
         case 23: _t->handleDataModified((*reinterpret_cast< const std::unordered_map<std::string,std::string>(*)>(_a[1]))); break;
+        case 24: _t->handleStateTransfer((*reinterpret_cast< const std::unordered_map<QString,QString>(*)>(_a[1]))); break;
         default: ;
         }
     }
@@ -219,13 +227,13 @@ int MainWindow::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 24)
+        if (_id < 25)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 24;
+        _id -= 25;
     } else if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
-        if (_id < 24)
+        if (_id < 25)
             *reinterpret_cast<int*>(_a[0]) = -1;
-        _id -= 24;
+        _id -= 25;
     }
     return _id;
 }

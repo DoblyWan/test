@@ -26,6 +26,42 @@ Control::Control(QWidget *parent)
 
     M_Arm_pitch = 128;
     Mount_angle = 35;
+
+    /*-----------------美化combox控件------------------------*/
+    ui->Control_mode->setView(new QListView());
+    ui->Control_mode->setStyleSheet(
+        "QComboBox {"
+        "   border: 1px solid #dcdcdc;"
+        "   border-radius: 4px;"
+        "   padding: 5px 10px;"
+        "   background: white;"
+        "   color: #333;"
+        "   font: 13px 'Segoe UI';"
+        "}"
+
+        "QComboBox::drop-down {"
+        "   subcontrol-origin: padding;"
+        "   subcontrol-position: top right;"
+        "   width: 25px;"
+        "   border-left: 1px solid #dcdcdc;"
+        "}"
+        "QComboBox::down-arrow {"
+        "   width: 13px;"
+        "   height: 13px;"
+        "}"
+        "QComboBox QAbstractItemView {"
+        "   background-color: #F8F8F8;"      // 下拉列表背景
+        "   color: #444444;"                 // 下拉项字体颜色
+        "   selection-background-color: #4CAF50;"  // 选中项背景
+        "   selection-color: white;"         // 选中项字体颜色
+        "   border: 1px solid #D3D3D3;"      // 下拉列表边框
+        "   outline: none;"                  // 移除焦点虚线框
+        "   font: 13px 'Microsoft YaHei';"   // 下拉项字体
+        "   min-width: 150px;"               // 下拉列表最小宽度
+        "}"
+        );
+
+
     gamePad_init();
 
     //    timer_live->start(800);
@@ -249,20 +285,42 @@ void Control::jetson_msg_get()
             tempture = (float)data[4]/100;
 
 
+            qDebug() << "Pitch: "+QString::number(angle[0],'f',1);
+            qDebug() << "Yaw: "+QString::number(angle[2],'f',1);
+            qDebug() << "Roll: "+QString::number(angle[1],'f',1);
+            qDebug() << "Tempture: "+QString::number(tempture,'f',2);
+
+            this->robotData["depth"] = "Depth: " + QString::number(depth,'f',2) + " cm";
+            this->robotData["pitch"] = "Pitch: "+QString::number(angle[0],'f',1);
+            this->robotData["yaw"] = "Yaw: "+QString::number(angle[2],'f',1);
+            this->robotData["roll"] = "Roll: "+QString::number(angle[1],'f',1);
+            this->robotData["temp"] = "Tempture: "+QString::number(tempture,'f',2);
+            this->robotData["compass"] = QString::number(angle[2],'f',1);
+            this->robotData["rollValue"] = QString::number(angle[1],'f',1);
+            this->robotData["degValue"] = QString::number(angle[0],'f',1);
+
             if((unsigned char)buf[16]==0)
             {
                 //ui->rov_status->setText("ROV_status:Disarmed");
+                this->robotData["status"] = "ROV_status:Disarmed";
+                emit stateTransfer(this->robotData);
                 // ui->switchButton_2->setChecked(false);
+
                 timer_joyhandle->stop();
                 timer_send->stop();
             }
             else if((unsigned char)buf[16]==1)
             {
                 //ui->rov_status->setText("ROV_status:Armed");
+                this->robotData["status"] = "ROV_status:Armed";
+                emit stateTransfer(this->robotData);
+
                 timer_joyhandle->start(50);
                 timer_send->start(50);
                 //                                ui->switchButton_2->setChecked(true);
             }
+
+
 
         }
 

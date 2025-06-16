@@ -165,6 +165,7 @@ private slots:
 
 public slots:
     void handleDataModified(const std::unordered_map<std::string, std::string>& modifiedData);
+    void handleStateTransfer(const std::unordered_map<QString,QString> &robotData);
 
 
 };

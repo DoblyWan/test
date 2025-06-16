@@ -25,6 +25,15 @@ MainWindow::MainWindow(QWidget *parent)
     logPath = QDir::cleanPath(QCoreApplication::applicationDirPath() + QDir::separator() + logFilePath);
 
 
+    // 控制控件
+    control = new Control();
+    ui->gridLayout_20->addWidget(control);
+
+    /*   更新UI的前后端情况  */
+    ui->gaugeCompassPan->raise();
+    ui->gaugePlane->raise();
+
+    // 初始化
     initControl();
     initConnect();
     initDatabase();
@@ -35,15 +44,18 @@ MainWindow::MainWindow(QWidget *parent)
 
     qDebug() << QDir::cleanPath(QCoreApplication::applicationDirPath() + QDir::separator() + logFilePath);
 
-    pythonworker = new PythonWorker(this);
-    pythonworker->setScriptPath("../../../ardusub_control/connect_main.py");
-    // pythonworker->setScriptPath("./release/connect_main.py");
-    pythonworker->start();
+    // pythonworker = new PythonWorker(this);
+    // pythonworker->setScriptPath("../../../ardusub_control/connect_main.py");
+    // // pythonworker->setScriptPath("./release/connect_main.py");
+    // pythonworker->start();
 
 
-    control = new Control();
-    ui->gridLayout_20->addWidget(control);
+
     // qDebug() << QCoreApplication::applicationDirPath();
+
+    // 注册STL容器类型（必须在连接信号槽前完成）
+    qRegisterMetaType<std::unordered_map<QString, QString>>("std::unordered_map<QString,QString>");
+    qRegisterMetaType<std::unordered_map<QString, QString>>("std::unordered_map<QString,QString>&");
 
 }
 
@@ -116,6 +128,8 @@ void MainWindow::initControl()
 void MainWindow::initConnect()
 {
     connect(configWindow.get(), SIGNAL(dataModified(const std::unordered_map<std::string, std::string>&)), this, SLOT(handleDataModified(const std::unordered_map<std::string, std::string>&)));  // 信息登记窗口信号接收-槽函数调用
+    // connect(control, SIGNAL(stateTransfer(const std::unordered_map<QString, QString>&)), this, SLOT(handleStateTransfer(const std::unordered_map<QString,QString>&))); // 状态数据信号接收-槽函数调用
+    connect(control, &Control::stateTransfer, this, &MainWindow::handleStateTransfer);
 
     fileWatcher = new QFileSystemWatcher(this);
     fileWatcher->addPath(logPath);
@@ -123,7 +137,7 @@ void MainWindow::initConnect()
 
     turnOnCamera("","","192.168.2.65",ui->gridLayout_31, rtsp1);
     turnOnCamera("","","192.168.2.66",ui->gridLayout_37, rtsp2);
-    turnOnCamera("","","192.168.2.99:8554/stream",ui->gridLayout_32, rtsp3);
+    turnOnCamera("","","192.168.2.107:8554/stream",ui->gridLayout_32, rtsp3);
     turnOnCamera("","","192.168.2.67",ui->gridLayout_42, rtsp4);
     turnOnCamera("","","192.168.2.68",ui->gridLayout_43, rtsp5);
 
@@ -213,7 +227,7 @@ void MainWindow::on_pushButton_localvideo_clicked()
 
 void MainWindow::on_pushButton_location_2_clicked()
 {
-    ui->stackedWidget->setCurrentIndex(5);
+    ui->stackedWidget->setCurrentIndex(9);
     ui->label_title->setText("状态显示");
     // if(!detectform) {
     //     return;
@@ -282,6 +296,23 @@ void MainWindow::handleDataModified(const std::unordered_map<std::string, std::s
     // emit fileName(this->videoName.toStdString());
 }
 
+void MainWindow::handleStateTransfer(const std::unordered_map<QString, QString> &robotData)
+{
+    qInfo() << "------- data received -------";
+
+    ui->Depth_show->setText(robotData.at("depth"));
+    ui->Pitch_show->setText(robotData.at("pitch"));
+    ui->Yaw_show->setText(robotData.at("yaw"));
+    ui->Roll_show->setText(robotData.at("roll"));
+    ui->Temp_show->setText(robotData.at("temp"));
+    ui->rov_status->setText(robotData.at("status"));
+    ui->gaugeCompassPan->setValue((int)robotData.at("compass").toDouble());
+    ui->gaugePlane->setRollValue((int)robotData.at("rollValue").toDouble());
+    ui->gaugePlane->setDegValue((int)robotData.at("degValue").toDouble());
+
+
+}
+
 
 void MainWindow::on_pushButton_log_clicked()
 {
@@ -343,7 +374,7 @@ void MainWindow::on_pushButton_transfor_2_clicked()
 void MainWindow::on_pushButton_clicked()
 {
     ui->stackedWidget->setCurrentIndex(0);
-    ui->label_title->setText("坝面检测机器人地面支持系统");
+    ui->label_title->setText("坝面扫描式智能检测机器人");
 }
 
 
@@ -359,71 +390,72 @@ void MainWindow::on_pushButton_transforToMono_3_clicked()
 void MainWindow::on_pushButton_location_clicked()
 {
     // ui->stackedWidget->setCurrentIndex(7);
-    QMessageBox::warning(this, "警告", "生成报告失败！请检查系统设置并重启系统！");
+    // QMessageBox::warning(this, "警告", "生成报告失败！请检查系统设置并重启系统！");
 
 
-    // QVariantMap data;
-    // data["report_title"] = "系统监控报告";
-    // data["heading"] = "2023年第三季度性能分析";
-    // data["timestamp"] = QDateTime::currentDateTime().toString();
-    // data["cpu_usage"] = 42.5;  // 自动转换为字符串
+    QVariantMap data;
+    data["report_title"] = "系统监控报告";
+    data["heading"] = "2023年第三季度性能分析";
+    data["timestamp"] = QDateTime::currentDateTime().toString();
+    data["cpu_usage"] = 42.5;  // 自动转换为字符串
 
-    // QString result = renderTemplate("../../../report/test.html", data);
-
-
-    // // 1. 获取目录路径
-    // QString tempDir = "../../../report";
-
-    // // 2. 创建唯一文件名
-    // QString fileName = QString("report_%1.html")
-    //                        .arg(QDateTime::currentDateTime().toString("yyyyMMdd_hhmmsszzz"));
-    // QString filePath = tempDir + "/" + fileName;
-
-    // // 3. 写入文件
-    // QFile file(filePath);
-    // if (!file.open(QIODevice::WriteOnly | QIODevice::Text)) {
-    //     QMessageBox::critical(nullptr, "文件错误",
-    //                           QString("无法创建临时文件:\n%1\n错误: %2")
-    //                               .arg(filePath, file.errorString()));
-    // }
-
-    // QTextStream out(&file);
-    // out.setCodec("UTF-8");  // 确保中文支持
-    // out << result;
-    // file.close();
-
-    // // 4. 设置文件权限（跨平台兼容）
-    // file.setPermissions(QFile::ReadOwner | QFile::WriteOwner | QFile::ReadUser |
-    //                     QFile::ReadGroup | QFile::ReadOther);
-
-    // // 5. 使用默认浏览器打开
-    // // QString path = QFileInfo(QDir::currentPath(), filePath).absoluteFilePath());
-    // // qDebug() << QFileInfo(QDir::currentPath(), filePath).absoluteFilePath();
-    // // QUrl url = QUrl::fromLocalFile(QFileInfo(QDir::currentPath(), filePath).absoluteFilePath());
-    // QUrl url = QUrl::fromLocalFile(QFileInfo(QDir::currentPath(), "../../../report/report.html").absoluteFilePath());
-
-    // // QDesktopServices::openUrl(QUrl(url));
-
-    // // 创建 Web 视图
-    // QWebEngineView *webView = new QWebEngineView(ui->report);
+    QString result = renderTemplate("../../../report/test.html", data);
 
 
-    // // 加载网页
-    // webView->load(QUrl(url));
+    // 1. 获取目录路径
+    QString tempDir = "../../../report";
 
-    // // // 创建开发者工具窗口
-    // // QWebEngineView *devToolsView = new QWebEngineView();
+    // 2. 创建唯一文件名
+    QString fileName = QString("report_%1.html")
+                           .arg(QDateTime::currentDateTime().toString("yyyyMMdd_hhmmsszzz"));
+    QString filePath = tempDir + "/" + fileName;
 
-    // // // 关联到主视图
-    // // webView->page()->setDevToolsPage(devToolsView->page());
+    // 3. 写入文件
+    QFile file(filePath);
+    if (!file.open(QIODevice::WriteOnly | QIODevice::Text)) {
+        QMessageBox::critical(nullptr, "文件错误",
+                              QString("无法创建临时文件:\n%1\n错误: %2")
+                                  .arg(filePath, file.errorString()));
+    }
 
-    // // // 显示开发者工具
-    // // devToolsView->show();
+    QTextStream out(&file);
+    out.setCodec("UTF-8");  // 确保中文支持
+    out << result;
+    file.close();
 
-    // // 设置窗口大小并显示
-    // webView->resize(1600, 800);
-    // // webView->show();
-    // ui->stackedWidget->setCurrentIndex(8);
+    // 4. 设置文件权限（跨平台兼容）
+    file.setPermissions(QFile::ReadOwner | QFile::WriteOwner | QFile::ReadUser |
+                        QFile::ReadGroup | QFile::ReadOther);
+
+    // 5. 使用默认浏览器打开
+    // QString path = QFileInfo(QDir::currentPath(), filePath).absoluteFilePath());
+    // qDebug() << QFileInfo(QDir::currentPath(), filePath).absoluteFilePath();
+    // QUrl url = QUrl::fromLocalFile(QFileInfo(QDir::currentPath(), filePath).absoluteFilePath());
+    QUrl url = QUrl::fromLocalFile(QFileInfo(QDir::currentPath(), "../../../report/report.html").absoluteFilePath());
+
+    // QDesktopServices::openUrl(QUrl(url));
+
+    // 创建 Web 视图
+    QWebEngineView *webView = new QWebEngineView(ui->report);
+
+
+    // 加载网页
+    webView->load(QUrl(url));
+
+    // // 创建开发者工具窗口
+    // QWebEngineView *devToolsView = new QWebEngineView();
+
+    // // 关联到主视图
+    // webView->page()->setDevToolsPage(devToolsView->page());
+
+    // // 显示开发者工具
+    // devToolsView->show();
+
+    // 设置窗口大小并显示
+    webView->resize(1625, 950);
+    // webView->show();
+    ui->stackedWidget->setCurrentIndex(8);
+    ui->label_title->setText("报告生成");
 }
 
 

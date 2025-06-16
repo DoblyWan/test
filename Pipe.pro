@@ -56,6 +56,9 @@ DEPENDPATH += $$PWD/qucinclude
 INCLUDEPATH += D:/Tools/Python/Python39/include
 LIBS += -LD:/Tools/Python/Python39/libs -lpython39
 
+# 添加 Windows 用户界面库
+win32:LIBS += -luser32
+
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin
 else: unix:!android: target.path = /opt/$${TARGET}/bin

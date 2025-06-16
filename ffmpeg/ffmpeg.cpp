@@ -1,5 +1,4 @@
 ﻿#include "ffmpeg.h"
-
 FFmpegThread::FFmpegThread(QObject *parent) : QThread(parent)
 {
     setObjectName("FFmpegThread");
@@ -131,7 +130,6 @@ bool FFmpegThread::init()
         //设置加速解码
         videoCodec->lowres = videoDecoder->max_lowres;
         videoCodec->flags2 |= AV_CODEC_FLAG2_FAST;
-
         //打开视频解码器
         result = avcodec_open2(videoCodec, videoDecoder, NULL);
         if (result < 0) {

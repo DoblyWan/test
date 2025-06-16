@@ -6,7 +6,8 @@ import threading
 
 
 if __name__ == '__main__':
-    proxy = udp_connect.UDPProxy('192.168.2.55', 9999, '192.168.2.55', 8888)  # 创建UDP代理对象
+    # proxy = udp_connect.UDPProxy('192.168.2.55', 9999, '192.168.2.55', 8888)  # 创建UDP代理对象
+    proxy = udp_connect.UDPProxy('127.0.0.1', 9999, '127.0.0.1', 8888)  # 创建UDP代理对象
 
     # 向目标服务器发送数据
     while True:

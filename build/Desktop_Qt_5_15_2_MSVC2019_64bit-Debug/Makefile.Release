@@ -223,43 +223,44 @@ compiler_rcc_clean:
 release\qrc_res.cpp: ..\..\res.qrc \
 		D:\Tools\QT\5.15.2\msvc2019_64\bin\rcc.exe \
 		..\..\style.qss \
-		..\..\images\USB.png \
-		..\..\images\robot2.png \
-		..\..\images\robot3.png \
-		..\..\images\Exit.png \
-		..\..\images\unconnected1.png \
-		..\..\images\Input.png \
-		..\..\images\robot4.png \
-		..\..\images\A.png \
-		..\..\images\piperobot1.png \
-		..\..\images\B.png \
-		..\..\images\piperobot2.png \
-		..\..\images\datainput.png \
+		..\..\images\hand.png \
+		..\..\images\auto.png \
 		..\..\images\front.png \
-		..\..\images\suspension.png \
+		..\..\images\Input.png \
+		..\..\images\datainput.png \
+		..\..\images\location.png \
+		..\..\images\piperobot2.png \
+		..\..\images\UbderWaterMode.png \
+		..\..\images\SystemState.png \
+		..\..\images\piperobot1.png \
+		..\..\images\log.png \
 		..\..\images\Search.png \
 		..\..\images\icon.jpg \
-		..\..\images\location.png \
-		..\..\images\connected.png \
-		..\..\images\cloudUpload.png \
-		..\..\images\hand.png \
-		..\..\images\piperobot.png \
-		..\..\images\UbderWaterMode.png \
-		..\..\images\Video.png \
-		..\..\images\robot.png \
-		..\..\images\Setting.png \
-		..\..\images\unconnected.png \
-		..\..\images\MainUI.png \
-		..\..\images\behind.png \
-		..\..\images\connect.png \
-		..\..\images\VCG211389539661.jpg \
-		..\..\images\camera-switching.png \
-		..\..\images\log.png \
-		..\..\images\SystemState.png \
-		..\..\images\auto.png \
 		..\..\images\robot_state.png \
+		..\..\images\unconnected1.png \
+		..\..\images\suspension.png \
+		..\..\images\robot.png \
+		..\..\images\MainUI.png \
+		..\..\images\cloudUpload.png \
+		..\..\images\unconnected.png \
+		..\..\images\B.png \
+		..\..\images\robot4.png \
+		..\..\images\connect.png \
+		..\..\images\camera-switching.png \
+		..\..\images\VCG211389539661.jpg \
+		..\..\images\USB.png \
+		..\..\images\A.png \
+		..\..\images\robot3.png \
+		..\..\images\UnderWaterCamera.png \
+		..\..\images\Video.png \
+		..\..\images\robot2.png \
+		..\..\images\behind.png \
+		..\..\images\Setting.png \
+		..\..\images\piperobot.png \
+		..\..\images\Exit.png \
 		..\..\images\pipe1.png \
-		..\..\images\UnderWaterCamera.png
+		..\..\images\connected.png \
+		..\..\images\report.png
 	D:\Tools\QT\5.15.2\msvc2019_64\bin\rcc.exe -name res ..\..\res.qrc -o release\qrc_res.cpp
 
 compiler_moc_predefs_make_all: release\moc_predefs.h

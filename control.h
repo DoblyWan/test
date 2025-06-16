@@ -28,6 +28,14 @@ public:
     explicit Control(QWidget *parent = nullptr);
     ~Control();
 
+    std::unordered_map<QString, QString> robotData{
+        {"depth", ""}, {"pitch", ""},
+        {"yaw", ""}, {"roll", ""},
+        {"temp", ""}, {"status", ""},
+        {"compass",""}, {"rollValue",""},
+        {"degValue",""}
+    };
+
 private:
     Ui::Control *ui;
 
@@ -157,7 +165,8 @@ private slots:
 
     void on_pushButton_8_clicked();
 
-
+signals:
+    void stateTransfer(const std::unordered_map<QString, QString>& modifiedData);
 
 };
 

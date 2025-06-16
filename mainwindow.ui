@@ -153,7 +153,7 @@ color: rgb(114, 159, 207);
        <enum>QFrame::NoFrame</enum>
       </property>
       <property name="text">
-       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;坝面检测机器人地面支持系统&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;坝面扫描式智能检测机器人&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
       </property>
       <property name="alignment">
        <set>Qt::AlignCenter</set>
@@ -1141,7 +1141,7 @@ font-weight: 700;
        <item row="1" column="0">
         <widget class="QStackedWidget" name="stackedWidget">
          <property name="currentIndex">
-          <number>8</number>
+          <number>9</number>
          </property>
          <widget class="QWidget" name="page">
           <layout class="QGridLayout" name="gridLayout_6">
@@ -1271,7 +1271,7 @@ QTableView::item {
                  <x>60</x>
                  <y>150</y>
                  <width>700</width>
-                 <height>650</height>
+                 <height>550</height>
                 </rect>
                </property>
                <property name="styleSheet">
@@ -1279,36 +1279,6 @@ QTableView::item {
 	background-color:transparent;
 }</string>
                </property>
-               <widget class="QWidget" name="widget_18" native="true">
-                <property name="geometry">
-                 <rect>
-                  <x>35</x>
-                  <y>50</y>
-                  <width>630</width>
-                  <height>580</height>
-                 </rect>
-                </property>
-                <property name="styleSheet">
-                 <string notr="true">QWidget {
-	border:1px solid #666
-}
-
-QWidget {
-	background-image:  url(:/images/VCG211389539661.jpg);
-}</string>
-                </property>
-                <widget class="QWidget" name="gridLayoutWidget_4">
-                 <property name="geometry">
-                  <rect>
-                   <x>-1</x>
-                   <y>-1</y>
-                   <width>631</width>
-                   <height>581</height>
-                  </rect>
-                 </property>
-                 <layout class="QGridLayout" name="gridLayout_31"/>
-                </widget>
-               </widget>
                <widget class="QPushButton" name="pushButton_26">
                 <property name="enabled">
                  <bool>true</bool>
@@ -1370,6 +1340,41 @@ QWidget {
                  </size>
                 </property>
                </widget>
+               <widget class="QLabel" name="label">
+                <property name="geometry">
+                 <rect>
+                  <x>35</x>
+                  <y>50</y>
+                  <width>630</width>
+                  <height>472</height>
+                 </rect>
+                </property>
+                <property name="styleSheet">
+                 <string notr="true">border:1px solid #ccc;
+background-color:rgb(14, 25, 31);</string>
+                </property>
+                <property name="text">
+                 <string>Loading......</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignCenter</set>
+                </property>
+               </widget>
+               <widget class="QWidget" name="gridLayoutWidget_4">
+                <property name="geometry">
+                 <rect>
+                  <x>29</x>
+                  <y>49</y>
+                  <width>641</width>
+                  <height>471</height>
+                 </rect>
+                </property>
+                <layout class="QGridLayout" name="gridLayout_31"/>
+               </widget>
+               <zorder>label</zorder>
+               <zorder>pushButton_26</zorder>
+               <zorder>pushButton_27</zorder>
+               <zorder>gridLayoutWidget_4</zorder>
               </widget>
               <widget class="CustomControl" name="monocularCameraA1_9" native="true">
                <property name="geometry">
@@ -1377,7 +1382,7 @@ QWidget {
                  <x>850</x>
                  <y>150</y>
                  <width>700</width>
-                 <height>650</height>
+                 <height>550</height>
                 </rect>
                </property>
                <property name="styleSheet">
@@ -1385,32 +1390,6 @@ QWidget {
 	background-color:transparent;
 }</string>
                </property>
-               <widget class="QWidget" name="widget_21" native="true">
-                <property name="geometry">
-                 <rect>
-                  <x>35</x>
-                  <y>50</y>
-                  <width>630</width>
-                  <height>580</height>
-                 </rect>
-                </property>
-                <property name="styleSheet">
-                 <string notr="true">QWidget {
-	background-image:  url(:/images/VCG211389539661.jpg);
-}</string>
-                </property>
-                <widget class="QWidget" name="gridLayoutWidget_5">
-                 <property name="geometry">
-                  <rect>
-                   <x>-1</x>
-                   <y>-1</y>
-                   <width>631</width>
-                   <height>581</height>
-                  </rect>
-                 </property>
-                 <layout class="QGridLayout" name="gridLayout_37"/>
-                </widget>
-               </widget>
                <widget class="QPushButton" name="pushButton_28">
                 <property name="enabled">
                  <bool>true</bool>
@@ -1472,6 +1451,41 @@ QWidget {
                  </size>
                 </property>
                </widget>
+               <widget class="QLabel" name="label_2">
+                <property name="geometry">
+                 <rect>
+                  <x>35</x>
+                  <y>50</y>
+                  <width>630</width>
+                  <height>472</height>
+                 </rect>
+                </property>
+                <property name="styleSheet">
+                 <string notr="true">border:1px solid #ccc;
+background-color:rgb(14, 25, 31);</string>
+                </property>
+                <property name="text">
+                 <string>Loading......</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignCenter</set>
+                </property>
+               </widget>
+               <widget class="QWidget" name="gridLayoutWidget_5">
+                <property name="geometry">
+                 <rect>
+                  <x>29</x>
+                  <y>49</y>
+                  <width>641</width>
+                  <height>471</height>
+                 </rect>
+                </property>
+                <layout class="QGridLayout" name="gridLayout_37"/>
+               </widget>
+               <zorder>label_2</zorder>
+               <zorder>pushButton_28</zorder>
+               <zorder>pushButton_29</zorder>
+               <zorder>gridLayoutWidget_5</zorder>
               </widget>
               <widget class="QPushButton" name="pushButton_transfor_2">
                <property name="geometry">
@@ -3075,7 +3089,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
                 <x>60</x>
                 <y>150</y>
                 <width>700</width>
-                <height>650</height>
+                <height>550</height>
                </rect>
               </property>
               <property name="styleSheet">
@@ -3083,32 +3097,6 @@ li.checked::marker { content: &quot;\2612&quot;; }
 	background-color:transparent;
 }</string>
               </property>
-              <widget class="QWidget" name="widget_16" native="true">
-               <property name="geometry">
-                <rect>
-                 <x>35</x>
-                 <y>50</y>
-                 <width>630</width>
-                 <height>580</height>
-                </rect>
-               </property>
-               <property name="styleSheet">
-                <string notr="true">QWidget {
-	background-image:  url(:/images/VCG211389539661.jpg);
-}</string>
-               </property>
-               <widget class="QWidget" name="gridLayoutWidget_7">
-                <property name="geometry">
-                 <rect>
-                  <x>0</x>
-                  <y>0</y>
-                  <width>631</width>
-                  <height>581</height>
-                 </rect>
-                </property>
-                <layout class="QGridLayout" name="gridLayout_43"/>
-               </widget>
-              </widget>
               <widget class="QPushButton" name="pushButton_18">
                <property name="enabled">
                 <bool>true</bool>
@@ -3170,6 +3158,41 @@ li.checked::marker { content: &quot;\2612&quot;; }
                 </size>
                </property>
               </widget>
+              <widget class="QLabel" name="label_3">
+               <property name="geometry">
+                <rect>
+                 <x>35</x>
+                 <y>50</y>
+                 <width>630</width>
+                 <height>472</height>
+                </rect>
+               </property>
+               <property name="styleSheet">
+                <string notr="true">border:1px solid #ccc;
+background-color:rgb(14, 25, 31);</string>
+               </property>
+               <property name="text">
+                <string>Loading......</string>
+               </property>
+               <property name="alignment">
+                <set>Qt::AlignCenter</set>
+               </property>
+              </widget>
+              <widget class="QWidget" name="gridLayoutWidget_7">
+               <property name="geometry">
+                <rect>
+                 <x>30</x>
+                 <y>40</y>
+                 <width>641</width>
+                 <height>491</height>
+                </rect>
+               </property>
+               <layout class="QGridLayout" name="gridLayout_43"/>
+              </widget>
+              <zorder>label_3</zorder>
+              <zorder>pushButton_18</zorder>
+              <zorder>pushButton_19</zorder>
+              <zorder>gridLayoutWidget_7</zorder>
              </widget>
              <widget class="CustomControl" name="monocularCameraA1_5" native="true">
               <property name="geometry">
@@ -3177,7 +3200,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
                 <x>850</x>
                 <y>150</y>
                 <width>700</width>
-                <height>650</height>
+                <height>550</height>
                </rect>
               </property>
               <property name="styleSheet">
@@ -3185,32 +3208,6 @@ li.checked::marker { content: &quot;\2612&quot;; }
 	background-color:transparent;
 }</string>
               </property>
-              <widget class="QWidget" name="widget_17" native="true">
-               <property name="geometry">
-                <rect>
-                 <x>35</x>
-                 <y>50</y>
-                 <width>630</width>
-                 <height>580</height>
-                </rect>
-               </property>
-               <property name="styleSheet">
-                <string notr="true">QWidget {
-	background-image:  url(:/images/VCG211389539661.jpg);
-}</string>
-               </property>
-               <widget class="QWidget" name="gridLayoutWidget_6">
-                <property name="geometry">
-                 <rect>
-                  <x>-1</x>
-                  <y>-1</y>
-                  <width>631</width>
-                  <height>581</height>
-                 </rect>
-                </property>
-                <layout class="QGridLayout" name="gridLayout_42"/>
-               </widget>
-              </widget>
               <widget class="QPushButton" name="pushButton_20">
                <property name="enabled">
                 <bool>true</bool>
@@ -3272,6 +3269,41 @@ li.checked::marker { content: &quot;\2612&quot;; }
                 </size>
                </property>
               </widget>
+              <widget class="QLabel" name="label_5">
+               <property name="geometry">
+                <rect>
+                 <x>35</x>
+                 <y>50</y>
+                 <width>630</width>
+                 <height>472</height>
+                </rect>
+               </property>
+               <property name="styleSheet">
+                <string notr="true">border:1px solid #ccc;
+background-color:rgb(14, 25, 31);</string>
+               </property>
+               <property name="text">
+                <string>Loading......</string>
+               </property>
+               <property name="alignment">
+                <set>Qt::AlignCenter</set>
+               </property>
+              </widget>
+              <widget class="QWidget" name="gridLayoutWidget_6">
+               <property name="geometry">
+                <rect>
+                 <x>30</x>
+                 <y>40</y>
+                 <width>641</width>
+                 <height>491</height>
+                </rect>
+               </property>
+               <layout class="QGridLayout" name="gridLayout_42"/>
+              </widget>
+              <zorder>label_5</zorder>
+              <zorder>pushButton_20</zorder>
+              <zorder>pushButton_21</zorder>
+              <zorder>gridLayoutWidget_6</zorder>
              </widget>
             </widget>
            </item>
@@ -3665,6 +3697,173 @@ li.checked::marker { content: &quot;\2612&quot;; }
            </item>
           </layout>
          </widget>
+         <widget class="QWidget" name="page_7">
+          <widget class="GaugeCompassPan" name="gaugeCompassPan">
+           <property name="geometry">
+            <rect>
+             <x>10</x>
+             <y>10</y>
+             <width>161</width>
+             <height>161</height>
+            </rect>
+           </property>
+          </widget>
+          <widget class="GaugePlane" name="gaugePlane">
+           <property name="geometry">
+            <rect>
+             <x>190</x>
+             <y>10</y>
+             <width>141</width>
+             <height>161</height>
+            </rect>
+           </property>
+          </widget>
+          <widget class="QGroupBox" name="groupBox_10">
+           <property name="geometry">
+            <rect>
+             <x>40</x>
+             <y>230</y>
+             <width>621</width>
+             <height>181</height>
+            </rect>
+           </property>
+           <property name="font">
+            <font>
+             <pointsize>17</pointsize>
+             <bold>true</bold>
+            </font>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">color:rgb(226,226,226)</string>
+           </property>
+           <property name="title">
+            <string>传感器信息</string>
+           </property>
+           <property name="flat">
+            <bool>false</bool>
+           </property>
+           <widget class="QWidget" name="verticalLayoutWidget">
+            <property name="geometry">
+             <rect>
+              <x>10</x>
+              <y>30</y>
+              <width>231</width>
+              <height>141</height>
+             </rect>
+            </property>
+            <layout class="QVBoxLayout" name="verticalLayout_18">
+             <item>
+              <widget class="QLabel" name="Roll_show">
+               <property name="font">
+                <font>
+                 <pointsize>17</pointsize>
+                 <bold>true</bold>
+                </font>
+               </property>
+               <property name="styleSheet">
+                <string notr="true">color:rgb(226,226,226)</string>
+               </property>
+               <property name="text">
+                <string>Roll:0.00</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QLabel" name="Yaw_show">
+               <property name="font">
+                <font>
+                 <pointsize>17</pointsize>
+                 <bold>true</bold>
+                </font>
+               </property>
+               <property name="styleSheet">
+                <string notr="true">color:rgb(226,226,226)</string>
+               </property>
+               <property name="text">
+                <string>Yaw:0.00</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QLabel" name="Pitch_show">
+               <property name="font">
+                <font>
+                 <pointsize>17</pointsize>
+                 <bold>true</bold>
+                </font>
+               </property>
+               <property name="styleSheet">
+                <string notr="true">color:rgb(226,226,226)</string>
+               </property>
+               <property name="text">
+                <string>Pitch:0.00</string>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </widget>
+           <widget class="QWidget" name="verticalLayoutWidget_2">
+            <property name="geometry">
+             <rect>
+              <x>270</x>
+              <y>30</y>
+              <width>331</width>
+              <height>141</height>
+             </rect>
+            </property>
+            <layout class="QVBoxLayout" name="verticalLayout_19">
+             <item>
+              <widget class="QLabel" name="Depth_show">
+               <property name="font">
+                <font>
+                 <pointsize>17</pointsize>
+                 <bold>true</bold>
+                </font>
+               </property>
+               <property name="styleSheet">
+                <string notr="true">color:rgb(226,226,226)</string>
+               </property>
+               <property name="text">
+                <string>Depth: 0.00</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QLabel" name="Temp_show">
+               <property name="font">
+                <font>
+                 <pointsize>17</pointsize>
+                 <bold>true</bold>
+                </font>
+               </property>
+               <property name="styleSheet">
+                <string notr="true">color:rgb(226,226,226)</string>
+               </property>
+               <property name="text">
+                <string>Tempture:0.00</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QLabel" name="rov_status">
+               <property name="font">
+                <font>
+                 <pointsize>17</pointsize>
+                 <bold>true</bold>
+                </font>
+               </property>
+               <property name="styleSheet">
+                <string notr="true">color:rgb(226,226,226)</string>
+               </property>
+               <property name="text">
+                <string>Power_Val:0.00</string>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </widget>
+          </widget>
+         </widget>
         </widget>
        </item>
       </layout>
@@ -3956,6 +4155,16 @@ li.checked::marker { content: &quot;\2612&quot;; }
   <widget class="QStatusBar" name="statusbar"/>
  </widget>
  <customwidgets>
+  <customwidget>
+   <class>GaugeCompassPan</class>
+   <extends>QWidget</extends>
+   <header>gaugecompasspan.h</header>
+  </customwidget>
+  <customwidget>
+   <class>GaugePlane</class>
+   <extends>QWidget</extends>
+   <header>gaugeplane.h</header>
+  </customwidget>
   <customwidget>
    <class>CustomControl</class>
    <extends>QWidget</extends>
