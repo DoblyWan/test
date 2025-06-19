@@ -22,6 +22,7 @@ Control::Control(QWidget *parent)
     connect(timer_online,SIGNAL(timeout()),this,SLOT(machine_online()));
     // connect(timer_send,SIGNAL(timeout()),this,SLOT(btn_control()));
 
+
     udpSocket_control->bind(8888);                              // Listen to port 8888 on this machine
 
     M_Arm_pitch = 128;
@@ -284,11 +285,6 @@ void Control::jetson_msg_get()
             depth = (float)data[3];
             tempture = (float)data[4]/100;
 
-
-            qDebug() << "Pitch: "+QString::number(angle[0],'f',1);
-            qDebug() << "Yaw: "+QString::number(angle[2],'f',1);
-            qDebug() << "Roll: "+QString::number(angle[1],'f',1);
-            qDebug() << "Tempture: "+QString::number(tempture,'f',2);
 
             this->robotData["depth"] = "Depth: " + QString::number(depth,'f',2) + " cm";
             this->robotData["pitch"] = "Pitch: "+QString::number(angle[0],'f',1);
@@ -1001,4 +997,50 @@ void Control::on_pushButton_9_clicked() // float
 void Control::on_pushButton_8_clicked() // dive
 {
     value_right_axisY_a = 0.55;
+}
+
+
+void Control::handleLightData(int light_level, int value, int lightType)
+{
+    qDebug() << "received data --------";
+
+
+    if(lightType == 1){
+        if(value>light_level)
+        {
+            for(int i=0;i< (value-light_level);i++)
+            {
+                on_Light_Bri_clicked();
+                QThread::msleep(50);
+            }
+        }
+        else
+        {
+            for(int i=0;i< (light_level-value);i++)
+            {
+                on_Light_dim_clicked();
+                QThread::msleep(50);
+            }
+        }
+    }
+    else if(lightType == 2)
+    {
+        if(value>light_level)
+        {
+            for(int i=0;i< (value-light_level);i++)
+            {
+                on_Lightcirl_brig_clicked();
+                QThread::msleep(50);
+            }
+        }
+        else
+        {
+            for(int i=0;i< (light_level-value);i++)
+            {
+                on_Lightcirl_dimm_clicked();
+                QThread::msleep(50);
+            }
+        }
+    }
+
 }

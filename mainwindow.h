@@ -7,6 +7,7 @@
 #include <QPropertyAnimation>
 #include <QDialog>
 #include <QImage>
+#include <regex>
 
 // 文件操作
 #include <QDir>
@@ -115,8 +116,11 @@ private:
 
     void resizeEvent(QResizeEvent *event) override;
 
-    // 控制控件
-    Control *control;
+
+
+    // 灯光强度
+    int light_level;
+    int light_AValue;
 
 private slots:
     //void closeTab(int index); // 关闭标签页
@@ -163,10 +167,16 @@ private slots:
 
     void on_pushButton_upload_clicked();
 
+    void on_verticalSlider_valueChanged(int value);
+
+    void on_verticalSlider_2_valueChanged(int value);
+
 public slots:
     void handleDataModified(const std::unordered_map<std::string, std::string>& modifiedData);
     void handleStateTransfer(const std::unordered_map<QString,QString> &robotData);
 
+Q_SIGNALS:
+    void lightSignal(int light_level, int value, int lightType);
 
 };
 #endif // MAINWINDOW_H

@@ -24,6 +24,7 @@
 #include <QtWidgets/QMenuBar>
 #include <QtWidgets/QPlainTextEdit>
 #include <QtWidgets/QPushButton>
+#include <QtWidgets/QSlider>
 #include <QtWidgets/QStackedWidget>
 #include <QtWidgets/QStatusBar>
 #include <QtWidgets/QTableView>
@@ -33,6 +34,7 @@
 #include "customcontrol.h"
 #include "gaugecompasspan.h"
 #include "gaugeplane.h"
+#include "rulerbar.h"
 
 QT_BEGIN_NAMESPACE
 
@@ -104,13 +106,13 @@ public:
     QPushButton *pushButton_26;
     QPushButton *pushButton_27;
     QLabel *label;
-    QWidget *gridLayoutWidget_4;
+    QWidget *widget_11;
     QGridLayout *gridLayout_31;
     CustomControl *monocularCameraA1_9;
     QPushButton *pushButton_28;
     QPushButton *pushButton_29;
     QLabel *label_2;
-    QWidget *gridLayoutWidget_5;
+    QWidget *widget_12;
     QGridLayout *gridLayout_37;
     QPushButton *pushButton_transfor_2;
     QWidget *widget_14;
@@ -254,13 +256,13 @@ public:
     QPushButton *pushButton_18;
     QPushButton *pushButton_19;
     QLabel *label_3;
-    QWidget *gridLayoutWidget_7;
-    QGridLayout *gridLayout_43;
+    QWidget *widget_16;
+    QGridLayout *gridLayout_46;
     CustomControl *monocularCameraA1_5;
     QPushButton *pushButton_20;
     QPushButton *pushButton_21;
     QLabel *label_5;
-    QWidget *gridLayoutWidget_6;
+    QWidget *widget_13;
     QGridLayout *gridLayout_42;
     QWidget *page_5;
     QGridLayout *gridLayout_36;
@@ -317,6 +319,12 @@ public:
     QLabel *Depth_show;
     QLabel *Temp_show;
     QLabel *rov_status;
+    QSlider *verticalSlider;
+    QLabel *Depth_show_2;
+    RulerBar *rulerBar;
+    QLabel *Depth_show_3;
+    QSlider *verticalSlider_2;
+    QLabel *Depth_show_4;
     QGroupBox *groupBox;
     QGridLayout *gridLayout;
     QHBoxLayout *horizontalLayout_11;
@@ -986,15 +994,17 @@ public:
         label->setStyleSheet(QString::fromUtf8("border:1px solid #ccc;\n"
 "background-color:rgb(14, 25, 31);"));
         label->setAlignment(Qt::AlignCenter);
-        gridLayoutWidget_4 = new QWidget(monocularCameraA1_8);
-        gridLayoutWidget_4->setObjectName(QString::fromUtf8("gridLayoutWidget_4"));
-        gridLayoutWidget_4->setGeometry(QRect(29, 49, 641, 471));
-        gridLayout_31 = new QGridLayout(gridLayoutWidget_4);
+        widget_11 = new QWidget(monocularCameraA1_8);
+        widget_11->setObjectName(QString::fromUtf8("widget_11"));
+        widget_11->setGeometry(QRect(35, 50, 630, 472));
+        widget_11->setStyleSheet(QString::fromUtf8(""));
+        gridLayout_31 = new QGridLayout(widget_11);
         gridLayout_31->setObjectName(QString::fromUtf8("gridLayout_31"));
+        gridLayout_31->setContentsMargins(1, 1, 1, 1);
         label->raise();
         pushButton_26->raise();
         pushButton_27->raise();
-        gridLayoutWidget_4->raise();
+        widget_11->raise();
         monocularCameraA1_9 = new CustomControl(widget_10);
         monocularCameraA1_9->setObjectName(QString::fromUtf8("monocularCameraA1_9"));
         monocularCameraA1_9->setGeometry(QRect(850, 150, 700, 550));
@@ -1026,15 +1036,17 @@ public:
         label_2->setStyleSheet(QString::fromUtf8("border:1px solid #ccc;\n"
 "background-color:rgb(14, 25, 31);"));
         label_2->setAlignment(Qt::AlignCenter);
-        gridLayoutWidget_5 = new QWidget(monocularCameraA1_9);
-        gridLayoutWidget_5->setObjectName(QString::fromUtf8("gridLayoutWidget_5"));
-        gridLayoutWidget_5->setGeometry(QRect(29, 49, 641, 471));
-        gridLayout_37 = new QGridLayout(gridLayoutWidget_5);
+        widget_12 = new QWidget(monocularCameraA1_9);
+        widget_12->setObjectName(QString::fromUtf8("widget_12"));
+        widget_12->setGeometry(QRect(35, 50, 630, 472));
+        widget_12->setStyleSheet(QString::fromUtf8(""));
+        gridLayout_37 = new QGridLayout(widget_12);
         gridLayout_37->setObjectName(QString::fromUtf8("gridLayout_37"));
+        gridLayout_37->setContentsMargins(1, 1, 1, 1);
         label_2->raise();
         pushButton_28->raise();
         pushButton_29->raise();
-        gridLayoutWidget_5->raise();
+        widget_12->raise();
         pushButton_transfor_2 = new QPushButton(widget_10);
         pushButton_transfor_2->setObjectName(QString::fromUtf8("pushButton_transfor_2"));
         pushButton_transfor_2->setGeometry(QRect(1530, 850, 75, 50));
@@ -1912,15 +1924,17 @@ public:
         label_3->setStyleSheet(QString::fromUtf8("border:1px solid #ccc;\n"
 "background-color:rgb(14, 25, 31);"));
         label_3->setAlignment(Qt::AlignCenter);
-        gridLayoutWidget_7 = new QWidget(monocularCameraA1_4);
-        gridLayoutWidget_7->setObjectName(QString::fromUtf8("gridLayoutWidget_7"));
-        gridLayoutWidget_7->setGeometry(QRect(30, 40, 641, 491));
-        gridLayout_43 = new QGridLayout(gridLayoutWidget_7);
-        gridLayout_43->setObjectName(QString::fromUtf8("gridLayout_43"));
+        widget_16 = new QWidget(monocularCameraA1_4);
+        widget_16->setObjectName(QString::fromUtf8("widget_16"));
+        widget_16->setGeometry(QRect(35, 50, 630, 472));
+        widget_16->setStyleSheet(QString::fromUtf8(""));
+        gridLayout_46 = new QGridLayout(widget_16);
+        gridLayout_46->setObjectName(QString::fromUtf8("gridLayout_46"));
+        gridLayout_46->setContentsMargins(1, 1, 1, 1);
         label_3->raise();
         pushButton_18->raise();
         pushButton_19->raise();
-        gridLayoutWidget_7->raise();
+        widget_16->raise();
         monocularCameraA1_5 = new CustomControl(widget_15);
         monocularCameraA1_5->setObjectName(QString::fromUtf8("monocularCameraA1_5"));
         monocularCameraA1_5->setGeometry(QRect(850, 150, 700, 550));
@@ -1952,15 +1966,17 @@ public:
         label_5->setStyleSheet(QString::fromUtf8("border:1px solid #ccc;\n"
 "background-color:rgb(14, 25, 31);"));
         label_5->setAlignment(Qt::AlignCenter);
-        gridLayoutWidget_6 = new QWidget(monocularCameraA1_5);
-        gridLayoutWidget_6->setObjectName(QString::fromUtf8("gridLayoutWidget_6"));
-        gridLayoutWidget_6->setGeometry(QRect(30, 40, 641, 491));
-        gridLayout_42 = new QGridLayout(gridLayoutWidget_6);
+        widget_13 = new QWidget(monocularCameraA1_5);
+        widget_13->setObjectName(QString::fromUtf8("widget_13"));
+        widget_13->setGeometry(QRect(35, 50, 630, 472));
+        widget_13->setStyleSheet(QString::fromUtf8(""));
+        gridLayout_42 = new QGridLayout(widget_13);
         gridLayout_42->setObjectName(QString::fromUtf8("gridLayout_42"));
+        gridLayout_42->setContentsMargins(1, 1, 1, 1);
         label_5->raise();
         pushButton_20->raise();
         pushButton_21->raise();
-        gridLayoutWidget_6->raise();
+        widget_13->raise();
 
         gridLayout_4->addWidget(widget_15, 0, 0, 1, 1);
 
@@ -2254,6 +2270,42 @@ public:
 
         verticalLayout_19->addWidget(rov_status);
 
+        verticalSlider = new QSlider(page_7);
+        verticalSlider->setObjectName(QString::fromUtf8("verticalSlider"));
+        verticalSlider->setGeometry(QRect(730, 50, 41, 341));
+        verticalSlider->setMaximum(10);
+        verticalSlider->setOrientation(Qt::Vertical);
+        verticalSlider->setTickPosition(QSlider::TicksAbove);
+        verticalSlider->setTickInterval(0);
+        Depth_show_2 = new QLabel(page_7);
+        Depth_show_2->setObjectName(QString::fromUtf8("Depth_show_2"));
+        Depth_show_2->setGeometry(QRect(720, 410, 81, 42));
+        Depth_show_2->setFont(font7);
+        Depth_show_2->setStyleSheet(QString::fromUtf8("color:rgb(226,226,226)"));
+        rulerBar = new RulerBar(page_7);
+        rulerBar->setObjectName(QString::fromUtf8("rulerBar"));
+        rulerBar->setGeometry(QRect(1120, 60, 100, 351));
+        rulerBar->setMaxValue(300.000000000000000);
+        rulerBar->setValue(0.000000000000000);
+        rulerBar->setLongStep(30);
+        rulerBar->setBgColorStart(QColor(100, 100, 100));
+        Depth_show_3 = new QLabel(page_7);
+        Depth_show_3->setObjectName(QString::fromUtf8("Depth_show_3"));
+        Depth_show_3->setGeometry(QRect(1140, 420, 81, 42));
+        Depth_show_3->setFont(font7);
+        Depth_show_3->setStyleSheet(QString::fromUtf8("color:rgb(226,226,226)"));
+        verticalSlider_2 = new QSlider(page_7);
+        verticalSlider_2->setObjectName(QString::fromUtf8("verticalSlider_2"));
+        verticalSlider_2->setGeometry(QRect(840, 50, 41, 341));
+        verticalSlider_2->setMaximum(10);
+        verticalSlider_2->setOrientation(Qt::Vertical);
+        verticalSlider_2->setTickPosition(QSlider::TicksAbove);
+        verticalSlider_2->setTickInterval(0);
+        Depth_show_4 = new QLabel(page_7);
+        Depth_show_4->setObjectName(QString::fromUtf8("Depth_show_4"));
+        Depth_show_4->setGeometry(QRect(830, 410, 81, 42));
+        Depth_show_4->setFont(font7);
+        Depth_show_4->setStyleSheet(QString::fromUtf8("color:rgb(226,226,226)"));
         stackedWidget->addWidget(page_7);
 
         gridLayout_5->addWidget(stackedWidget, 1, 0, 1, 1);
@@ -2606,6 +2658,9 @@ public:
         Depth_show->setText(QCoreApplication::translate("MainWindow", "Depth: 0.00", nullptr));
         Temp_show->setText(QCoreApplication::translate("MainWindow", "Tempture:0.00", nullptr));
         rov_status->setText(QCoreApplication::translate("MainWindow", "Power_Val:0.00", nullptr));
+        Depth_show_2->setText(QCoreApplication::translate("MainWindow", "\347\201\257\345\205\2111", nullptr));
+        Depth_show_3->setText(QCoreApplication::translate("MainWindow", "\346\267\261\345\272\246", nullptr));
+        Depth_show_4->setText(QCoreApplication::translate("MainWindow", "\347\201\257\345\205\2111", nullptr));
         groupBox->setTitle(QCoreApplication::translate("MainWindow", "\346\243\200\346\265\213\344\277\241\346\201\257", nullptr));
         label_dectStart->setText(QCoreApplication::translate("MainWindow", "\350\265\267\345\247\213\346\240\207\350\256\260\357\274\232", nullptr));
         label_dectStart_input->setText(QString());

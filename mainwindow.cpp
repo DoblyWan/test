@@ -5,6 +5,13 @@
 #include <QMessageBox>
 #include  <QDebug>
 
+using namespace std;
+
+
+//全局变量
+// 控制控件
+Control *control;
+
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
     , configWindow(std::make_unique<Dialog>(this))
@@ -44,10 +51,10 @@ MainWindow::MainWindow(QWidget *parent)
 
     qDebug() << QDir::cleanPath(QCoreApplication::applicationDirPath() + QDir::separator() + logFilePath);
 
-    // pythonworker = new PythonWorker(this);
-    // pythonworker->setScriptPath("../../../ardusub_control/connect_main.py");
-    // // pythonworker->setScriptPath("./release/connect_main.py");
-    // pythonworker->start();
+    pythonworker = new PythonWorker(this);
+    pythonworker->setScriptPath("../../../ardusub_control/connect_main.py");
+    // pythonworker->setScriptPath("./release/connect_main.py");
+    pythonworker->start();
 
 
 
@@ -82,6 +89,8 @@ void MainWindow::initControl()
     ui->stackedWidget->setCurrentIndex(0);
 
     ui->widget_14->setVisible(false);
+    light_level = ui->verticalSlider->value();
+    light_AValue = ui->verticalSlider_2->value();
 
     // rtsp 初始化
     rtsp1 = new FFmpegWidget(this);
@@ -137,9 +146,9 @@ void MainWindow::initConnect()
 
     turnOnCamera("","","192.168.2.65",ui->gridLayout_31, rtsp1);
     turnOnCamera("","","192.168.2.66",ui->gridLayout_37, rtsp2);
-    turnOnCamera("","","192.168.2.107:8554/stream",ui->gridLayout_32, rtsp3);
+    turnOnCamera("","","192.168.2.99:8554/stream",ui->gridLayout_32, rtsp3);
     turnOnCamera("","","192.168.2.67",ui->gridLayout_42, rtsp4);
-    turnOnCamera("","","192.168.2.68",ui->gridLayout_43, rtsp5);
+    turnOnCamera("","","192.168.2.68",ui->gridLayout_46, rtsp5);
 
 
 }
@@ -298,7 +307,7 @@ void MainWindow::handleDataModified(const std::unordered_map<std::string, std::s
 
 void MainWindow::handleStateTransfer(const std::unordered_map<QString, QString> &robotData)
 {
-    qInfo() << "------- data received -------";
+    // qInfo() << "------- data received -------";
 
     ui->Depth_show->setText(robotData.at("depth"));
     ui->Pitch_show->setText(robotData.at("pitch"));
@@ -309,6 +318,17 @@ void MainWindow::handleStateTransfer(const std::unordered_map<QString, QString> 
     ui->gaugeCompassPan->setValue((int)robotData.at("compass").toDouble());
     ui->gaugePlane->setRollValue((int)robotData.at("rollValue").toDouble());
     ui->gaugePlane->setDegValue((int)robotData.at("degValue").toDouble());
+
+    // 创建正则表达式：匹配浮点数（包括带符号和小数点前/后缺数字的情况）
+    QRegularExpression floatRegex(R"([-+]?\d*\.?\d+)");
+
+    // 查找所有匹配项
+    QRegularExpressionMatchIterator iter = floatRegex.globalMatch(robotData.at("depth"));
+
+    // 深度参数
+    ui->rulerBar->setValue(iter.next().captured(0).toDouble());
+
+
 
 
 }
@@ -795,5 +815,19 @@ void MainWindow::on_Open_BT_8_clicked()
 void MainWindow::on_pushButton_upload_clicked()
 {
     QMessageBox::warning(this, "错误", "云端打开失败！请检查云端服务并重启系统！");
+}
+
+
+void MainWindow::on_verticalSlider_valueChanged(int value)
+{
+    emit lightSignal(light_level, value, 1);
+    light_level=value;
+}
+
+
+void MainWindow::on_verticalSlider_2_valueChanged(int value)
+{
+    emit lightSignal(light_AValue, value, 2);
+    light_AValue=value;
 }
 

@@ -15,6 +15,7 @@ const QString LOG_DIR = "../../../logs"; // 日志存储目录
 // 声明默认消息处理函数指针
 static QtMessageHandler defaultHandler = nullptr;
 
+
 void messageHandler(QtMsgType type, const QMessageLogContext &context, const QString &msg);
 
 int main(int argc, char *argv[])
@@ -32,6 +33,10 @@ int main(int argc, char *argv[])
 
 
     MainWindow w;
+
+    extern Control *control;
+    QObject::connect(&w, &MainWindow::lightSignal, control, &Control::handleLightData);
+
      w.show();
     // w.showFullScreen();
 

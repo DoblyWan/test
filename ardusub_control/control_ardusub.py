@@ -110,8 +110,8 @@ master.mav.request_data_stream_send(
 set_button_function(master,10, 'lights2_brighter')
 set_button_function(master,9, 'lights2_dimmer')
 
-set_button_function(master,13, 'servo_2_min')
-set_button_function(master,14, 'servo_2_max')
+set_button_function(master,13, 'lights1_dimmer')
+set_button_function(master,14, 'lights1_brighter')
 
 set_button_function(master,0, 'servo_3_min')
 set_button_function(master,3, 'servo_3_max')

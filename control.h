@@ -6,6 +6,7 @@
 #include <QTime>
 #include <QTimer>
 #include <QHostAddress>
+#include <QThread>
 
 #include <QGamepad>
 #include <QGamepadManager>
@@ -35,6 +36,10 @@ public:
         {"compass",""}, {"rollValue",""},
         {"degValue",""}
     };
+
+public slots:
+    // 接受灯带数据
+    void handleLightData(int light_level, int value, int lightType);
 
 private:
     Ui::Control *ui;
@@ -129,6 +134,8 @@ private slots:
     void GamePad_Left_axis_btn_pressed(bool pressed);   // ��ҡ�˰���
     void GamePad_Right_axis_btn_pressed(bool pressed);  // ��ҡ�˰���
 
+
+
 private slots:
 
     void jetson_msg_get();                       // Jetson's data return corresponding function
@@ -164,6 +171,8 @@ private slots:
     void on_pushButton_9_clicked();
 
     void on_pushButton_8_clicked();
+
+
 
 signals:
     void stateTransfer(const std::unordered_map<QString, QString>& modifiedData);
