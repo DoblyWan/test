@@ -34,7 +34,10 @@ MainWindow::MainWindow(QWidget *parent)
 
     // 控制控件
     control = new Control();
-    ui->gridLayout_20->addWidget(control);
+
+
+    ui->gridLayout_20->addWidget(control->controlFrame());
+    ui->gridLayout_25->addWidget(control->infoWidget());
 
     /*   更新UI的前后端情况  */
     ui->gaugeCompassPan->raise();
@@ -49,7 +52,7 @@ MainWindow::MainWindow(QWidget *parent)
 
     configWindow->setWindowFlags(Qt::Window); // 避免继承父窗口样式
 
-    qDebug() << QDir::cleanPath(QCoreApplication::applicationDirPath() + QDir::separator() + logFilePath);
+    // qDebug() << QDir::cleanPath(QCoreApplication::applicationDirPath() + QDir::separator() + logFilePath);
 
     pythonworker = new PythonWorker(this);
     pythonworker->setScriptPath("../../../ardusub_control/connect_main.py");
@@ -108,7 +111,7 @@ void MainWindow::initControl()
     int labelW = int(ui->label_main->width() * 0.8);
     int labelH = int(pixmap.height() * labelW / pixmap.width());
 
-    qDebug() << ui->label_main->width() << ui->label_main->height();
+    // qDebug() << ui->label_main->width() << ui->label_main->height();
     QSize size(labelW, labelH);  // 宽为label的宽，高通过比例计算，保持图片原比例
     pixmap = pixmap.scaled(size);
 
@@ -140,15 +143,20 @@ void MainWindow::initConnect()
     // connect(control, SIGNAL(stateTransfer(const std::unordered_map<QString, QString>&)), this, SLOT(handleStateTransfer(const std::unordered_map<QString,QString>&))); // 状态数据信号接收-槽函数调用
     connect(control, &Control::stateTransfer, this, &MainWindow::handleStateTransfer);
 
+    // 视频流
+    connect(rtsp1, &FFmpegWidget::openFinished, this, &MainWindow::onRtspFinished);
+
+
     fileWatcher = new QFileSystemWatcher(this);
     fileWatcher->addPath(logPath);
     // connect(fileWatcher, SIGNAL(fileChanged()), ui->tableView, SLOT(loadLogFile()));
 
-    turnOnCamera("","","192.168.2.65",ui->gridLayout_31, rtsp1);
-    turnOnCamera("","","192.168.2.66",ui->gridLayout_37, rtsp2);
-    turnOnCamera("","","192.168.2.99:8554/stream",ui->gridLayout_32, rtsp3);
-    turnOnCamera("","","192.168.2.67",ui->gridLayout_42, rtsp4);
-    turnOnCamera("","","192.168.2.68",ui->gridLayout_46, rtsp5);
+    turnOnCamera("","","192.168.1.28:8554/mystream",ui->gridLayout_31, rtsp1);
+    // turnOnCamera("","","192.168.2.65",ui->gridLayout_31, rtsp1);
+    // turnOnCamera("","","192.168.2.66",ui->gridLayout_37, rtsp2);
+    // turnOnCamera("","","192.168.2.99:8554/stream",ui->gridLayout_32, rtsp3);
+    // turnOnCamera("","","192.168.2.67",ui->gridLayout_42, rtsp4);
+    // turnOnCamera("","","192.168.2.68",ui->gridLayout_46, rtsp5);
 
 
 }
@@ -236,7 +244,7 @@ void MainWindow::on_pushButton_localvideo_clicked()
 
 void MainWindow::on_pushButton_location_2_clicked()
 {
-    ui->stackedWidget->setCurrentIndex(9);
+    ui->stackedWidget->setCurrentIndex(10);
     ui->label_title->setText("状态显示");
     // if(!detectform) {
     //     return;
@@ -310,14 +318,17 @@ void MainWindow::handleStateTransfer(const std::unordered_map<QString, QString> 
     // qInfo() << "------- data received -------";
 
     ui->Depth_show->setText(robotData.at("depth"));
-    ui->Pitch_show->setText(robotData.at("pitch"));
-    ui->Yaw_show->setText(robotData.at("yaw"));
-    ui->Roll_show->setText(robotData.at("roll"));
+    ui->PitchValue->setText(robotData.at("pitch") + "°");
+    ui->YawValue->setText(robotData.at("yaw") + "°");
+    ui->RollValue->setText(robotData.at("roll") + "°");
     ui->Temp_show->setText(robotData.at("temp"));
     ui->rov_status->setText(robotData.at("status"));
     ui->gaugeCompassPan->setValue((int)robotData.at("compass").toDouble());
     ui->gaugePlane->setRollValue((int)robotData.at("rollValue").toDouble());
     ui->gaugePlane->setDegValue((int)robotData.at("degValue").toDouble());
+
+
+
 
     // 创建正则表达式：匹配浮点数（包括带符号和小数点前/后缺数字的情况）
     QRegularExpression floatRegex(R"([-+]?\d*\.?\d+)");
@@ -328,6 +339,12 @@ void MainWindow::handleStateTransfer(const std::unordered_map<QString, QString> 
     // 深度参数
     ui->rulerBar->setValue(iter.next().captured(0).toDouble());
 
+
+    // 速度参数
+    QStringList vel = robotData.at("velocity").split(",");
+    ui->gaugeWatchX->setValue(vel.at(0).toDouble());
+    ui->gaugeWatchY->setValue(vel.at(1).toDouble());
+    ui->gaugeWatchZ->setValue(vel.at(2).toDouble());
 
 
 
@@ -498,7 +515,7 @@ void MainWindow::on_pushButton_location_clicked()
 
 
 
-/* ---------- 测试区域 -------------- */
+/* ---------- 摄像头 -------------- */
 
 
 bool MainWindow::turnOnCamera(QString username, QString password, QString ipaddress, QGridLayout *gridLayout, FFmpegWidget* rtsp)
@@ -518,6 +535,15 @@ bool MainWindow::turnOnCamera(QString username, QString password, QString ipaddr
     QString url = urls.trimmed();
     rtsp->setUrl(url);
     rtsp->open();
+
+    // qDebug() << rtsp->isOpenSuccess;
+    if(rtsp->isOpenSuccess) {
+        return true;
+    } else {
+        QMessageBox::warning(this, "错误", "摄像头连接失败！请检查摄像头服务并重启系统！");
+        qWarning() << "摄像头连接失败！请检查摄像头服务并重启系统！";
+        return false;
+    }
 
     // if(rtsp->success){
     //     return true;
@@ -829,5 +855,18 @@ void MainWindow::on_verticalSlider_2_valueChanged(int value)
 {
     emit lightSignal(light_AValue, value, 2);
     light_AValue=value;
+}
+
+// 判断摄像头是否成功打开
+void MainWindow::onRtspFinished(FFmpegWidget *rtsp)
+{
+    if(rtsp == rtsp1){
+        if(rtsp->isOpenSuccess) {
+
+        } else {
+            QMessageBox::warning(this, "错误", "摄像头连接失败！请检查摄像头服务并重启系统！");
+            qWarning() << "摄像头连接失败！请检查摄像头服务并重启系统！";
+        }
+    }
 }
 

@@ -34,7 +34,8 @@ public:
         {"yaw", ""}, {"roll", ""},
         {"temp", ""}, {"status", ""},
         {"compass",""}, {"rollValue",""},
-        {"degValue",""}
+        {"degValue",""}, {"velocity",""},
+        {"acceleration",""}
     };
 
 public slots:
@@ -173,6 +174,23 @@ private slots:
     void on_pushButton_8_clicked();
 
 
+    void on_verticalSlider_actionTriggered(int action);
+
+    void on_verticalSlider_2_actionTriggered(int action);
+
+    void on_verticalSlider_valueChanged(int value);
+
+    void on_verticalSlider_2_valueChanged(int value);
+
+public:
+    QFrame* controlFrame();
+    QWidget* infoWidget();
+
+private:
+    bool light1_isUpdatingFromExternal = true;
+    bool light2_isUpdatingFromExternal = true;
+    int light_level;
+    int lightB_value;
 
 signals:
     void stateTransfer(const std::unordered_map<QString, QString>& modifiedData);

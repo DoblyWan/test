@@ -15,8 +15,6 @@ public:
     explicit FFmpegThread(QObject *parent = 0);
     static void initlib();
 
-    bool success;
-
 protected:
     void run();
 
@@ -68,6 +66,9 @@ public slots:
     void next();
     //停止采集线程
     void stop();
+
+signals:
+    void judgeOpenSuccess(bool flag);
 };
 
 //实时视频显示窗体类
@@ -77,7 +78,7 @@ class FFmpegWidget : public QWidget
 public:
     explicit FFmpegWidget(QWidget *parent = 0);
     ~FFmpegWidget();
-    bool success;
+    bool isOpenSuccess = true;
 
 protected:   
     void paintEvent(QPaintEvent *);
@@ -105,6 +106,13 @@ public slots:
     void close();
     //清空
     void clear();
+
+    // 接受打开标志
+    void receiveOpenFLag(bool flag);
+
+signals:
+    void openFinished(FFmpegWidget *rtsp);
+
 };
 
 #endif // FFMPEG_H

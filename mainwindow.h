@@ -171,6 +171,8 @@ private slots:
 
     void on_verticalSlider_2_valueChanged(int value);
 
+    void onRtspFinished(FFmpegWidget *rtsp);
+
 public slots:
     void handleDataModified(const std::unordered_map<std::string, std::string>& modifiedData);
     void handleStateTransfer(const std::unordered_map<QString,QString> &robotData);

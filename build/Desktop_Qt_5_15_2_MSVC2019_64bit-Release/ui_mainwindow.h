@@ -34,6 +34,8 @@
 #include "customcontrol.h"
 #include "gaugecompasspan.h"
 #include "gaugeplane.h"
+#include "gaugewatch.h"
+#include "progressthree.h"
 #include "rulerbar.h"
 
 QT_BEGIN_NAMESPACE
@@ -306,8 +308,6 @@ public:
     QGridLayout *gridLayout_30;
     QWidget *report;
     QWidget *page_7;
-    GaugeCompassPan *gaugeCompassPan;
-    GaugePlane *gaugePlane;
     QGroupBox *groupBox_10;
     QWidget *verticalLayoutWidget;
     QVBoxLayout *verticalLayout_18;
@@ -319,12 +319,67 @@ public:
     QLabel *Depth_show;
     QLabel *Temp_show;
     QLabel *rov_status;
-    QSlider *verticalSlider;
-    QLabel *Depth_show_2;
     RulerBar *rulerBar;
     QLabel *Depth_show_3;
-    QSlider *verticalSlider_2;
+    QLabel *label_149;
+    QFrame *frame_56;
+    QWidget *widget_36;
+    GaugeCompassPan *gaugeCompassPan;
+    GaugePlane *gaugePlane;
+    QLabel *Roll_show_2;
+    QLabel *Roll_show_3;
+    QLabel *Roll_show_4;
+    QLabel *RollValue;
+    QLabel *PitchValue;
+    QLabel *YawValue;
+    QLabel *label_150;
+    QFrame *frame_57;
+    QWidget *widget_37;
+    QLabel *Depth_show_2;
+    QSlider *verticalSlider;
     QLabel *Depth_show_4;
+    QSlider *verticalSlider_2;
+    QLabel *label_151;
+    QFrame *frame_58;
+    QWidget *widget_38;
+    GaugeWatch *gaugeWatchZ;
+    GaugeWatch *gaugeWatchY;
+    GaugeWatch *gaugeWatchX;
+    QLabel *VelocityX;
+    QLabel *AccelX;
+    QLabel *VelocityY;
+    QLabel *AccelY;
+    QLabel *VelocityZ;
+    QLabel *AccelZ;
+    QLabel *label_152;
+    QFrame *frame_59;
+    QWidget *widget_39;
+    ProgressThree *progressThree_3;
+    ProgressThree *progressThree_2;
+    ProgressThree *progressThree_6;
+    QLabel *servoChannel_6;
+    ProgressThree *progressThree_7;
+    ProgressThree *progressThree_1;
+    ProgressThree *progressThree_4;
+    ProgressThree *progressThree_5;
+    QLabel *servoChannel_2;
+    QLabel *servoChannel_3;
+    QLabel *servoChannel_4;
+    QLabel *servoChannel_5;
+    ProgressThree *progressThree_8;
+    QLabel *servoChannel_7;
+    QLabel *servoChannel_8;
+    QLabel *servoChannel_1;
+    QLabel *channel;
+    QLabel *channel_2;
+    QLabel *channel_3;
+    QLabel *channel_4;
+    QLabel *channel_5;
+    QLabel *channel_6;
+    QLabel *channel_7;
+    QLabel *channel_8;
+    QWidget *page_8;
+    QGridLayout *gridLayout_25;
     QGroupBox *groupBox;
     QGridLayout *gridLayout;
     QHBoxLayout *horizontalLayout_11;
@@ -2201,15 +2256,9 @@ public:
         stackedWidget->addWidget(page_6);
         page_7 = new QWidget();
         page_7->setObjectName(QString::fromUtf8("page_7"));
-        gaugeCompassPan = new GaugeCompassPan(page_7);
-        gaugeCompassPan->setObjectName(QString::fromUtf8("gaugeCompassPan"));
-        gaugeCompassPan->setGeometry(QRect(10, 10, 161, 161));
-        gaugePlane = new GaugePlane(page_7);
-        gaugePlane->setObjectName(QString::fromUtf8("gaugePlane"));
-        gaugePlane->setGeometry(QRect(190, 10, 141, 161));
         groupBox_10 = new QGroupBox(page_7);
         groupBox_10->setObjectName(QString::fromUtf8("groupBox_10"));
-        groupBox_10->setGeometry(QRect(40, 230, 621, 181));
+        groupBox_10->setGeometry(QRect(0, 720, 621, 181));
         QFont font7;
         font7.setPointSize(17);
         font7.setBold(true);
@@ -2270,45 +2319,384 @@ public:
 
         verticalLayout_19->addWidget(rov_status);
 
-        verticalSlider = new QSlider(page_7);
-        verticalSlider->setObjectName(QString::fromUtf8("verticalSlider"));
-        verticalSlider->setGeometry(QRect(730, 50, 41, 341));
-        verticalSlider->setMaximum(10);
-        verticalSlider->setOrientation(Qt::Vertical);
-        verticalSlider->setTickPosition(QSlider::TicksAbove);
-        verticalSlider->setTickInterval(0);
-        Depth_show_2 = new QLabel(page_7);
-        Depth_show_2->setObjectName(QString::fromUtf8("Depth_show_2"));
-        Depth_show_2->setGeometry(QRect(720, 410, 81, 42));
-        Depth_show_2->setFont(font7);
-        Depth_show_2->setStyleSheet(QString::fromUtf8("color:rgb(226,226,226)"));
         rulerBar = new RulerBar(page_7);
         rulerBar->setObjectName(QString::fromUtf8("rulerBar"));
-        rulerBar->setGeometry(QRect(1120, 60, 100, 351));
+        rulerBar->setGeometry(QRect(830, 440, 101, 381));
         rulerBar->setMaxValue(300.000000000000000);
         rulerBar->setValue(0.000000000000000);
         rulerBar->setLongStep(30);
         rulerBar->setBgColorStart(QColor(100, 100, 100));
+        rulerBar->setBgColorEnd(QColor(7, 22, 79));
         Depth_show_3 = new QLabel(page_7);
         Depth_show_3->setObjectName(QString::fromUtf8("Depth_show_3"));
-        Depth_show_3->setGeometry(QRect(1140, 420, 81, 42));
+        Depth_show_3->setGeometry(QRect(810, 830, 141, 42));
         Depth_show_3->setFont(font7);
         Depth_show_3->setStyleSheet(QString::fromUtf8("color:rgb(226,226,226)"));
-        verticalSlider_2 = new QSlider(page_7);
-        verticalSlider_2->setObjectName(QString::fromUtf8("verticalSlider_2"));
-        verticalSlider_2->setGeometry(QRect(840, 50, 41, 341));
-        verticalSlider_2->setMaximum(10);
-        verticalSlider_2->setOrientation(Qt::Vertical);
-        verticalSlider_2->setTickPosition(QSlider::TicksAbove);
-        verticalSlider_2->setTickInterval(0);
-        Depth_show_4 = new QLabel(page_7);
+        label_149 = new QLabel(page_7);
+        label_149->setObjectName(QString::fromUtf8("label_149"));
+        label_149->setGeometry(QRect(0, 0, 401, 41));
+        label_149->setStyleSheet(QString::fromUtf8("background-color:rgb(0, 74, 189);\n"
+"color: rgb(185, 129, 168);\n"
+"font-size:18px;\n"
+"font-weight:700;\n"
+"border-radius:10px;\n"
+"border:2px dashed rgb(109, 156, 237)"));
+        label_149->setAlignment(Qt::AlignCenter);
+        frame_56 = new QFrame(page_7);
+        frame_56->setObjectName(QString::fromUtf8("frame_56"));
+        frame_56->setGeometry(QRect(0, 40, 401, 381));
+        frame_56->setStyleSheet(QString::fromUtf8("background-color:rgb(7, 22, 79);\n"
+"border:2px dashed rgb(109, 156, 237);\n"
+""));
+        frame_56->setFrameShape(QFrame::StyledPanel);
+        frame_56->setFrameShadow(QFrame::Raised);
+        widget_36 = new QWidget(frame_56);
+        widget_36->setObjectName(QString::fromUtf8("widget_36"));
+        widget_36->setGeometry(QRect(10, 10, 381, 361));
+        widget_36->setStyleSheet(QString::fromUtf8("border:none;"));
+        gaugeCompassPan = new GaugeCompassPan(widget_36);
+        gaugeCompassPan->setObjectName(QString::fromUtf8("gaugeCompassPan"));
+        gaugeCompassPan->setGeometry(QRect(15, 10, 160, 160));
+        gaugePlane = new GaugePlane(widget_36);
+        gaugePlane->setObjectName(QString::fromUtf8("gaugePlane"));
+        gaugePlane->setGeometry(QRect(205, 10, 141, 160));
+        Roll_show_2 = new QLabel(widget_36);
+        Roll_show_2->setObjectName(QString::fromUtf8("Roll_show_2"));
+        Roll_show_2->setGeometry(QRect(20, 190, 181, 42));
+        Roll_show_2->setFont(font7);
+        Roll_show_2->setStyleSheet(QString::fromUtf8("color:rgb(226,226,226)"));
+        Roll_show_3 = new QLabel(widget_36);
+        Roll_show_3->setObjectName(QString::fromUtf8("Roll_show_3"));
+        Roll_show_3->setGeometry(QRect(20, 245, 201, 42));
+        Roll_show_3->setFont(font7);
+        Roll_show_3->setStyleSheet(QString::fromUtf8("color:rgb(226,226,226)"));
+        Roll_show_4 = new QLabel(widget_36);
+        Roll_show_4->setObjectName(QString::fromUtf8("Roll_show_4"));
+        Roll_show_4->setGeometry(QRect(20, 300, 331, 42));
+        Roll_show_4->setFont(font7);
+        Roll_show_4->setStyleSheet(QString::fromUtf8("color:rgb(226,226,226)"));
+        RollValue = new QLabel(widget_36);
+        RollValue->setObjectName(QString::fromUtf8("RollValue"));
+        RollValue->setGeometry(QRect(230, 190, 151, 42));
+        RollValue->setFont(font7);
+        RollValue->setStyleSheet(QString::fromUtf8("color:rgb(226,226,226)"));
+        PitchValue = new QLabel(widget_36);
+        PitchValue->setObjectName(QString::fromUtf8("PitchValue"));
+        PitchValue->setGeometry(QRect(230, 245, 151, 42));
+        PitchValue->setFont(font7);
+        PitchValue->setStyleSheet(QString::fromUtf8("color:rgb(226,226,226)"));
+        YawValue = new QLabel(widget_36);
+        YawValue->setObjectName(QString::fromUtf8("YawValue"));
+        YawValue->setGeometry(QRect(230, 300, 151, 42));
+        YawValue->setFont(font7);
+        YawValue->setStyleSheet(QString::fromUtf8("color:rgb(226,226,226)"));
+        label_150 = new QLabel(page_7);
+        label_150->setObjectName(QString::fromUtf8("label_150"));
+        label_150->setGeometry(QRect(0, 430, 451, 41));
+        label_150->setStyleSheet(QString::fromUtf8("background-color:rgb(0, 74, 189);\n"
+"color: rgb(185, 129, 168);\n"
+"font-size:18px;\n"
+"font-weight:700;\n"
+"border-radius:10px;\n"
+"border:2px dashed rgb(109, 156, 237)"));
+        label_150->setAlignment(Qt::AlignCenter);
+        frame_57 = new QFrame(page_7);
+        frame_57->setObjectName(QString::fromUtf8("frame_57"));
+        frame_57->setGeometry(QRect(0, 470, 451, 231));
+        frame_57->setStyleSheet(QString::fromUtf8("background-color:rgb(7, 22, 79);\n"
+"border:2px dashed rgb(109, 156, 237);\n"
+""));
+        frame_57->setFrameShape(QFrame::StyledPanel);
+        frame_57->setFrameShadow(QFrame::Raised);
+        widget_37 = new QWidget(frame_57);
+        widget_37->setObjectName(QString::fromUtf8("widget_37"));
+        widget_37->setGeometry(QRect(10, 10, 431, 211));
+        widget_37->setStyleSheet(QString::fromUtf8("border:none;"));
+        Depth_show_2 = new QLabel(widget_37);
+        Depth_show_2->setObjectName(QString::fromUtf8("Depth_show_2"));
+        Depth_show_2->setGeometry(QRect(10, 40, 81, 42));
+        Depth_show_2->setFont(font7);
+        Depth_show_2->setStyleSheet(QString::fromUtf8("color:rgb(226,226,226)"));
+        verticalSlider = new QSlider(widget_37);
+        verticalSlider->setObjectName(QString::fromUtf8("verticalSlider"));
+        verticalSlider->setGeometry(QRect(90, 50, 300, 30));
+        verticalSlider->setMaximum(10);
+        verticalSlider->setOrientation(Qt::Horizontal);
+        verticalSlider->setTickPosition(QSlider::TicksAbove);
+        verticalSlider->setTickInterval(0);
+        Depth_show_4 = new QLabel(widget_37);
         Depth_show_4->setObjectName(QString::fromUtf8("Depth_show_4"));
-        Depth_show_4->setGeometry(QRect(830, 410, 81, 42));
+        Depth_show_4->setGeometry(QRect(10, 120, 81, 42));
         Depth_show_4->setFont(font7);
         Depth_show_4->setStyleSheet(QString::fromUtf8("color:rgb(226,226,226)"));
+        verticalSlider_2 = new QSlider(widget_37);
+        verticalSlider_2->setObjectName(QString::fromUtf8("verticalSlider_2"));
+        verticalSlider_2->setGeometry(QRect(90, 120, 300, 30));
+        verticalSlider_2->setMaximum(10);
+        verticalSlider_2->setOrientation(Qt::Horizontal);
+        verticalSlider_2->setTickPosition(QSlider::TicksAbove);
+        verticalSlider_2->setTickInterval(0);
+        label_151 = new QLabel(page_7);
+        label_151->setObjectName(QString::fromUtf8("label_151"));
+        label_151->setGeometry(QRect(400, 0, 730, 41));
+        label_151->setStyleSheet(QString::fromUtf8("background-color:rgb(0, 74, 189);\n"
+"color: rgb(185, 129, 168);\n"
+"font-size:18px;\n"
+"font-weight:700;\n"
+"border-radius:10px;\n"
+"border:2px dashed rgb(109, 156, 237)"));
+        label_151->setAlignment(Qt::AlignCenter);
+        frame_58 = new QFrame(page_7);
+        frame_58->setObjectName(QString::fromUtf8("frame_58"));
+        frame_58->setGeometry(QRect(400, 40, 730, 381));
+        frame_58->setStyleSheet(QString::fromUtf8("background-color:rgb(7, 22, 79);\n"
+"border:2px dashed rgb(109, 156, 237);\n"
+""));
+        frame_58->setFrameShape(QFrame::StyledPanel);
+        frame_58->setFrameShadow(QFrame::Raised);
+        widget_38 = new QWidget(frame_58);
+        widget_38->setObjectName(QString::fromUtf8("widget_38"));
+        widget_38->setGeometry(QRect(10, 10, 711, 361));
+        widget_38->setStyleSheet(QString::fromUtf8("border:none;"));
+        gaugeWatchZ = new GaugeWatch(widget_38);
+        gaugeWatchZ->setObjectName(QString::fromUtf8("gaugeWatchZ"));
+        gaugeWatchZ->setGeometry(QRect(520, 20, 150, 150));
+        gaugeWatchZ->setMinValue(-5.000000000000000);
+        gaugeWatchZ->setMaxValue(5.000000000000000);
+        gaugeWatchY = new GaugeWatch(widget_38);
+        gaugeWatchY->setObjectName(QString::fromUtf8("gaugeWatchY"));
+        gaugeWatchY->setGeometry(QRect(280, 20, 150, 150));
+        gaugeWatchY->setMinValue(-5.000000000000000);
+        gaugeWatchY->setMaxValue(5.000000000000000);
+        gaugeWatchX = new GaugeWatch(widget_38);
+        gaugeWatchX->setObjectName(QString::fromUtf8("gaugeWatchX"));
+        gaugeWatchX->setGeometry(QRect(40, 20, 150, 150));
+        gaugeWatchX->setMinValue(-5.000000000000000);
+        gaugeWatchX->setMaxValue(5.000000000000000);
+        VelocityX = new QLabel(widget_38);
+        VelocityX->setObjectName(QString::fromUtf8("VelocityX"));
+        VelocityX->setGeometry(QRect(40, 210, 161, 42));
+        VelocityX->setFont(font7);
+        VelocityX->setStyleSheet(QString::fromUtf8("color:rgb(226,226,226)"));
+        AccelX = new QLabel(widget_38);
+        AccelX->setObjectName(QString::fromUtf8("AccelX"));
+        AccelX->setGeometry(QRect(40, 260, 151, 42));
+        AccelX->setFont(font7);
+        AccelX->setStyleSheet(QString::fromUtf8("color:rgb(226,226,226)"));
+        VelocityY = new QLabel(widget_38);
+        VelocityY->setObjectName(QString::fromUtf8("VelocityY"));
+        VelocityY->setGeometry(QRect(280, 210, 211, 42));
+        VelocityY->setFont(font7);
+        VelocityY->setStyleSheet(QString::fromUtf8("color:rgb(226,226,226)"));
+        AccelY = new QLabel(widget_38);
+        AccelY->setObjectName(QString::fromUtf8("AccelY"));
+        AccelY->setGeometry(QRect(280, 260, 229, 42));
+        AccelY->setFont(font7);
+        AccelY->setStyleSheet(QString::fromUtf8("color:rgb(226,226,226)"));
+        VelocityZ = new QLabel(widget_38);
+        VelocityZ->setObjectName(QString::fromUtf8("VelocityZ"));
+        VelocityZ->setGeometry(QRect(520, 210, 191, 42));
+        VelocityZ->setFont(font7);
+        VelocityZ->setStyleSheet(QString::fromUtf8("color:rgb(226,226,226)"));
+        AccelZ = new QLabel(widget_38);
+        AccelZ->setObjectName(QString::fromUtf8("AccelZ"));
+        AccelZ->setGeometry(QRect(520, 260, 201, 42));
+        AccelZ->setFont(font7);
+        AccelZ->setStyleSheet(QString::fromUtf8("color:rgb(226,226,226)"));
+        label_152 = new QLabel(page_7);
+        label_152->setObjectName(QString::fromUtf8("label_152"));
+        label_152->setGeometry(QRect(1130, 0, 501, 41));
+        label_152->setStyleSheet(QString::fromUtf8("background-color:rgb(0, 74, 189);\n"
+"color: rgb(185, 129, 168);\n"
+"font-size:18px;\n"
+"font-weight:700;\n"
+"border-radius:10px;\n"
+"border:2px dashed rgb(109, 156, 237)"));
+        label_152->setAlignment(Qt::AlignCenter);
+        frame_59 = new QFrame(page_7);
+        frame_59->setObjectName(QString::fromUtf8("frame_59"));
+        frame_59->setGeometry(QRect(1130, 40, 501, 421));
+        frame_59->setStyleSheet(QString::fromUtf8("background-color:rgb(7, 22, 79);\n"
+"border:2px dashed rgb(109, 156, 237);\n"
+""));
+        frame_59->setFrameShape(QFrame::StyledPanel);
+        frame_59->setFrameShadow(QFrame::Raised);
+        widget_39 = new QWidget(frame_59);
+        widget_39->setObjectName(QString::fromUtf8("widget_39"));
+        widget_39->setGeometry(QRect(10, 10, 481, 401));
+        widget_39->setStyleSheet(QString::fromUtf8("border:none;"));
+        progressThree_3 = new ProgressThree(widget_39);
+        progressThree_3->setObjectName(QString::fromUtf8("progressThree_3"));
+        progressThree_3->setGeometry(QRect(170, 110, 300, 30));
+        progressThree_3->setValue1(1500);
+        progressThree_3->setValue2(400);
+        progressThree_3->setValue3(0);
+        progressThree_3->setColor1(QColor(0, 255, 0));
+        progressThree_3->setColor2(QColor(255, 255, 255));
+        progressThree_2 = new ProgressThree(widget_39);
+        progressThree_2->setObjectName(QString::fromUtf8("progressThree_2"));
+        progressThree_2->setGeometry(QRect(170, 60, 300, 30));
+        progressThree_2->setValue1(1500);
+        progressThree_2->setValue2(400);
+        progressThree_2->setValue3(0);
+        progressThree_2->setColor1(QColor(0, 255, 0));
+        progressThree_2->setColor2(QColor(255, 255, 255));
+        progressThree_6 = new ProgressThree(widget_39);
+        progressThree_6->setObjectName(QString::fromUtf8("progressThree_6"));
+        progressThree_6->setGeometry(QRect(170, 260, 300, 30));
+        progressThree_6->setValue1(1500);
+        progressThree_6->setValue2(400);
+        progressThree_6->setValue3(0);
+        progressThree_6->setColor1(QColor(0, 255, 0));
+        progressThree_6->setColor2(QColor(255, 255, 255));
+        servoChannel_6 = new QLabel(widget_39);
+        servoChannel_6->setObjectName(QString::fromUtf8("servoChannel_6"));
+        servoChannel_6->setGeometry(QRect(290, 260, 50, 30));
+        servoChannel_6->setStyleSheet(QString::fromUtf8("background-color:transparent;\n"
+"color:black;\n"
+"font-weight:700;\n"
+"font-size:18px;"));
+        progressThree_7 = new ProgressThree(widget_39);
+        progressThree_7->setObjectName(QString::fromUtf8("progressThree_7"));
+        progressThree_7->setGeometry(QRect(170, 310, 300, 30));
+        progressThree_7->setValue1(1500);
+        progressThree_7->setValue2(400);
+        progressThree_7->setValue3(0);
+        progressThree_7->setColor1(QColor(0, 255, 0));
+        progressThree_7->setColor2(QColor(255, 255, 255));
+        progressThree_1 = new ProgressThree(widget_39);
+        progressThree_1->setObjectName(QString::fromUtf8("progressThree_1"));
+        progressThree_1->setGeometry(QRect(170, 10, 300, 30));
+        progressThree_1->setValue1(1500);
+        progressThree_1->setValue2(400);
+        progressThree_1->setValue3(0);
+        progressThree_1->setColor1(QColor(0, 255, 0));
+        progressThree_1->setColor2(QColor(255, 255, 255));
+        progressThree_4 = new ProgressThree(widget_39);
+        progressThree_4->setObjectName(QString::fromUtf8("progressThree_4"));
+        progressThree_4->setGeometry(QRect(170, 160, 300, 30));
+        progressThree_4->setValue1(1500);
+        progressThree_4->setValue2(400);
+        progressThree_4->setValue3(0);
+        progressThree_4->setColor1(QColor(0, 255, 0));
+        progressThree_4->setColor2(QColor(255, 255, 255));
+        progressThree_5 = new ProgressThree(widget_39);
+        progressThree_5->setObjectName(QString::fromUtf8("progressThree_5"));
+        progressThree_5->setGeometry(QRect(170, 210, 300, 30));
+        progressThree_5->setValue1(1500);
+        progressThree_5->setValue2(400);
+        progressThree_5->setValue3(0);
+        progressThree_5->setColor1(QColor(0, 255, 0));
+        progressThree_5->setColor2(QColor(255, 255, 255));
+        servoChannel_2 = new QLabel(widget_39);
+        servoChannel_2->setObjectName(QString::fromUtf8("servoChannel_2"));
+        servoChannel_2->setGeometry(QRect(290, 60, 50, 30));
+        servoChannel_2->setStyleSheet(QString::fromUtf8("background-color:transparent;\n"
+"color:black;\n"
+"font-weight:700;\n"
+"font-size:18px;"));
+        servoChannel_3 = new QLabel(widget_39);
+        servoChannel_3->setObjectName(QString::fromUtf8("servoChannel_3"));
+        servoChannel_3->setGeometry(QRect(290, 110, 50, 30));
+        servoChannel_3->setStyleSheet(QString::fromUtf8("background-color:transparent;\n"
+"color:black;\n"
+"font-weight:700;\n"
+"font-size:18px;"));
+        servoChannel_4 = new QLabel(widget_39);
+        servoChannel_4->setObjectName(QString::fromUtf8("servoChannel_4"));
+        servoChannel_4->setGeometry(QRect(290, 160, 50, 30));
+        servoChannel_4->setStyleSheet(QString::fromUtf8("background-color:transparent;\n"
+"color:black;\n"
+"font-weight:700;\n"
+"font-size:18px;"));
+        servoChannel_5 = new QLabel(widget_39);
+        servoChannel_5->setObjectName(QString::fromUtf8("servoChannel_5"));
+        servoChannel_5->setGeometry(QRect(290, 210, 50, 30));
+        servoChannel_5->setStyleSheet(QString::fromUtf8("background-color:transparent;\n"
+"color:black;\n"
+"font-weight:700;\n"
+"font-size:18px;"));
+        progressThree_8 = new ProgressThree(widget_39);
+        progressThree_8->setObjectName(QString::fromUtf8("progressThree_8"));
+        progressThree_8->setGeometry(QRect(170, 360, 300, 30));
+        progressThree_8->setValue1(1500);
+        progressThree_8->setValue2(400);
+        progressThree_8->setValue3(0);
+        progressThree_8->setColor1(QColor(0, 255, 0));
+        progressThree_8->setColor2(QColor(255, 255, 255));
+        servoChannel_7 = new QLabel(widget_39);
+        servoChannel_7->setObjectName(QString::fromUtf8("servoChannel_7"));
+        servoChannel_7->setGeometry(QRect(290, 310, 50, 30));
+        servoChannel_7->setStyleSheet(QString::fromUtf8("background-color:transparent;\n"
+"color:black;\n"
+"font-weight:700;\n"
+"font-size:18px;"));
+        servoChannel_8 = new QLabel(widget_39);
+        servoChannel_8->setObjectName(QString::fromUtf8("servoChannel_8"));
+        servoChannel_8->setGeometry(QRect(290, 360, 50, 30));
+        servoChannel_8->setStyleSheet(QString::fromUtf8("background-color:transparent;\n"
+"color:black;\n"
+"font-weight:700;\n"
+"font-size:18px;"));
+        servoChannel_1 = new QLabel(widget_39);
+        servoChannel_1->setObjectName(QString::fromUtf8("servoChannel_1"));
+        servoChannel_1->setGeometry(QRect(290, 10, 50, 30));
+        servoChannel_1->setStyleSheet(QString::fromUtf8("background-color:transparent;\n"
+"color:black;\n"
+"font-weight:700;\n"
+"font-size:18px;"));
+        channel = new QLabel(widget_39);
+        channel->setObjectName(QString::fromUtf8("channel"));
+        channel->setGeometry(QRect(10, 0, 161, 42));
+        QFont font8;
+        font8.setPointSize(14);
+        font8.setBold(true);
+        channel->setFont(font8);
+        channel->setStyleSheet(QString::fromUtf8("color:rgb(226,226,226)"));
+        channel_2 = new QLabel(widget_39);
+        channel_2->setObjectName(QString::fromUtf8("channel_2"));
+        channel_2->setGeometry(QRect(10, 50, 161, 42));
+        channel_2->setFont(font8);
+        channel_2->setStyleSheet(QString::fromUtf8("color:rgb(226,226,226)"));
+        channel_3 = new QLabel(widget_39);
+        channel_3->setObjectName(QString::fromUtf8("channel_3"));
+        channel_3->setGeometry(QRect(10, 100, 161, 42));
+        channel_3->setFont(font8);
+        channel_3->setStyleSheet(QString::fromUtf8("color:rgb(226,226,226)"));
+        channel_4 = new QLabel(widget_39);
+        channel_4->setObjectName(QString::fromUtf8("channel_4"));
+        channel_4->setGeometry(QRect(10, 150, 161, 42));
+        channel_4->setFont(font8);
+        channel_4->setStyleSheet(QString::fromUtf8("color:rgb(226,226,226)"));
+        channel_5 = new QLabel(widget_39);
+        channel_5->setObjectName(QString::fromUtf8("channel_5"));
+        channel_5->setGeometry(QRect(10, 200, 161, 42));
+        channel_5->setFont(font8);
+        channel_5->setStyleSheet(QString::fromUtf8("color:rgb(226,226,226)"));
+        channel_6 = new QLabel(widget_39);
+        channel_6->setObjectName(QString::fromUtf8("channel_6"));
+        channel_6->setGeometry(QRect(10, 250, 161, 42));
+        channel_6->setFont(font8);
+        channel_6->setStyleSheet(QString::fromUtf8("color:rgb(226,226,226)"));
+        channel_7 = new QLabel(widget_39);
+        channel_7->setObjectName(QString::fromUtf8("channel_7"));
+        channel_7->setGeometry(QRect(10, 300, 161, 42));
+        channel_7->setFont(font8);
+        channel_7->setStyleSheet(QString::fromUtf8("color:rgb(226,226,226)"));
+        channel_8 = new QLabel(widget_39);
+        channel_8->setObjectName(QString::fromUtf8("channel_8"));
+        channel_8->setGeometry(QRect(10, 350, 161, 42));
+        channel_8->setFont(font8);
+        channel_8->setStyleSheet(QString::fromUtf8("color:rgb(226,226,226)"));
         stackedWidget->addWidget(page_7);
+        page_8 = new QWidget();
+        page_8->setObjectName(QString::fromUtf8("page_8"));
+        gridLayout_25 = new QGridLayout(page_8);
+        gridLayout_25->setObjectName(QString::fromUtf8("gridLayout_25"));
+        gridLayout_25->setContentsMargins(0, 0, 0, 1);
+        stackedWidget->addWidget(page_8);
 
-        gridLayout_5->addWidget(stackedWidget, 1, 0, 1, 1);
+        gridLayout_5->addWidget(stackedWidget, 0, 0, 1, 1);
 
 
         gridLayout_2->addWidget(widget_home, 1, 1, 1, 1);
@@ -2515,7 +2903,7 @@ public:
         pushButton_location_2->setDefault(true);
         pushButton->setDefault(true);
         pushButton_exit->setDefault(true);
-        stackedWidget->setCurrentIndex(9);
+        stackedWidget->setCurrentIndex(10);
         pushButton_transfor_2->setDefault(true);
         pushButton_transforToMono_3->setDefault(true);
 
@@ -2658,9 +3046,44 @@ public:
         Depth_show->setText(QCoreApplication::translate("MainWindow", "Depth: 0.00", nullptr));
         Temp_show->setText(QCoreApplication::translate("MainWindow", "Tempture:0.00", nullptr));
         rov_status->setText(QCoreApplication::translate("MainWindow", "Power_Val:0.00", nullptr));
+        Depth_show_3->setText(QCoreApplication::translate("MainWindow", "\346\267\261\345\272\246\357\274\2320.0m", nullptr));
+        label_149->setText(QCoreApplication::translate("MainWindow", "\345\247\277\346\200\201\344\277\241\346\201\257", nullptr));
+        Roll_show_2->setText(QCoreApplication::translate("MainWindow", "\346\250\252\346\273\232\350\247\222(Roll)\357\274\232", nullptr));
+        Roll_show_3->setText(QCoreApplication::translate("MainWindow", "\344\277\257\345\206\262\350\247\222(Pitch)\357\274\232", nullptr));
+        Roll_show_4->setText(QCoreApplication::translate("MainWindow", "\350\210\252\345\220\221\350\247\222(Yaw)\357\274\232", nullptr));
+        RollValue->setText(QCoreApplication::translate("MainWindow", "0.00\302\260", nullptr));
+        PitchValue->setText(QCoreApplication::translate("MainWindow", "0.00\302\260", nullptr));
+        YawValue->setText(QCoreApplication::translate("MainWindow", "0.00\302\260", nullptr));
+        label_150->setText(QCoreApplication::translate("MainWindow", "\347\201\257\345\205\211\344\277\241\346\201\257", nullptr));
         Depth_show_2->setText(QCoreApplication::translate("MainWindow", "\347\201\257\345\205\2111", nullptr));
-        Depth_show_3->setText(QCoreApplication::translate("MainWindow", "\346\267\261\345\272\246", nullptr));
-        Depth_show_4->setText(QCoreApplication::translate("MainWindow", "\347\201\257\345\205\2111", nullptr));
+        Depth_show_4->setText(QCoreApplication::translate("MainWindow", "\347\201\257\345\205\2112", nullptr));
+        label_151->setText(QCoreApplication::translate("MainWindow", "\351\200\237\345\272\246\344\277\241\346\201\257", nullptr));
+        gaugeWatchZ->setUnit(QCoreApplication::translate("MainWindow", "m/s", nullptr));
+        gaugeWatchY->setUnit(QCoreApplication::translate("MainWindow", "m/s", nullptr));
+        gaugeWatchX->setUnit(QCoreApplication::translate("MainWindow", "m/s", nullptr));
+        VelocityX->setText(QCoreApplication::translate("MainWindow", "VelocX:0.0", nullptr));
+        AccelX->setText(QCoreApplication::translate("MainWindow", "AccelX:0.0", nullptr));
+        VelocityY->setText(QCoreApplication::translate("MainWindow", "VelocY:0.0", nullptr));
+        AccelY->setText(QCoreApplication::translate("MainWindow", "AccelY:0.0", nullptr));
+        VelocityZ->setText(QCoreApplication::translate("MainWindow", "VelocZ:0.0", nullptr));
+        AccelZ->setText(QCoreApplication::translate("MainWindow", "AccelZ:0.0", nullptr));
+        label_152->setText(QCoreApplication::translate("MainWindow", "\346\216\250\350\277\233\345\231\250\344\277\241\346\201\257", nullptr));
+        servoChannel_6->setText(QCoreApplication::translate("MainWindow", "1500", nullptr));
+        servoChannel_2->setText(QCoreApplication::translate("MainWindow", "1500", nullptr));
+        servoChannel_3->setText(QCoreApplication::translate("MainWindow", "1500", nullptr));
+        servoChannel_4->setText(QCoreApplication::translate("MainWindow", "1500", nullptr));
+        servoChannel_5->setText(QCoreApplication::translate("MainWindow", "1500", nullptr));
+        servoChannel_7->setText(QCoreApplication::translate("MainWindow", "1500", nullptr));
+        servoChannel_8->setText(QCoreApplication::translate("MainWindow", "1500", nullptr));
+        servoChannel_1->setText(QCoreApplication::translate("MainWindow", "1500", nullptr));
+        channel->setText(QCoreApplication::translate("MainWindow", "ServoChannel1", nullptr));
+        channel_2->setText(QCoreApplication::translate("MainWindow", "ServoChannel2", nullptr));
+        channel_3->setText(QCoreApplication::translate("MainWindow", "ServoChannel3", nullptr));
+        channel_4->setText(QCoreApplication::translate("MainWindow", "ServoChannel4", nullptr));
+        channel_5->setText(QCoreApplication::translate("MainWindow", "ServoChannel5", nullptr));
+        channel_6->setText(QCoreApplication::translate("MainWindow", "ServoChannel6", nullptr));
+        channel_7->setText(QCoreApplication::translate("MainWindow", "ServoChannel7", nullptr));
+        channel_8->setText(QCoreApplication::translate("MainWindow", "ServoChannel8", nullptr));
         groupBox->setTitle(QCoreApplication::translate("MainWindow", "\346\243\200\346\265\213\344\277\241\346\201\257", nullptr));
         label_dectStart->setText(QCoreApplication::translate("MainWindow", "\350\265\267\345\247\213\346\240\207\350\256\260\357\274\232", nullptr));
         label_dectStart_input->setText(QString());

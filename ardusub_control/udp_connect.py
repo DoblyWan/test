@@ -36,6 +36,26 @@ class UDPProxy(object):
         self.tempture = 0.0
         self.depth = 0.0
 
+        # 新增: 灯光状态相关变量
+        self.light1_status = 0.0  # 默认关闭
+        self.light2_status = 0.0  # 默认关闭
+        self.last_light_update = 0   # 初始化为0
+        
+        # 新增: 推进器状态相关变量
+        self.thruster_status = {i: {"pwm": 1500, "power": 0} for i in range(1, 9)}
+        self.last_thruster_update = 0
+
+        # 初始化速度相关属性
+        self.vx = 0.0  # x轴速度 (m/s)
+        self.vy = 0.0  # y轴速度 (m/s)
+        self.vz = 0.0  # z轴速度 (m/s)
+        
+        # 初始化加速度相关属性
+        self.afx = 0.0  # x轴加速度 (m/s²)
+        self.afy = 0.0  # y轴加速度 (m/s²)
+        self.afz = 0.0  # z轴加速度 (m/s²)
+        self.yaw_rate = 0.0  # 偏航速率 (度/秒)
+
         print("[UDP] 启动")
 
         self.recv_thread = threading.Thread(target=self.recv)  
@@ -317,7 +337,10 @@ class UDPProxy(object):
 
     def send(self):
 
-       
+        # 初始化时间戳 (如果尚未初始化)
+        if not hasattr(self, 'last_light_update'):
+            self.last_light_update = time.time()
+
         while True:
             
             msg = control_ardusub.master.recv_match(blocking=True)
@@ -341,6 +364,42 @@ class UDPProxy(object):
                     self.status=1
                 elif(msg.base_mode == 81):
                     self.status=0
+            
+            # 速度数据
+            elif msg.get_type() == 'GLOBAL_POSITION_INT':
+                self.vx = msg.vx * 0.01  # cm/s -> m/s
+                self.vy = msg.vy * 0.01
+                self.vz = msg.vz * 0.01 
+            
+            # 加速度数据
+            elif msg.get_type() == 'RAW_IMU':
+                self.afx = msg.xacc * 0.001  # mG -> m/s²
+                self.afy = msg.yacc * 0.001
+                self.afz = msg.zacc * 0.001
+            
+            # # 灯光状态 (每1秒更新一次)
+            # elif msg.get_type() == 'SERVO_OUTPUT_RAW' and time.time() - self.last_light_update > 0.1:
+            #     self.light1_status = msg.servo10_raw
+            #     self.light2_status = msg.servo11_raw
+            #     self.last_light_update = time.time()
+
+
+            # 推进器状态 (每2秒更新一次)
+            elif msg.get_type() == 'SERVO_OUTPUT_RAW' and time.time() - self.last_thruster_update > 0.05:
+                self.thruster_status = {}
+                for i in range(1, 9):
+                    channel_value = getattr(msg, f'servo{i}_raw', 0)
+                    self.thruster_status[i] = {
+                        "pwm": channel_value,
+                        "power": abs(channel_value - 1500) / 5
+                    }
+                self.last_thruster_update = time.time()
+
+                # 灯光状态
+                self.light1_status = msg.servo10_raw
+                self.light2_status = msg.servo11_raw
+                self.last_light_update = time.time()
+
 
     def send_click(self):
 
@@ -359,7 +418,34 @@ class UDPProxy(object):
         data_tempture = struct.pack(">H", int(self.tempture))
 
 
+        # 打包速度数据
+        data_vx = struct.pack(">h", int(self.vx * 100))  # 0.01 m/s 精度
+        data_vy = struct.pack(">h", int(self.vy * 100))
+        data_vz = struct.pack(">h", int(self.vz * 100))
+        
+        # 打包加速度数据
+        data_afx = struct.pack(">h", int(self.afx * 1000))  # 0.01 m/s² 精度
+        data_afy = struct.pack(">h", int(self.afy * 1000))
+        data_afz = struct.pack(">h", int(self.afz * 1000))
 
+        # 打包偏航速率
+        data_yaw_rate = struct.pack(">h", int(self.yaw_rate * 100))  # 0.01 deg/s 精度
+        
+        # 打包灯光状态
+        light_status = 0
+        data_lights = struct.pack("B", light_status)
+
+        # 打包推进器状态 (每个推进器2字节，0-100%功率)
+        thruster_data = bytearray()
+        for i in range(1, 9):
+            # for byte in struct.pack(">h", self.thruster_status.get(i, {}).get("pwm", 0)):
+            #     thruster_data.append(byte)
+            for byte in struct.pack(">h", self.thruster_status.get(i, {}).get("pwm", 0)):
+                thruster_data.append(byte)
+
+        # 灯光状态
+        data_light1 = struct.pack(">h", int(self.light1_status))
+        data_light2 = struct.pack(">h", int(self.light2_status))
 
 
         data_head = [0xfb,0xfa,0xf9,0xf8,0x15,0x0f]
@@ -370,22 +456,30 @@ class UDPProxy(object):
         for num in range(len(data_head)):
             send_data.append(data_head[num])
 
-        for num in range(len(data_pitch)):
-            send_data.append(data_pitch[num])
+        # for num in range(len(data_pitch)):
+        #     send_data.append(data_pitch[num])
 
-        for num in range(len(data_roll)):
-            send_data.append(data_roll[num])
+        # for num in range(len(data_roll)):
+        #     send_data.append(data_roll[num])
 
-        for num in range(len(data_yaw)):
-            send_data.append(data_yaw[num])
+        # for num in range(len(data_yaw)):
+        #     send_data.append(data_yaw[num])
         
         
-        for num in range(len(data_depth)):
-            send_data.append(data_depth[num])
+        # for num in range(len(data_depth)):
+        #     send_data.append(data_depth[num])
 
-        for num in range(len(data_tempture)):
-            send_data.append(data_tempture[num])
+        # for num in range(len(data_tempture)):
+        #     send_data.append(data_tempture[num])
 
+        # 添加所有数据
+        for data in [data_pitch, data_roll, data_yaw, data_depth, data_tempture,
+                    data_vx, data_vy, data_vz, data_afx, data_afy, data_afz,
+                    data_yaw_rate, data_lights, thruster_data, data_light1, data_light2]:
+            for byte in data:
+                send_data.append(byte)
+
+        # 添加系统状态
         send_data.append(self.status)
 
         for num in range(len(data_end)):

@@ -4,7 +4,6 @@ FFmpegThread::FFmpegThread(QObject *parent) : QThread(parent)
     setObjectName("FFmpegThread");
     stopped = false;
     isPlay = false;
-    this->success = false;
 
     frameFinish = false;
     videoWidth = 0;
@@ -68,6 +67,16 @@ void FFmpegThread::initlib()
 
 bool FFmpegThread::init()
 {
+    // videoDecoder = avcodec_find_decoder_by_name("h264_cuvid");
+    // // videoDecoder = avcodec_find_decoder_by_name("h264_qsv");
+    // if (videoDecoder == NULL) {
+    //     qDebug() << TIMEMS << "video decoder not found";
+    //     return false;
+    // }
+    // else {
+    //     qDebug() << TIMEMS << "-------------------------------";
+    // }
+
     //在打开码流前指定各种参数比如:探测时间/超时时间/最大延时等
     //设置缓存大小,1080p可将值调大
     av_dict_set(&options, "buffer_size", "8192000", 0);
@@ -114,13 +123,13 @@ bool FFmpegThread::init()
 
         //获取视频流解码器,或者指定解码器
         videoCodec = videoStream->codec;
-        videoDecoder = avcodec_find_decoder(videoCodec->codec_id);
+        // videoDecoder = avcodec_find_decoder(videoCodec->codec_id);
         // videoDecoder = avcodec_find_decoder(AV_CODEC_ID_H264);
 
         // qDebug() << "id:"<< static_cast<AVCodecID>(videoCodec->codec_id);
 
         // qDebug() << AV_CODEC_ID_MTS2;
-        // videoDecoder = avcodec_find_decoder_by_name("h264_cuvid");
+        videoDecoder = avcodec_find_decoder_by_name("h264_cuvid");
         // videoDecoder = avcodec_find_decoder_by_name("h264_qsv");
         if (videoDecoder == NULL) {
             qDebug() << TIMEMS << "video decoder not found";
@@ -230,7 +239,6 @@ bool FFmpegThread::init()
     //av_dump_format(avFormatContext, 0, url.toStdString().data(), 0);
 
     //qDebug() << TIMEMS << "init ffmpeg finsh";
-    this->success = true;
     return true;
 }
 
@@ -240,6 +248,10 @@ void FFmpegThread::run()
         //根据标志位执行初始化操作
         if (isPlay) {
             bool al = this->init();
+
+            // 发送初始化打开信号
+            emit judgeOpenSuccess(al);
+
             if(!al) stopped = 1;
             isPlay = false;
             continue;
@@ -370,6 +382,7 @@ FFmpegWidget::FFmpegWidget(QWidget *parent) : QWidget(parent)
 {
     thread = new FFmpegThread(this);
     connect(thread, SIGNAL(receiveImage(QImage)), this, SLOT(updateImage(QImage)));
+    connect(thread, SIGNAL(judgeOpenSuccess(bool)), this, SLOT(receiveOpenFLag(bool)));
     image = QImage();
 }
 
@@ -438,4 +451,10 @@ void FFmpegWidget::clear()
 {
     image = QImage();
     update();
+}
+
+void FFmpegWidget::receiveOpenFLag(bool flag)
+{
+    this->isOpenSuccess = flag;
+    emit openFinished(this);
 }
