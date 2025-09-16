@@ -202,6 +202,16 @@ class UDPProxy(object):
                 ardusub_connect.look_at((set_misson-40)*100)
                 print(set_misson)
                 print("相机云台的倾斜角度")
+
+            # # 双目摄像头
+            # elif(ord(data[5]) == 0x08):
+            #     set_misson = int(ord(data[6]))
+            #     if(set_misson == 1):
+            #         control_ardusub.press_release_buttons(control_ardusub.master,[2],self.x,self.y,self.z,self.r)
+            #         print("双目灯光灭")
+            #     elif(set_misson == 2):
+            #         control_ardusub.press_release_buttons(control_ardusub.master,[1],self.x,self.y,self.z,self.r)
+            #         print("双目灯光亮")
                 
 
         elif(ord(data[4]) == 0x0e):
@@ -396,10 +406,13 @@ class UDPProxy(object):
                 self.last_thruster_update = time.time()
 
                 # 灯光状态
-                self.light1_status = msg.servo10_raw
-                self.light2_status = msg.servo11_raw
+                # self.light1_status = msg.servo12_raw
+                # self.light2_status = msg.servo13_raw
+                
+            elif msg.get_type() == 'RC_CHANNELS' and time.time() - self.last_light_update > 0.2:
+                self.light1_status = msg.chan9_raw
+                self.light2_status = msg.chan10_raw
                 self.last_light_update = time.time()
-
 
     def send_click(self):
 

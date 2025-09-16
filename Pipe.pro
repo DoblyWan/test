@@ -4,6 +4,9 @@ QT       += sql
 QT       += webenginewidgets
 QT       += gamepad
 QT       += network
+QT       += xml
+QT       += multimedia
+QT       += multimediawidgets
 
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
@@ -27,14 +30,28 @@ SOURCES += \
     dialog.cpp \
     main.cpp \
     mainwindow.cpp \
-    pythonworker.cpp
+    player/histogramwidget.cpp \
+    player/player.cpp \
+    player/playercontrols.cpp \
+    player/playlistmodel.cpp \
+    player/videowidget.cpp \
+    printhandler.cpp \
+    pythonworker.cpp \
+    recordthread.cpp
 
 HEADERS += \
     control.h \
     customcontrol.h \
     include/dialog.h \
     mainwindow.h \
-    pythonworker.h
+    player/histogramwidget.h \
+    player/player.h \
+    player/playercontrols.h \
+    player/playlistmodel.h \
+    player/videowidget.h \
+    printhandler.h \
+    pythonworker.h \
+    recordthread.h
 
 FORMS += \
     control.ui \
@@ -70,5 +87,7 @@ RESOURCES += \
 
 INCLUDEPATH += $$PWD/ffmpeg
 include ($$PWD/ffmpeg/ffmpeg.pri)
+
+INCLUDEPATH += $$PWD/player
 
 

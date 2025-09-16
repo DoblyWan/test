@@ -22,8 +22,8 @@ QT_BEGIN_MOC_NAMESPACE
 QT_WARNING_PUSH
 QT_WARNING_DISABLE_DEPRECATED
 struct qt_meta_stringdata_FFmpegThread_t {
-    QByteArrayData data[14];
-    char stringdata0[97];
+    QByteArrayData data[17];
+    char stringdata0[129];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
@@ -45,12 +45,16 @@ QT_MOC_LITERAL(9, 71, 4), // "free"
 QT_MOC_LITERAL(10, 76, 4), // "play"
 QT_MOC_LITERAL(11, 81, 5), // "pause"
 QT_MOC_LITERAL(12, 87, 4), // "next"
-QT_MOC_LITERAL(13, 92, 4) // "stop"
+QT_MOC_LITERAL(13, 92, 4), // "stop"
+QT_MOC_LITERAL(14, 97, 11), // "startRecord"
+QT_MOC_LITERAL(15, 109, 8), // "filename"
+QT_MOC_LITERAL(16, 118, 10) // "stopRecord"
 
     },
     "FFmpegThread\0receiveImage\0\0image\0"
     "judgeOpenSuccess\0flag\0setUrl\0url\0init\0"
-    "free\0play\0pause\0next\0stop"
+    "free\0play\0pause\0next\0stop\0startRecord\0"
+    "filename\0stopRecord"
 };
 #undef QT_MOC_LITERAL
 
@@ -60,7 +64,7 @@ static const uint qt_meta_data_FFmpegThread[] = {
        8,       // revision
        0,       // classname
        0,    0, // classinfo
-       9,   14, // methods
+      11,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
@@ -68,17 +72,19 @@ static const uint qt_meta_data_FFmpegThread[] = {
        2,       // signalCount
 
  // signals: name, argc, parameters, tag, flags
-       1,    1,   59,    2, 0x06 /* Public */,
-       4,    1,   62,    2, 0x06 /* Public */,
+       1,    1,   69,    2, 0x06 /* Public */,
+       4,    1,   72,    2, 0x06 /* Public */,
 
  // slots: name, argc, parameters, tag, flags
-       6,    1,   65,    2, 0x0a /* Public */,
-       8,    0,   68,    2, 0x0a /* Public */,
-       9,    0,   69,    2, 0x0a /* Public */,
-      10,    0,   70,    2, 0x0a /* Public */,
-      11,    0,   71,    2, 0x0a /* Public */,
-      12,    0,   72,    2, 0x0a /* Public */,
-      13,    0,   73,    2, 0x0a /* Public */,
+       6,    1,   75,    2, 0x0a /* Public */,
+       8,    0,   78,    2, 0x0a /* Public */,
+       9,    0,   79,    2, 0x0a /* Public */,
+      10,    0,   80,    2, 0x0a /* Public */,
+      11,    0,   81,    2, 0x0a /* Public */,
+      12,    0,   82,    2, 0x0a /* Public */,
+      13,    0,   83,    2, 0x0a /* Public */,
+      14,    1,   84,    2, 0x0a /* Public */,
+      16,    0,   87,    2, 0x0a /* Public */,
 
  // signals: parameters
     QMetaType::Void, QMetaType::QImage,    3,
@@ -91,6 +97,8 @@ static const uint qt_meta_data_FFmpegThread[] = {
     QMetaType::Void,
     QMetaType::Void,
     QMetaType::Void,
+    QMetaType::Void,
+    QMetaType::Void, QMetaType::QString,   15,
     QMetaType::Void,
 
        0        // eod
@@ -112,6 +120,8 @@ void FFmpegThread::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id
         case 6: _t->pause(); break;
         case 7: _t->next(); break;
         case 8: _t->stop(); break;
+        case 9: _t->startRecord((*reinterpret_cast< const QString(*)>(_a[1]))); break;
+        case 10: _t->stopRecord(); break;
         default: ;
         }
     } else if (_c == QMetaObject::IndexOfMethod) {
@@ -162,13 +172,13 @@ int FFmpegThread::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 9)
+        if (_id < 11)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 9;
+        _id -= 11;
     } else if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
-        if (_id < 9)
+        if (_id < 11)
             *reinterpret_cast<int*>(_a[0]) = -1;
-        _id -= 9;
+        _id -= 11;
     }
     return _id;
 }

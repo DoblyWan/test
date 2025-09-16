@@ -37,8 +37,11 @@
 
 #include "control.h"
 
+#include "player.h"
+
 // web界面
 #include <QWebEngineView>
+#include "printhandler.h"
 
 #include "ffmpeg.h"
 #pragma execution_character_set("utf-8")
@@ -71,6 +74,17 @@ public:
     FFmpegWidget* rtsp3;
     FFmpegWidget* rtsp4;
     FFmpegWidget* rtsp5;
+
+
+    // 视频录制
+    QTimer *timer;
+    qint64 startTime;
+    qint64 elapsedSeconds = 0;
+
+    QString RECORD_DIR = "../../../videos";
+    QString today_video = QDateTime::currentDateTime().toString("yyyy-MM-dd_hh-mm-ss");
+    QString recordFilePath = QString("%1/app_%2.mp4").arg(RECORD_DIR).arg(today_video);
+    QString recordPath;
     //void fadeOutWidget(QWidget *widget, std::function<void()> callback = nullptr);
 
 private:
@@ -103,7 +117,13 @@ private:
     // python文件
     PythonWorker *pythonworker;
 
+    // 灯光强度
+    int light_level;
+    int light_AValue;
 
+    Player *player = new Player();
+
+public:
     void initControl();
     void initConnect();
     bool initDatabase();
@@ -118,9 +138,6 @@ private:
 
 
 
-    // 灯光强度
-    int light_level;
-    int light_AValue;
 
 private slots:
     //void closeTab(int index); // 关闭标签页
@@ -173,12 +190,20 @@ private slots:
 
     void onRtspFinished(FFmpegWidget *rtsp);
 
+    void updateTimer();
+
+    void on_record_toggled(bool checked);
+
 public slots:
     void handleDataModified(const std::unordered_map<std::string, std::string>& modifiedData);
+
     void handleStateTransfer(const std::unordered_map<QString,QString> &robotData);
+
+    void onCameraControl(int i, bool state);
 
 Q_SIGNALS:
     void lightSignal(int light_level, int value, int lightType);
+    void onOpenCamera(int i, bool open);
 
 };
 #endif // MAINWINDOW_H

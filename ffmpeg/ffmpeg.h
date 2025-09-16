@@ -7,6 +7,7 @@
 #endif
 
 #include "ffmpeghead.h"
+#include "recordthread.h"
 
 class FFmpegThread : public QThread
 {
@@ -45,6 +46,7 @@ private:
     AVDictionary *options;          //参数对象
     AVCodec *videoDecoder;          //视频解码
     AVCodec *audioDecoder;          //音频解码
+    RecordThread *recorder = nullptr; //录制
 
 signals:
     //收到图片信号
@@ -67,6 +69,10 @@ public slots:
     //停止采集线程
     void stop();
 
+    // 视频录制功能
+    void startRecord(const QString &filename);
+    void stopRecord();
+
 signals:
     void judgeOpenSuccess(bool flag);
 };
@@ -79,12 +85,12 @@ public:
     explicit FFmpegWidget(QWidget *parent = 0);
     ~FFmpegWidget();
     bool isOpenSuccess = true;
+    FFmpegThread *thread;
 
 protected:   
     void paintEvent(QPaintEvent *);
 
 private:
-    FFmpegThread *thread;
     QImage image;
 
 

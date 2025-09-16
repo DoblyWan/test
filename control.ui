@@ -961,10 +961,10 @@ border:2px dashed rgb(109, 156, 237);
        </rect>
       </property>
       <property name="value1">
-       <number>1500</number>
+       <number>100</number>
       </property>
       <property name="value2">
-       <number>400</number>
+       <number>100</number>
       </property>
       <property name="value3">
        <number>0</number>
@@ -994,10 +994,10 @@ border:2px dashed rgb(109, 156, 237);
        </rect>
       </property>
       <property name="value1">
-       <number>1500</number>
+       <number>100</number>
       </property>
       <property name="value2">
-       <number>400</number>
+       <number>100</number>
       </property>
       <property name="value3">
        <number>0</number>
@@ -1027,10 +1027,10 @@ border:2px dashed rgb(109, 156, 237);
        </rect>
       </property>
       <property name="value1">
-       <number>1500</number>
+       <number>100</number>
       </property>
       <property name="value2">
-       <number>400</number>
+       <number>100</number>
       </property>
       <property name="value3">
        <number>0</number>
@@ -1066,7 +1066,7 @@ font-weight:700;
 font-size:18px;</string>
       </property>
       <property name="text">
-       <string>1500</string>
+       <string>0%</string>
       </property>
      </widget>
      <widget class="ProgressThree" name="progressThree_7">
@@ -1079,10 +1079,10 @@ font-size:18px;</string>
        </rect>
       </property>
       <property name="value1">
-       <number>1500</number>
+       <number>100</number>
       </property>
       <property name="value2">
-       <number>400</number>
+       <number>100</number>
       </property>
       <property name="value3">
        <number>0</number>
@@ -1112,10 +1112,10 @@ font-size:18px;</string>
        </rect>
       </property>
       <property name="value1">
-       <number>1500</number>
+       <number>100</number>
       </property>
       <property name="value2">
-       <number>400</number>
+       <number>100</number>
       </property>
       <property name="value3">
        <number>0</number>
@@ -1145,10 +1145,10 @@ font-size:18px;</string>
        </rect>
       </property>
       <property name="value1">
-       <number>1500</number>
+       <number>100</number>
       </property>
       <property name="value2">
-       <number>400</number>
+       <number>100</number>
       </property>
       <property name="value3">
        <number>0</number>
@@ -1178,10 +1178,10 @@ font-size:18px;</string>
        </rect>
       </property>
       <property name="value1">
-       <number>1500</number>
+       <number>100</number>
       </property>
       <property name="value2">
-       <number>400</number>
+       <number>100</number>
       </property>
       <property name="value3">
        <number>0</number>
@@ -1217,7 +1217,7 @@ font-weight:700;
 font-size:18px;</string>
       </property>
       <property name="text">
-       <string>1500</string>
+       <string>0%</string>
       </property>
      </widget>
      <widget class="QLabel" name="servoChannel_3">
@@ -1236,7 +1236,7 @@ font-weight:700;
 font-size:18px;</string>
       </property>
       <property name="text">
-       <string>1500</string>
+       <string>0%</string>
       </property>
      </widget>
      <widget class="QLabel" name="servoChannel_4">
@@ -1255,7 +1255,7 @@ font-weight:700;
 font-size:18px;</string>
       </property>
       <property name="text">
-       <string>1500</string>
+       <string>0%</string>
       </property>
      </widget>
      <widget class="QLabel" name="servoChannel_5">
@@ -1274,7 +1274,7 @@ font-weight:700;
 font-size:18px;</string>
       </property>
       <property name="text">
-       <string>1500</string>
+       <string>0%</string>
       </property>
      </widget>
      <widget class="ProgressThree" name="progressThree_8">
@@ -1287,10 +1287,10 @@ font-size:18px;</string>
        </rect>
       </property>
       <property name="value1">
-       <number>1500</number>
+       <number>100</number>
       </property>
       <property name="value2">
-       <number>400</number>
+       <number>100</number>
       </property>
       <property name="value3">
        <number>0</number>
@@ -1326,7 +1326,7 @@ font-weight:700;
 font-size:18px;</string>
       </property>
       <property name="text">
-       <string>1500</string>
+       <string>0%</string>
       </property>
      </widget>
      <widget class="QLabel" name="servoChannel_8">
@@ -1345,7 +1345,7 @@ font-weight:700;
 font-size:18px;</string>
       </property>
       <property name="text">
-       <string>1500</string>
+       <string>0%</string>
       </property>
      </widget>
      <widget class="QLabel" name="servoChannel_1">
@@ -1364,7 +1364,7 @@ font-weight:700;
 font-size:18px;</string>
       </property>
       <property name="text">
-       <string>1500</string>
+       <string>0%</string>
       </property>
      </widget>
      <widget class="QLabel" name="channel_9">
@@ -1602,7 +1602,7 @@ border:2px dashed rgb(109, 156, 237);
       <string notr="true">border:none;
 border-bottom: 2px dashed rgb(109, 156, 237);</string>
      </property>
-     <widget class="SwitchButton" name="switchButton_3">
+     <widget class="SwitchButton" name="monocularCameraA1Switch">
       <property name="geometry">
        <rect>
         <x>240</x>
@@ -1635,7 +1635,7 @@ border:none</string>
        <string>单目摄像头1</string>
       </property>
      </widget>
-     <widget class="SwitchButton" name="switchButton_4">
+     <widget class="SwitchButton" name="monocularCameraA2Switch">
       <property name="geometry">
        <rect>
         <x>240</x>
@@ -1668,7 +1668,7 @@ border:none</string>
        <string>单目摄像头2</string>
       </property>
      </widget>
-     <widget class="SwitchButton" name="switchButton_5">
+     <widget class="SwitchButton" name="binocularCameraSwitch">
       <property name="geometry">
        <rect>
         <x>240</x>
@@ -1802,7 +1802,7 @@ border:none</string>
       <string>单目摄像头2</string>
      </property>
     </widget>
-    <widget class="SwitchButton" name="switchButton_6">
+    <widget class="SwitchButton" name="monocularCameraB1Switch">
      <property name="geometry">
       <rect>
        <x>310</x>
@@ -1812,7 +1812,7 @@ border:none</string>
       </rect>
      </property>
     </widget>
-    <widget class="SwitchButton" name="switchButton_7">
+    <widget class="SwitchButton" name="monocularCameraB2Switch">
      <property name="geometry">
       <rect>
        <x>310</x>

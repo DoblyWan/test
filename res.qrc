@@ -39,5 +39,11 @@
         <file>images/camera-switching.png</file>
         <file>images/icon.jpg</file>
         <file>images/report.png</file>
+        <file>images/endrecord.png</file>
+        <file>images/record.png</file>
+        <file>images/recording.png</file>
+        <file>images/startrecord.png</file>
+        <file>images/unrecord.png</file>
+        <file>images/unrecordhover.png</file>
     </qresource>
 </RCC>

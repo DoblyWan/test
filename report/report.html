@@ -9,14 +9,44 @@
             size: A4;
             margin: 0;
         }
-        
+
+
+
         body {
             margin: 0;
             padding: 0;
+            background-color: rgb(46, 52, 54);
             font-family: "SimSun", serif;
             font-size: 12pt;
+            padding: 40px 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
         }
-        
+
+
+        /* body {
+            background: linear-gradient(135deg, #1a2980, #26d0ce);
+            color: #333;
+            min-height: 100vh;
+            padding: 40px 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        } */
+
+        .container {
+            position: relative;
+            max-width: 1200px;
+            width: 22cm;
+            background: rgba(255, 255, 255, 0.93);
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            padding: 30px;
+            padding-top: 50px;
+            animation: fadeIn 1s ease-out;
+        }
+
         .page {
             width: 21cm;
             height: 29.7cm;
@@ -27,7 +57,7 @@
             box-shadow: 0 0 0 1px black inset;
             page-break-after: always;
         }
-        
+
         .corner {
             width: 20px;
             height: 20px;
@@ -35,69 +65,70 @@
             box-sizing: border-box;
             transform: rotate(180deg);
         }
-        
+
         .top-left {
             top: 1.5cm;
             left: 1.5cm;
             border-left: 2px solid black;
             border-top: 2px solid black;
         }
-        
+
         .top-right {
             top: 1.5cm;
             right: 1.5cm;
             border-right: 2px solid black;
             border-top: 2px solid black;
         }
-        
+
         .bottom-left {
             bottom: 1.5cm;
             left: 1.5cm;
             border-left: 2px solid black;
             border-bottom: 2px solid black;
         }
-        
+
         .bottom-right {
             bottom: 1.5cm;
             right: 1.5cm;
             border-right: 2px solid black;
             border-bottom: 2px solid black;
         }
-        
+
         h2,
         h3,
         h4 {
             margin: 16px 0 10px 0;
             font-weight: bold;
         }
-        
+
         h2 {
             font-family: "Microsoft YaHei", sans-serif;
             font-size: 16pt;
             text-align: center;
         }
-        
+
         h3 {
             font-family: "Microsoft YaHei", sans-serif;
             font-size: 12pt;
             text-align: left;
         }
-        
+
         h4 {
             font-family: "DengXian", sans-serif;
             font-size: 12pt;
             text-align: center;
             font-weight: normal;
         }
-        
+
         table {
             width: 100%;
             border-collapse: collapse;
             table-layout: fixed;
             margin-bottom: 20px;
         }
+
         /* 第二页工程概况表格：较大行高 */
-        
+
         .table-large td,
         .table-large th {
             height: 32px;
@@ -108,12 +139,13 @@
             padding: 4px;
             word-wrap: break-word;
         }
-        
+
         .table-large .row-19 td {
             height: 110px !important;
         }
+
         /* 第三页缺陷等级表格：紧凑行高 */
-        
+
         .table-compact td,
         .table-compact th {
             height: 22px;
@@ -124,149 +156,358 @@
             padding: 4px;
             word-wrap: break-word;
         }
-        
+
         th,
         .gray-bg,
         .merge-title {
             background-color: #e6e6e6;
             font-weight: bold;
         }
-        
+
         .merge-title {
             font-size: 14pt;
             height: 28px;
         }
-        
+
         .sign-line {
             margin-top: 10px;
             text-align: center;
             font-family: "DengXian", "SimSun", serif;
             font-size: 12pt;
         }
-        
+
         .icon {
             margin-top: 20px;
             width: 150px;
             height: 150px;
         }
-        
+
         .icon img {
             width: 100%;
             height: 100%;
         }
-        
+
         h1 {
             text-align: center;
             font-size: 52px;
         }
-        
+
         .title {
             margin-bottom: 200px;
         }
-        
+
         .info p {
             font-size: 18px;
         }
-        
+
         .prodate {
             position: absolute;
             width: 642.5px;
-            bottom: 2cm;
+            bottom: 2.5cm;
             text-align: center;
             font-size: 20px;
             font-weight: 700;
         }
-        
+
         table.model td {
             padding-top: 10px;
             padding-bottom: 10px;
         }
+
+        .section-title {
+            font-weight: bold;
+            font-size: 1.1em;
+        }
+
+        .note {
+            font-size: 12px;
+            text-align: center;
+        }
+
+        p.basis_title {
+            text-align: center;
+        }
+
+        .tool {
+            position: fixed;
+            transform: translateX(-50%) translateX(14cm);
+            background: rgba(255, 255, 255, 0.93);
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            width: 50px;
+            height: 150px;
+            /* padding: 12px; */
+        }
+
+
+        .function {
+            position: absolute;
+            width: 24px;
+            height: 24px;
+            border: none;
+            background-color: transparent;
+
+        }
+
+        .no-print {
+            top: 10px;
+            left: 13px;
+            background-image: url(./images/printer.png);
+        }
+
+        .no-reload {
+            top: 44px;
+            left: 13px;
+            background-image: url(./images/reload.png);
+            background-repeat: no-repeat;
+            background-size: 90%;
+        }
+
+        .no-save {
+            top: 78px;
+            left: 13px;
+            background-image: url(./images/save.png);
+            background-repeat: no-repeat;
+            background-size: 105%;
+        }
+
+        .no-return {
+            top: 112px;
+            left: 13px;
+            background-image: url(./images/return.png);
+            background-repeat: no-repeat;
+            background-size: 100%;
+        }
+
+        button:hover {
+            cursor: pointer;
+        }
+
+        @media print {
+            body * {
+                visibility: hidden;
+                /* 隐藏所有内容 */
+            }
+
+            .container,
+            .container * {
+                visibility: visible;
+                /* 显示 container 内所有内容 */
+            }
+
+            .container {
+                position: absolute;
+                left: 0;
+                top: 0;
+                padding: 0;
+                width: 100%;
+            }
+
+            .tool {
+                display: none !important;
+                /* 确保工具栏不打印 */
+            }
+        }
     </style>
+
+    <script src="qrc:///qtwebchannel/qwebchannel.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            // 初始化 WebChannel
+            new QWebChannel(qt.webChannelTransport, function (channel) {
+                window.qt = channel.objects.qt;
+            });
+        });
+
+        function qtPrint() {
+            if (window.qt && window.qt.print) {
+                qt.print(); // 调用 Qt 打印
+            } else {
+                window.print(); // 回退到浏览器打印
+                console.log("Using browser print instead of Qt print");
+            }
+        }
+    </script>
 </head>
 
 <body>
 
 
-    <!-- 第一页 -->
-    <div class="page">
-        <div class="corner top-left"></div>
-        <div class="corner top-right"></div>
-        <div class="corner bottom-left"></div>
-        <div class="corner bottom-right"></div>
+    <div class="tool">
+        <button onclick="qtPrint()" class="function no-print"></button>
+        <button onclick="location.reload()" class="function no-reload"></button>
+        <button onclick="location.reload()" class="function no-save"></button>
+        <button onclick="window.scrollTo({ top: 0, behavior: 'smooth' })" class="function no-return"></button>
 
-        <div class="icon">
-            <img src="./images/logo.png">
-        </div>
-
-        <div class="title">
-            <h1>
-                水下缺陷数据采集系统报告
-            </h1>
-        </div>
-
-        <div class="info">
-            <p>
-                工程名称：横长泾路泵站片区宋家港雨污水
-            </p>
-
-            <p>
-                检测单位：中国建筑第七工程局有限公司
-            </p>
-        </div>
-
-        <footer class="prodate">
-            2019-05-20
-        </footer>
     </div>
 
+    <div class="container">
+        <!-- 第一页 -->
+        <div class="page">
+            <div class="corner top-left"></div>
+            <div class="corner top-right"></div>
+            <div class="corner bottom-left"></div>
+            <div class="corner bottom-right"></div>
+
+            <div class="icon">
+                <img src="./images/logo.png">
+            </div>
+
+            <div class="title">
+                <h1>
+                    水下缺陷数据采集系统报告
+                </h1>
+            </div>
+
+            <div class="info">
+                <p>
+                    工程名称：DB-20220908111518712-34051
+                </p>
+
+                <p>
+                    检测单位：xx公司
+                </p>
+            </div>
+
+            <footer class="prodate">
+                2025-07-02
+            </footer>
+        </div>
 
 
-    <!-- 第二张页：工程概况 -->
-    <div class="page">
-        <div class="corner top-left"></div>
-        <div class="corner top-right"></div>
-        <div class="corner bottom-left"></div>
-        <div class="corner bottom-right"></div>
 
-        <h2>管道视频检测报告</h2>
+        <!-- 第二张页：工程概况 -->
+        <div class="page">
+            <div class="corner top-left"></div>
+            <div class="corner top-right"></div>
+            <div class="corner bottom-left"></div>
+            <div class="corner bottom-right"></div>
 
-        <table class="table-large">
+            <h2>水下缺陷数据采集、处理系统报告</h2>
+
+            <table class="table-large">
+                <tr>
+                    <td colspan="6" class="merge-title">工程概况一览表</td>
+                </tr>
+                <tr>
+                    <td class="gray-bg">坝区名称</td>
+                    <td colspan="5">测试</td>
+                </tr>
+                <tr>
+                    <td class="gray-bg">坝区地点</td>
+                    <td colspan="5">平康路测试</td>
+                </tr>
+
+                <tr>
+                    <td class="gray-bg" rowspan="3">水库概况</td>
+                    <td colspan="5" rowspan="3" style="height: 75px;">
+                        此部分简要描述检测项目的背景、检测的目的和重要性。明确水库坝区检测的总体目标，例如评估坝体结构完整性、识别潜在安全隐患以及确保大坝的长期安全运行等。
+
+                    </td>
+
+                </tr>
+
+                <tr></tr>
+                <tr></tr>
+
+
+                <tr>
+                    <td class="gray-bg">检测负责人</td>
+                    <td colspan="2">xxx</td>
+                    <td class="gray-bg">检测日期</td>
+                    <td colspan="2">2025-07-02</td>
+                </tr>
+                <tr>
+                    <td class="gray-bg">检测时间段</td>
+                    <td colspan="2"></td>
+                    <td class="gray-bg">环境条件</td>
+                    <td colspan="2">（如水深、流速、能见度、水质、天气情况等</td>
+                </tr>
+                <tr>
+                    <td class="gray-bg">检测方式</td>
+                    <td colspan="2">在线检测/离线检测</td>
+                    <td class="gray-bg">检测时长</td>
+                    <td colspan="2"></td>
+                </tr>
+                <tr>
+                    <td class="gray-bg">检测深度(m)</td>
+                    <td colspan="2"></td>
+                    <td class="gray-bg">检测距离</td>
+                    <td colspan="2"></td>
+                </tr>
+
+                <tr>
+                    <td class="gray-bg" colspan="1">检测区域</td>
+                    <td colspan="5">平康路实验室水库</td>
+                </tr>
+
+                <tr>
+                    <td class="gray-bg" colspan="1">检测对象</td>
+                    <td colspan="5"> </td>
+                </tr>
+
+                <tr>
+                    <td class="gray-bg">坝体类型</td>
+                    <td colspan="2">重力坝、土石坝、拱坝等</td>
+                    <td class="gray-bg">坝体高度(m)</td>
+                    <td colspan="2"></td>
+                </tr>
+
+                <tr>
+                    <td class="gray-bg">坝体材料</td>
+                    <td colspan="2">混凝土、石料、沥青等</td>
+                    <td class="gray-bg">坝体运行时间</td>
+                    <td colspan="2"></td>
+                </tr>
+
+                <tr>
+                    <td class="gray-bg" rowspan="3">检测技术与设备</td>
+                    <td colspan="2">检测仪器设备名称</td>
+                    <td colspan="3">声纳检测仪、激光扫描仪、ROV（水下机器人）、高清摄像头</td>
+                </tr>
+
+                <tr>
+                    <td colspan="2">设备移动方式</td>
+                    <td colspan="3">自主航行、遥控操作</td>
+                </tr>
+
+                <tr>
+                    <td colspan="2">检测方法</td>
+                    <td colspan="3">视频检测/声纳检测/</td>
+                </tr>
+
+                <tr>
+                    <td colspan="6" class="gray-bg">备注</td>
+                </tr>
+                <tr class="row-19">
+                    <td colspan="6"></td>
+                </tr>
+
+
+                <!-- <tr>
+                <td class="gray-bg" rowspan="5">采用仪器设备和技术方法</td>
+                <td colspan="2">检测仪器设备</td>
+                <td colspan="3">双螺旋推进器(管狼一号)</td>
+            </tr>
+
             <tr>
-                <td colspan="6" class="merge-title">工程概况一览表</td>
+                <td colspan="2">设备移动方式</td>
+                <td colspan="3">爬行器自走</td>
             </tr>
             <tr>
-                <td class="gray-bg">工程名称</td>
-                <td colspan="5">污水管道检测</td>
+                <td colspan="2">管道封堵方法</td>
+                <td colspan="3">气囊</td>
             </tr>
             <tr>
-                <td class="gray-bg">工程地点</td>
-                <td colspan="5"></td>
+                <td colspan="2">临时排水方法</td>
+                <td colspan="3">水泵临时抽水</td>
             </tr>
             <tr>
-                <td class="gray-bg">管道类型</td>
-                <td colspan="2">污水管道、雨水管道</td>
-                <td class="gray-bg">管道直径(mm)</td>
-                <td colspan="2">400/500/600</td>
-            </tr>
-            <tr>
-                <td class="gray-bg">管道材质</td>
-                <td colspan="2"></td>
-                <td class="gray-bg">管道年龄</td>
-                <td colspan="2">/</td>
-            </tr>
-            <tr>
-                <td class="gray-bg">长度(m)</td>
-                <td colspan="2"></td>
-                <td class="gray-bg">检测段数/长度(m)</td>
-                <td colspan="2"></td>
-            </tr>
-            <tr>
-                <td class="gray-bg">检测性质</td>
-                <td colspan="2">常规见证检验</td>
-                <td class="gray-bg">检测日期</td>
-                <td colspan="2"></td>
-            </tr>
-            <tr>
+                <td colspan="2">管道清洗方法</td>
+                <td colspan="3">高压水枪</td>
+            </tr> -->
+
+                <!-- <tr>
                 <td class="gray-bg" rowspan="5">采用仪器设备和技术方法</td>
                 <td colspan="2">检测仪器设备</td>
                 <td colspan="3">双螺旋推进器(管狼一号)</td>
@@ -327,212 +568,239 @@
             </tr>
             <tr class="row-19">
                 <td colspan="6"></td>
-            </tr>
-        </table>
+            </tr> -->
+            </table>
 
-        <div class="sign-line">
-            批准：&emsp;&emsp;&emsp;&emsp; 审核：&emsp;&emsp;&emsp;&emsp; 编制：&emsp;&emsp;&emsp;&emsp; 检测：
+
+            </table>
+
+            <div class="sign-line">
+                批准：&emsp;&emsp;&emsp;&emsp; 审核：&emsp;&emsp;&emsp;&emsp; 编制：&emsp;&emsp;&emsp;&emsp; 检测：
+            </div>
+        </div>
+
+
+        <!-- 三 -->
+        <div class="page">
+            <div class="corner top-left"></div>
+            <div class="corner top-right"></div>
+            <div class="corner bottom-left"></div>
+            <div class="corner bottom-right"></div>
+            <h2>附件一、检测依据说明</h2>
+
+            <div class="section">
+                <div class="section-title">1 - 混凝土裂缝</div>
+                <p class="basis_title">水下混凝土表面裂缝检测</p>
+
+                <table class="table-large">
+                    <thead>
+                        <tr>
+                            <th rowspan="2">输入</th>
+                            <th colspan="2">识别内容</th>
+                            <th rowspan="2">分类等级</th>
+                            <th rowspan="2">是否处理</th>
+                        </tr>
+                        <tr>
+                            <th>缝宽</th>
+                            <th>缝深</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        <tr>
+                            <td rowspan="4">图像或视频</td>
+                            <td>&delta; ≤ 0.2mm</td>
+                            <td>h ≤ 300mm</td>
+                            <td>A类（轻微宽细微裂缝）</td>
+                            <td>是</td>
+                        </tr>
+
+                        <tr>
+                            <td>0.2mm ≤ &delta; ≤ 0.3mm</td>
+                            <td>300mm < h ≤ 1000mm</td>
+                            <td>B类（表面层次裂缝）</td>
+                            <td>是</td>
+                        </tr>
+
+                        <tr>
+                            <td>0.3mm ≤ &delta; ≤ 0.5mm</td>
+                            <td>1000mm < h ≤ 5000mm</td>
+                            <td>C类（深层裂缝）</td>
+                            <td>是</td>
+                        </tr>
+
+                        <tr>
+                            <td>&delta; ＞ 0.5mm</td>
+                            <td>h > 5000mm</td>
+                            <td>D类（贯穿性裂缝）</td>
+                            <td>是</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <p class="note">（参考规范 DL/T 5251-2010 水工混凝土建筑物缺陷检测和评估技术规程）</p>
+            </div>
+
+            <div class="section">
+                <div class="section-title">2 - 混凝土腐蚀和空蚀</div>
+                <p>水下混凝土表面腐蚀和空蚀检测</p>
+
+                <table class="table-large">
+                    <thead>
+                        <tr>
+                            <th>输入</th>
+                            <th>识别内容</th>
+                            <th>分类</th>
+                            <th>是否处理</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td rowspan="4">图像或视频</td>
+                            <td>局部混凝土粗糙和外露</td>
+                            <td>A类</td>
+                            <td>不处理</td>
+                        </tr>
+
+                        <tr>
+                            <td>混凝土局部强度和硬度较大，表面轻微粗糙、有粉末不明显脱落（未露筋）</td>
+                            <td>B类</td>
+                            <td>修补处理</td>
+                        </tr>
+
+                        <tr>
+                            <td>混凝土结构外露，形成大面积腐蚀、剥落破坏</td>
+                            <td>C类</td>
+                            <td>修补处理，并将结构缺陷上报</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <p class="note">（参考规范 DL/T 5251-2010 水工混凝土建筑物缺陷检测和评估技术规程）</p>
+            </div>
+
+            <div class="section">
+                <div class="section-title">3 - 混凝土渗漏</div>
+                <p>水下混凝土渗漏检测</p>
+
+                <table class="table-large">
+                    <thead>
+                        <tr>
+                            <th>输入</th>
+                            <th>识别内容</th>
+                            <th>渗漏量</th>
+                            <th>分类等级</th>
+                            <th>是否处理</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td rowspan="3">图像或视频</td>
+                            <td>渗漏点</td>
+                            <td>轻微的湿痕</td>
+                            <td>A类（轻微渗漏，不影响结构安全）</td>
+                            <td>否</td>
+                        </tr>
+                        <tr>
+                            <td>局部有滴水现象</td>
+                            <td>可见水珠</td>
+                            <td>B类（一般渗漏，建议处理）</td>
+                            <td>是</td>
+                        </tr>
+                        <tr>
+                            <td>存在流水状</td>
+                            <td>连续水流</td>
+                            <td>C类（严重渗漏，必须处理）</td>
+                            <td>是</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <p class="note">（参考规范 DL/T 5251-2010 水工混凝土建筑物缺陷检测和评估技术规程）</p>
+            </div>
+        </div>
+
+        <!-- 第四页模板 -->
+        <div class="page">
+            <div class="corner top-left"></div>
+            <div class="corner top-right"></div>
+            <div class="corner bottom-left"></div>
+            <div class="corner bottom-right"></div>
+
+            <div style="height:25px"></div>
+            <table class="table-large model">
+                <tr>
+                    <td>录像文件</td>
+                    <td colspan="2">underwater_test1</td>
+                    <td>起始标记</td>
+                    <td>underwater</td>
+                    <td>终止标记</td>
+                    <td>test1</td>
+                </tr>
+                <tr>
+                    <td>钢体类型</td>
+                    <td colspan="2">重力坝</td>
+                    <td>坝体材料</td>
+                    <td>混凝土</td>
+                    <td>能见度</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>检测地点</td>
+                    <td colspan="2">平康路实验室</td>
+                    <td>检测设备</td>
+                    <td>机器人</td>
+                    <td>水深位置</td>
+                    <td>机器人</td>
+                </tr>
+                <tr>
+                    <td>检测负责人</td>
+                    <td colspan="2">XXX</td>
+                    <td>检测日期</td>
+                    <td colspan="3">2025/07/02<br>10:51:23</td>
+                </tr>
+                <tr>
+                    <td colspan="4">缺陷尺寸</td>
+                    <!-- <td>缺陷位置</td>
+                    <td>缺陷尺寸</td> -->
+                    <!-- <td>等级</td> -->
+                    <td>状况描述</td>
+                    <td colspan="2">照片编号或说明</td>
+                </tr>
+                <tr>
+                    <!-- <td>crack裂缝</td> -->
+                    <td colspan="4" style='font-family: "Times New Roman", Times, serif;'>Length:390.9mm Width:120.5mm
+                        <br> Area:10980.9mm² Depth:462.3mm
+                    </td>
+                    <!-- <td></td> -->
+                    <!-- <td></td> -->
+                    <td></td>
+                    <td colspan="2">1_0.jpg</td>
+                </tr>
+                <tr>
+                    <td>备注</td>
+                    <td colspan="6" style='font-family: "Times New Roman", Times, serif;'>Position:(-386, -282, 462)mm
+                    </td>
+                </tr>
+
+                <tr>
+                    <td colspan="7">
+                        <div style="height:460px; padding:20px">
+                            <img src="./images/result.png" style="width: 600px;height:460px" alt="">
+                        </div>
+                    </td>
+                </tr>
+            </table>
         </div>
     </div>
 
-    <!-- 第三张页：缺陷等级评定 -->
-    <div class="page">
-        <div class="corner top-left"></div>
-        <div class="corner top-right"></div>
-        <div class="corner bottom-left"></div>
-        <div class="corner bottom-right"></div>
-
-        <h2>附件一、检测依据说明</h2>
-
-        <h3>1.1、结构性缺陷评定及修复参照表</h3>
-        <h4>管段结构性缺陷等级评定对照表</h4>
-        <table class="table-compact">
-            <tr>
-                <th>等级</th>
-                <th>缺陷参数F</th>
-                <th colspan="3">损坏状况描述</th>
-            </tr>
-            <tr>
-                <td>I</td>
-                <td>F≤1</td>
-                <td colspan="3">无或有轻微缺陷，结构状况基本不受影响，但具有潜在变坏的可能</td>
-            </tr>
-            <tr>
-                <td>II</td>
-                <td>1&lt;F≤3</td>
-                <td colspan="3">管段缺陷明显超过一级，具有变坏的趋势</td>
-            </tr>
-            <tr>
-                <td>III</td>
-                <td>3&lt;F≤6</td>
-                <td colspan="3">管段缺陷严重，结构状况受到影响</td>
-            </tr>
-            <tr>
-                <td>IV</td>
-                <td>F&gt;6</td>
-                <td colspan="3">管段存在重大缺陷，损坏严重或即将导致破坏</td>
-            </tr>
-        </table>
-
-        <h4>管段修复等级划分</h4>
-        <table class="table-compact">
-            <tr>
-                <th>等级</th>
-                <th>修复指数RI</th>
-                <th colspan="3">修复建议及说明</th>
-            </tr>
-            <tr>
-                <td>I</td>
-                <td>RI≤1</td>
-                <td colspan="3">结构条件基本完好，不修复</td>
-            </tr>
-            <tr>
-                <td>II</td>
-                <td>1＜RI≤4</td>
-                <td colspan="3">结构在短期内不会发生破坏现象，但应做修复计划</td>
-            </tr>
-            <tr>
-                <td>III</td>
-                <td>4＜RI≤7</td>
-                <td colspan="3">结构在短期内可能会发生破坏，应尽快修复</td>
-            </tr>
-            <tr>
-                <td>IV</td>
-                <td>RI＞7</td>
-                <td colspan="3">结构已经发生或即将发生破坏，应立即修复</td>
-            </tr>
-        </table>
-
-        <h3>1.2、功能性缺陷评定及养护参照表</h3>
-        <h4>功能性缺陷等级评定</h4>
-        <table class="table-compact">
-            <tr>
-                <th>等级</th>
-                <th>缺陷参数</th>
-                <th colspan="3">运行状况说明</th>
-            </tr>
-            <tr>
-                <td>I</td>
-                <td>G≤1</td>
-                <td colspan="3">无或有轻微影响，管道运行基本不受影响</td>
-            </tr>
-            <tr>
-                <td>II</td>
-                <td>1&lt;G≤3</td>
-                <td colspan="3">管道过流有一定的受阻，运行受影响不大</td>
-            </tr>
-            <tr>
-                <td>III</td>
-                <td>3&lt;G≤6</td>
-                <td colspan="3">管道过流受阻比较严重，运行受到明显影响</td>
-            </tr>
-            <tr>
-                <td>IV</td>
-                <td>G&gt;6</td>
-                <td colspan="3">管道过流受阻很严重，即将或已经导致运行瘫痪</td>
-            </tr>
-        </table>
-
-        <h4>管段养护等级划分</h4>
-        <table class="table-compact">
-            <tr>
-                <th>养护等级</th>
-                <th>养护指数MI</th>
-                <th colspan="3">养护建议及说明</th>
-            </tr>
-            <tr>
-                <td>I</td>
-                <td>MI≤1</td>
-                <td colspan="3">没有明显需要处理的缺陷</td>
-            </tr>
-            <tr>
-                <td>II</td>
-                <td>1＜MI≤4</td>
-                <td colspan="3">没有立即进行处理的必要，但宜安排处理计划</td>
-            </tr>
-            <tr>
-                <td>III</td>
-                <td>4＜MI≤7</td>
-                <td colspan="3">根据基础数据进行全面的考虑，应尽快处理</td>
-            </tr>
-            <tr>
-                <td>IV</td>
-                <td>MI＞7</td>
-                <td colspan="3">输水功能受到严重影响，应立即进行处理</td>
-            </tr>
-        </table>
-
-    </div>
-
-    <!-- 第四页模板 -->
-    <div class="page">
-        <div class="corner top-left"></div>
-        <div class="corner top-right"></div>
-        <div class="corner bottom-left"></div>
-        <div class="corner bottom-right"></div>
-
-        <div style="height:25px"></div>
-        <table class="table-large model">
-            <tr>
-                <td>录像文件</td>
-                <td colspan="2">underwater_test1</td>
-                <td>起始标记</td>
-                <td>underwater</td>
-                <td>终止标记</td>
-                <td>test1</td>
-            </tr>
-            <tr>
-                <td>钢体类型</td>
-                <td colspan="2">重力坝</td>
-                <td>坝体材料</td>
-                <td>混凝土</td>
-                <td>能见度</td>
-                <td></td>
-            </tr>
-            <tr>
-                <td>检测地点</td>
-                <td colspan="2"></td>
-                <td>检测设备</td>
-                <td>机器人</td>
-                <td>水深位置</td>
-                <td>机器人</td>
-            </tr>
-            <tr>
-                <td>检测负责人</td>
-                <td colspan="2">中环养护</td>
-                <td>检测日期</td>
-                <td colspan="3">2024/11/7<br>10:51:23</td>
-            </tr>
-            <tr>
-                <td>缺陷部位代码</td>
-                <td>缺陷位置</td>
-                <td>缺陷尺寸</td>
-                <td>等级</td>
-                <td>状况描述</td>
-                <td colspan="2">照片编号或说明</td>
-            </tr>
-            <tr>
-                <td>crack裂缝<br>crack裂缝</td>
-                <td>4</td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td colspan="2">1_0.jpg</td>
-            </tr>
-            <tr>
-                <td>备注</td>
-                <td colspan="6"></td>
-            </tr>
-
-            <tr>
-                <td colspan="7">
-                    <div style="height:460px; padding:20px">
-                        <img src="./images/logo.png" style="height:460px" alt="">
-                    </div>
-                </td>
-            </tr>
-        </table>
-    </div>
+    <!-- <script>
+        function qtPrint() {
+            // 检查是否在Qt环境中
+            if (typeof qt !== 'undefined' && qt.print) {
+                qt.print(); // 调用Qt提供的打印接口
+            } else {
+                window.print(); // 普通浏览器的打印
+            }
+        }
+    </script> -->
 
 </body>
 

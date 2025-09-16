@@ -442,6 +442,7 @@ void Control::jetson_msg_get()
             // 7. 推进器功率 (31-46字节)
             for(int i=0; i<8; i++) {
                 thruster_power[i] = ((unsigned char)buf[31+2*i] << 8) + (unsigned char)buf[31+2*i+1];  // 0-100%
+                thruster_power[i] = (thruster_power[i] - 1500) / 4;
                 // if(thruster_power[0] != 1500 || thruster_power[4]!= 1500)
                 //     qDebug() << thruster_power[i] << " ";
                 // ProgressThree *p = ui->widget->findChild<ProgressThree*>(QString::fromStdString("progressThree_"+ std::to_string(i+1)));
@@ -451,32 +452,32 @@ void Control::jetson_msg_get()
                 // ui->widget->findChild<QLabel*>(QString("servoChannel_%1").arg(i+1))->setText(QString::number(thruster_power[0]));
             }
 
-            ui->progressThree_1->setValue1(thruster_power[0]);
-            ui->progressThree_1->setValue2(1900 - thruster_power[0]);
-            ui->progressThree_2->setValue1(thruster_power[1]);
-            ui->progressThree_2->setValue2(1900 - thruster_power[1]);
-            ui->progressThree_3->setValue1(thruster_power[2]);
-            ui->progressThree_3->setValue2(1900 - thruster_power[2]);
-            ui->progressThree_4->setValue1(thruster_power[3]);
-            ui->progressThree_4->setValue2(1900 - thruster_power[3]);
-            ui->progressThree_5->setValue1(thruster_power[4]);
-            ui->progressThree_5->setValue2(1900 - thruster_power[4]);
-            ui->progressThree_6->setValue1(thruster_power[5]);
-            ui->progressThree_6->setValue2(1900 - thruster_power[5]);
-            ui->progressThree_7->setValue1(thruster_power[6]);
-            ui->progressThree_7->setValue2(1900 - thruster_power[6]);
-            ui->progressThree_8->setValue1(thruster_power[7]);
-            ui->progressThree_8->setValue2(1900 - thruster_power[7]);
+            ui->progressThree_1->setValue1(100 + thruster_power[0]);
+            ui->progressThree_1->setValue2(100 - thruster_power[0]);
+            ui->progressThree_2->setValue1(100 + thruster_power[1]);
+            ui->progressThree_2->setValue2(100 - thruster_power[1]);
+            ui->progressThree_3->setValue1(100 + thruster_power[2]);
+            ui->progressThree_3->setValue2(100 - thruster_power[2]);
+            ui->progressThree_4->setValue1(100 + thruster_power[3]);
+            ui->progressThree_4->setValue2(100 - thruster_power[3]);
+            ui->progressThree_5->setValue1(100 + thruster_power[4]);
+            ui->progressThree_5->setValue2(100 - thruster_power[4]);
+            ui->progressThree_6->setValue1(100 + thruster_power[5]);
+            ui->progressThree_6->setValue2(100 - thruster_power[5]);
+            ui->progressThree_7->setValue1(100 + thruster_power[6]);
+            ui->progressThree_7->setValue2(100 - thruster_power[6]);
+            ui->progressThree_8->setValue1(100 + thruster_power[7]);
+            ui->progressThree_8->setValue2(100 - thruster_power[7]);
 
 
-            ui->servoChannel_1->setText(QString::number(thruster_power[0]));
-            ui->servoChannel_2->setText(QString::number(thruster_power[1]));
-            ui->servoChannel_3->setText(QString::number(thruster_power[2]));
-            ui->servoChannel_4->setText(QString::number(thruster_power[3]));
-            ui->servoChannel_5->setText(QString::number(thruster_power[4]));
-            ui->servoChannel_6->setText(QString::number(thruster_power[5]));
-            ui->servoChannel_7->setText(QString::number(thruster_power[6]));
-            ui->servoChannel_8->setText(QString::number(thruster_power[7]));
+            ui->servoChannel_1->setText(QString::number(thruster_power[0]) + "%");
+            ui->servoChannel_2->setText(QString::number(thruster_power[1]) + "%");
+            ui->servoChannel_3->setText(QString::number(thruster_power[2]) + "%");
+            ui->servoChannel_4->setText(QString::number(thruster_power[3]) + "%");
+            ui->servoChannel_5->setText(QString::number(thruster_power[4]) + "%");
+            ui->servoChannel_6->setText(QString::number(thruster_power[5]) + "%");
+            ui->servoChannel_7->setText(QString::number(thruster_power[6]) + "%");
+            ui->servoChannel_8->setText(QString::number(thruster_power[7]) + "%");
 
 
             // 灯光
@@ -758,7 +759,59 @@ void Control::on_Light_dim_clicked()
     udpSocket_control->writeDatagram(array,jetson_Addr,jetson_Port);
 }
 
+// 双目灯光灭
+void Control::on_Bino_Light_dim_clicked()
+{
+    QByteArray array;
+    // ?????
+    array.append(0xff);
+    array.append(0xfe);
+    array.append(0xfd);
+    array.append(0xfc);
 
+    // ???????
+    array.append(0x0b);
+
+    // ????????
+    array.append(0x08);
+    array.append(0x01);
+
+    // ????β
+    array.append(0x01);
+    array.append(0x02);
+    array.append(0x03);
+    array.append(0x04);
+    //qDebug()<<array;
+
+    udpSocket_control->writeDatagram(array,jetson_Addr,jetson_Port);
+}
+
+// 双目灯光亮
+void Control::on_Bino_Light_bri_clicked()
+{
+    QByteArray array;
+    // ?????
+    array.append(0xff);
+    array.append(0xfe);
+    array.append(0xfd);
+    array.append(0xfc);
+
+    // ???????
+    array.append(0x0b);
+
+    // ????????
+    array.append(0x08);
+    array.append(0x02);
+
+    // ????β
+    array.append(0x01);
+    array.append(0x02);
+    array.append(0x03);
+    array.append(0x04);
+    //qDebug()<<array;
+
+    udpSocket_control->writeDatagram(array,jetson_Addr,jetson_Port);
+}
 
 // ??????????
 void Control::on_Mount_Down_clicked()
@@ -828,6 +881,8 @@ void Control::on_Mount_Up_clicked()
 
 
 
+
+
 // ???????
 void Control::on_Lightcirl_brig_clicked()
 {
@@ -892,6 +947,7 @@ void Control::GamePad_X_btn_pressed(bool pressed)    // ????Y
 
     if(pressed)
     {
+        // on_Bino_Light_dim_clicked();
         //        on_M_arm_Down_clicked();
         return;
 
@@ -1306,6 +1362,21 @@ void Control::handleLightData(int light_level, int value, int lightType)
 
 }
 
+void Control::cameraControl(int i, bool open)
+{
+    if(i == 1){
+        ui->monocularCameraA1Switch->setChecked(open);
+    } else if(i == 2){
+        ui->monocularCameraA2Switch->setChecked(open);
+    } else if(i == 3){
+        ui->binocularCameraSwitch->setChecked(open);
+    } else if(i == 4){
+        ui->monocularCameraB1Switch->setChecked(open);
+    } else if(i == 5){
+        ui->monocularCameraB2Switch->setChecked(open);
+    }
+}
+
 void Control::on_verticalSlider_actionTriggered(int action)
 {
     light1_isUpdatingFromExternal = false;
@@ -1361,5 +1432,35 @@ void Control::on_verticalSlider_2_valueChanged(int value)
         }
 
     lightB_value = value;
+}
+
+
+void Control::on_monocularCameraA1Switch_checkedChanged(bool checked)
+{
+    emit cameraStateChanged(1, checked);
+}
+
+
+void Control::on_monocularCameraA2Switch_checkedChanged(bool checked)
+{
+    emit cameraStateChanged(2, checked);
+}
+
+
+void Control::on_binocularCameraSwitch_checkedChanged(bool checked)
+{
+    emit cameraStateChanged(3, checked);
+}
+
+
+void Control::on_monocularCameraB1Switch_checkedChanged(bool checked)
+{
+    emit cameraStateChanged(4, checked);
+}
+
+
+void Control::on_monocularCameraB2Switch_checkedChanged(bool checked)
+{
+    emit cameraStateChanged(5, checked);
 }
 

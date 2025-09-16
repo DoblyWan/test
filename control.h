@@ -42,6 +42,9 @@ public slots:
     // 接受灯带数据
     void handleLightData(int light_level, int value, int lightType);
 
+    // 控制摄像头开关
+    void cameraControl(int i, bool open);
+
 private:
     Ui::Control *ui;
 
@@ -70,6 +73,12 @@ private:
     void on_Lightcirl_dimm_clicked();
 
     void on_Mount_Up_clicked();
+
+    void on_Bino_Light_dim_clicked();
+
+    void on_Bino_Light_bri_clicked();
+
+
 
     QGamepad *m_gamepad;
 
@@ -182,6 +191,16 @@ private slots:
 
     void on_verticalSlider_2_valueChanged(int value);
 
+    void on_monocularCameraA1Switch_checkedChanged(bool checked);
+
+    void on_monocularCameraA2Switch_checkedChanged(bool checked);
+
+    void on_binocularCameraSwitch_checkedChanged(bool checked);
+
+    void on_monocularCameraB1Switch_checkedChanged(bool checked);
+
+    void on_monocularCameraB2Switch_checkedChanged(bool checked);
+
 public:
     QFrame* controlFrame();
     QWidget* infoWidget();
@@ -194,6 +213,7 @@ private:
 
 signals:
     void stateTransfer(const std::unordered_map<QString, QString>& modifiedData);
+    void cameraStateChanged(int i, bool state);
 
 };
 

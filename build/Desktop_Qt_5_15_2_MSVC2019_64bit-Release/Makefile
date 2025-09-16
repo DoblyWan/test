@@ -301,8 +301,10 @@ Makefile: ..\..\Pipe.pro D:\Tools\QT\5.15.2\msvc2019_64\mkspecs\win32-msvc\qmake
 		D:\Tools\QT\5.15.2\msvc2019_64\lib\Qt5WebEngineCore.prl \
 		D:\Tools\QT\5.15.2\msvc2019_64\lib\Qt5Quick.prl \
 		D:\Tools\QT\5.15.2\msvc2019_64\lib\Qt5PrintSupport.prl \
+		D:\Tools\QT\5.15.2\msvc2019_64\lib\Qt5MultimediaWidgets.prl \
 		D:\Tools\QT\5.15.2\msvc2019_64\lib\Qt5Widgets.prl \
 		D:\Tools\QT\5.15.2\msvc2019_64\lib\Qt5Gamepad.prl \
+		D:\Tools\QT\5.15.2\msvc2019_64\lib\Qt5Multimedia.prl \
 		D:\Tools\QT\5.15.2\msvc2019_64\lib\Qt5Gui.prl \
 		D:\Tools\QT\5.15.2\msvc2019_64\lib\Qt5Sql.prl \
 		D:\Tools\QT\5.15.2\msvc2019_64\lib\Qt5QmlModels.prl \
@@ -310,6 +312,7 @@ Makefile: ..\..\Pipe.pro D:\Tools\QT\5.15.2\msvc2019_64\mkspecs\win32-msvc\qmake
 		D:\Tools\QT\5.15.2\msvc2019_64\lib\Qt5Qml.prl \
 		D:\Tools\QT\5.15.2\msvc2019_64\lib\Qt5Network.prl \
 		D:\Tools\QT\5.15.2\msvc2019_64\lib\Qt5Positioning.prl \
+		D:\Tools\QT\5.15.2\msvc2019_64\lib\Qt5Xml.prl \
 		D:\Tools\QT\5.15.2\msvc2019_64\lib\Qt5Core.prl \
 		D:\Tools\QT\5.15.2\msvc2019_64\lib\qtmain.prl \
 		D:\Tools\QT\5.15.2\msvc2019_64\mkspecs\features\build_pass.prf \
@@ -318,8 +321,10 @@ Makefile: ..\..\Pipe.pro D:\Tools\QT\5.15.2\msvc2019_64\mkspecs\win32-msvc\qmake
 		D:\Tools\QT\5.15.2\msvc2019_64\lib\Qt5WebEngineCored.prl \
 		D:\Tools\QT\5.15.2\msvc2019_64\lib\Qt5Quickd.prl \
 		D:\Tools\QT\5.15.2\msvc2019_64\lib\Qt5PrintSupportd.prl \
+		D:\Tools\QT\5.15.2\msvc2019_64\lib\Qt5MultimediaWidgetsd.prl \
 		D:\Tools\QT\5.15.2\msvc2019_64\lib\Qt5Widgetsd.prl \
 		D:\Tools\QT\5.15.2\msvc2019_64\lib\Qt5Gamepadd.prl \
+		D:\Tools\QT\5.15.2\msvc2019_64\lib\Qt5Multimediad.prl \
 		D:\Tools\QT\5.15.2\msvc2019_64\lib\Qt5Guid.prl \
 		D:\Tools\QT\5.15.2\msvc2019_64\lib\Qt5Sqld.prl \
 		D:\Tools\QT\5.15.2\msvc2019_64\lib\Qt5QmlModelsd.prl \
@@ -327,6 +332,7 @@ Makefile: ..\..\Pipe.pro D:\Tools\QT\5.15.2\msvc2019_64\mkspecs\win32-msvc\qmake
 		D:\Tools\QT\5.15.2\msvc2019_64\lib\Qt5Qmld.prl \
 		D:\Tools\QT\5.15.2\msvc2019_64\lib\Qt5Networkd.prl \
 		D:\Tools\QT\5.15.2\msvc2019_64\lib\Qt5Positioningd.prl \
+		D:\Tools\QT\5.15.2\msvc2019_64\lib\Qt5Xmld.prl \
 		D:\Tools\QT\5.15.2\msvc2019_64\lib\Qt5Cored.prl \
 		D:\Tools\QT\5.15.2\msvc2019_64\lib\qtmaind.prl
 	$(QMAKE) -o Makefile ..\..\Pipe.pro -spec win32-msvc "CONFIG+=qtquickcompiler"
@@ -547,8 +553,10 @@ D:\Tools\QT\5.15.2\msvc2019_64\lib\Qt5WebEngineWidgets.prl:
 D:\Tools\QT\5.15.2\msvc2019_64\lib\Qt5WebEngineCore.prl:
 D:\Tools\QT\5.15.2\msvc2019_64\lib\Qt5Quick.prl:
 D:\Tools\QT\5.15.2\msvc2019_64\lib\Qt5PrintSupport.prl:
+D:\Tools\QT\5.15.2\msvc2019_64\lib\Qt5MultimediaWidgets.prl:
 D:\Tools\QT\5.15.2\msvc2019_64\lib\Qt5Widgets.prl:
 D:\Tools\QT\5.15.2\msvc2019_64\lib\Qt5Gamepad.prl:
+D:\Tools\QT\5.15.2\msvc2019_64\lib\Qt5Multimedia.prl:
 D:\Tools\QT\5.15.2\msvc2019_64\lib\Qt5Gui.prl:
 D:\Tools\QT\5.15.2\msvc2019_64\lib\Qt5Sql.prl:
 D:\Tools\QT\5.15.2\msvc2019_64\lib\Qt5QmlModels.prl:
@@ -556,6 +564,7 @@ D:\Tools\QT\5.15.2\msvc2019_64\lib\Qt5WebChannel.prl:
 D:\Tools\QT\5.15.2\msvc2019_64\lib\Qt5Qml.prl:
 D:\Tools\QT\5.15.2\msvc2019_64\lib\Qt5Network.prl:
 D:\Tools\QT\5.15.2\msvc2019_64\lib\Qt5Positioning.prl:
+D:\Tools\QT\5.15.2\msvc2019_64\lib\Qt5Xml.prl:
 D:\Tools\QT\5.15.2\msvc2019_64\lib\Qt5Core.prl:
 D:\Tools\QT\5.15.2\msvc2019_64\lib\qtmain.prl:
 D:\Tools\QT\5.15.2\msvc2019_64\mkspecs\features\build_pass.prf:
@@ -564,8 +573,10 @@ D:\Tools\QT\5.15.2\msvc2019_64\lib\Qt5WebEngineWidgetsd.prl:
 D:\Tools\QT\5.15.2\msvc2019_64\lib\Qt5WebEngineCored.prl:
 D:\Tools\QT\5.15.2\msvc2019_64\lib\Qt5Quickd.prl:
 D:\Tools\QT\5.15.2\msvc2019_64\lib\Qt5PrintSupportd.prl:
+D:\Tools\QT\5.15.2\msvc2019_64\lib\Qt5MultimediaWidgetsd.prl:
 D:\Tools\QT\5.15.2\msvc2019_64\lib\Qt5Widgetsd.prl:
 D:\Tools\QT\5.15.2\msvc2019_64\lib\Qt5Gamepadd.prl:
+D:\Tools\QT\5.15.2\msvc2019_64\lib\Qt5Multimediad.prl:
 D:\Tools\QT\5.15.2\msvc2019_64\lib\Qt5Guid.prl:
 D:\Tools\QT\5.15.2\msvc2019_64\lib\Qt5Sqld.prl:
 D:\Tools\QT\5.15.2\msvc2019_64\lib\Qt5QmlModelsd.prl:
@@ -573,6 +584,7 @@ D:\Tools\QT\5.15.2\msvc2019_64\lib\Qt5WebChanneld.prl:
 D:\Tools\QT\5.15.2\msvc2019_64\lib\Qt5Qmld.prl:
 D:\Tools\QT\5.15.2\msvc2019_64\lib\Qt5Networkd.prl:
 D:\Tools\QT\5.15.2\msvc2019_64\lib\Qt5Positioningd.prl:
+D:\Tools\QT\5.15.2\msvc2019_64\lib\Qt5Xmld.prl:
 D:\Tools\QT\5.15.2\msvc2019_64\lib\Qt5Cored.prl:
 D:\Tools\QT\5.15.2\msvc2019_64\lib\qtmaind.prl:
 qmake: FORCE

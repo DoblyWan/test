@@ -67,16 +67,6 @@ void FFmpegThread::initlib()
 
 bool FFmpegThread::init()
 {
-    // videoDecoder = avcodec_find_decoder_by_name("h264_cuvid");
-    // // videoDecoder = avcodec_find_decoder_by_name("h264_qsv");
-    // if (videoDecoder == NULL) {
-    //     qDebug() << TIMEMS << "video decoder not found";
-    //     return false;
-    // }
-    // else {
-    //     qDebug() << TIMEMS << "-------------------------------";
-    // }
-
     //在打开码流前指定各种参数比如:探测时间/超时时间/最大延时等
     //设置缓存大小,1080p可将值调大
     av_dict_set(&options, "buffer_size", "8192000", 0);
@@ -105,6 +95,7 @@ bool FFmpegThread::init()
 
     //获取流信息
     result = avformat_find_stream_info(avFormatContext, NULL);
+
     if (result < 0) {
         qDebug() << TIMEMS << "find stream info error";
         return false;
@@ -123,22 +114,27 @@ bool FFmpegThread::init()
 
         //获取视频流解码器,或者指定解码器
         videoCodec = videoStream->codec;
+        // qDebug()<< url.toStdString().data();
         // videoDecoder = avcodec_find_decoder(videoCodec->codec_id);
         // videoDecoder = avcodec_find_decoder(AV_CODEC_ID_H264);
 
         // qDebug() << "id:"<< static_cast<AVCodecID>(videoCodec->codec_id);
 
         // qDebug() << AV_CODEC_ID_MTS2;
-        videoDecoder = avcodec_find_decoder_by_name("h264_cuvid");
-        // videoDecoder = avcodec_find_decoder_by_name("h264_qsv");
+        if (url.contains("8554")) {
+            videoDecoder = avcodec_find_decoder(videoCodec->codec_id);
+        }
+        else
+            videoDecoder = avcodec_find_decoder_by_name("hevc_cuvid");
+        // videoDecoder = avcodec_find_decoder_by_name("h264_quvid");
         if (videoDecoder == NULL) {
             qDebug() << TIMEMS << "video decoder not found";
             return false;
         }
 
-        //设置加速解码
-        videoCodec->lowres = videoDecoder->max_lowres;
-        videoCodec->flags2 |= AV_CODEC_FLAG2_FAST;
+        // //设置加速解码
+        // videoCodec->lowres = videoDecoder->max_lowres;
+        // videoCodec->flags2 |= AV_CODEC_FLAG2_FAST;
         //打开视频解码器
         result = avcodec_open2(videoCodec, videoDecoder, NULL);
         if (result < 0) {
@@ -262,6 +258,10 @@ void FFmpegThread::run()
             int index = avPacket->stream_index;
             if (index == videoStreamIndex) {
 
+                if (recorder) {
+                    recorder->enqueuePacket(*avPacket);  // ✅ 异步发送包
+                }
+
 #if 0
                 avcodec_decode_video2(videoCodec, avFrame2, &frameFinish, avPacket);
 #else
@@ -351,6 +351,14 @@ void FFmpegThread::free()
         avFormatContext = NULL;
     }
 
+
+    if (recorder) {
+        recorder->stop();
+        recorder->wait();
+        delete recorder;
+        recorder = nullptr;
+    }
+
     av_dict_free(&options);
     //qDebug() << TIMEMS << "close ffmpeg ok";
 }
@@ -376,6 +384,32 @@ void FFmpegThread::stop()
     //通过标志位让线程停止
     stopped = true;
 }
+
+
+// 录制
+void FFmpegThread::startRecord(const QString &filename)
+{
+    if (!recorder && avFormatContext && videoStreamIndex >= 0) {
+        recorder = new RecordThread();
+        recorder->setOutput(filename, avFormatContext, videoStreamIndex);
+        recorder->start();
+        qDebug() << "Recording started to: " << filename;
+    }
+}
+
+void FFmpegThread::stopRecord()
+{
+    if (recorder) {
+        recorder->stop();
+        recorder->wait();
+        delete recorder;
+        recorder = nullptr;
+        qDebug() << "Recording stopped.";
+    }
+}
+
+
+
 
 //实时视频显示窗体类
 FFmpegWidget::FFmpegWidget(QWidget *parent) : QWidget(parent)

@@ -5,6 +5,14 @@
 #include <QMessageBox>
 #include  <QDebug>
 
+#include <QCommandLineParser>
+#include <QCommandLineOption>
+
+#include <QWebChannel>
+#include <QShortcut>
+
+#include "player/player.h"
+
 using namespace std;
 
 
@@ -66,6 +74,18 @@ MainWindow::MainWindow(QWidget *parent)
     // 注册STL容器类型（必须在连接信号槽前完成）
     qRegisterMetaType<std::unordered_map<QString, QString>>("std::unordered_map<QString,QString>");
     qRegisterMetaType<std::unordered_map<QString, QString>>("std::unordered_map<QString,QString>&");
+
+
+    // 创建快捷键 Ctrl+Alt+R
+    QShortcut *shortcut = new QShortcut(QKeySequence("Ctrl+Shift+R"), this);
+
+    // 连接快捷键信号到槽函数
+    QObject::connect(shortcut, &QShortcut::activated, [&]() {
+        QMessageBox::information(this, "快捷键", "Ctrl+Shift+R 被按下!");
+
+        // 在这里打开你的界面
+        // yourWindow->show();
+    });
 
 }
 
@@ -134,6 +154,43 @@ void MainWindow::initControl()
     // centralWidget->setLayout(layout);
     // setCentralWidget(centralWidget);
 
+
+    /* ----------- 录制视频初始化 ------------- */
+    // ui->record->setEnabled(false);
+
+
+    recordPath = QDir::cleanPath(QCoreApplication::applicationDirPath() + QDir::separator() + recordFilePath);
+
+    ui->record->setCheckable(true);
+    ui->record->setStyleSheet(
+        "QPushButton {"
+        "   background-color: rgb(62, 67, 75);"
+        "   border: 1px solid #333;"
+        "   border-radius: 10px;"
+        "   qproperty-icon: url(:/images/unrecord.png);"
+        "}"
+        "QPushButton:hover {"
+        "   background-color:rgb(72, 78, 88);"
+        "   icon: url(:/images/unrecordhover.png);"
+        "   icon-size: 30px 30px; "
+        "}"
+        "QPushButton:checked {"
+        "   background-color:  rgb(0, 120, 212);"
+        "   icon: url(:/images/recording.png);"
+        "   icon-size: 30px 30px; "
+        "}"
+        "QPushButton:checked:hover{"
+        "   background-color: rgb(62,67,65)"
+        "}"
+        );
+
+
+
+    ui->timeLabel->setText("00:00:00");
+
+    // 初始化计时器
+    timer = new QTimer(this);
+
 }
 
 // 初始化连接
@@ -145,18 +202,29 @@ void MainWindow::initConnect()
 
     // 视频流
     connect(rtsp1, &FFmpegWidget::openFinished, this, &MainWindow::onRtspFinished);
+    connect(rtsp2, &FFmpegWidget::openFinished, this, &MainWindow::onRtspFinished);
+    connect(rtsp3, &FFmpegWidget::openFinished, this, &MainWindow::onRtspFinished);
+    connect(rtsp4, &FFmpegWidget::openFinished, this, &MainWindow::onRtspFinished);
+    connect(rtsp5, &FFmpegWidget::openFinished, this, &MainWindow::onRtspFinished);
+    connect(control, &Control::cameraStateChanged, this, &MainWindow::onCameraControl);
 
+    // 摄像头开关
+    connect(this, &MainWindow::onOpenCamera, control, &Control::cameraControl);
 
     fileWatcher = new QFileSystemWatcher(this);
     fileWatcher->addPath(logPath);
     // connect(fileWatcher, SIGNAL(fileChanged()), ui->tableView, SLOT(loadLogFile()));
 
-    turnOnCamera("","","192.168.1.28:8554/mystream",ui->gridLayout_31, rtsp1);
+    // turnOnCamera("","","192.168.1.28:8554/mystream",ui->gridLayout_31, rtsp1);
+    turnOnCamera("","","192.168.1.168:8554/0",ui->gridLayout_31, rtsp1);
     // turnOnCamera("","","192.168.2.65",ui->gridLayout_31, rtsp1);
-    // turnOnCamera("","","192.168.2.66",ui->gridLayout_37, rtsp2);
-    // turnOnCamera("","","192.168.2.99:8554/stream",ui->gridLayout_32, rtsp3);
-    // turnOnCamera("","","192.168.2.67",ui->gridLayout_42, rtsp4);
-    // turnOnCamera("","","192.168.2.68",ui->gridLayout_46, rtsp5);
+    turnOnCamera("","","192.168.2.66",ui->gridLayout_37, rtsp2);
+    turnOnCamera("","","192.168.2.99:8554/stream",ui->gridLayout_32, rtsp3);
+    turnOnCamera("","","192.168.2.67",ui->gridLayout_42, rtsp4);
+    turnOnCamera("","","192.168.2.68",ui->gridLayout_46, rtsp5);
+
+
+    connect(timer, &QTimer::timeout, this, &MainWindow::updateTimer);
 
 
 }
@@ -232,12 +300,43 @@ void MainWindow::on_pushButton_datasearch_clicked()
 void MainWindow::on_pushButton_localvideo_clicked()
 {
     // 使用QDesktopServices打开指定路径的文件夹
-    if (QDir(this->videoFolder).exists()) {
-        QDesktopServices::openUrl(QUrl::fromLocalFile(this->videoFolder));
-        qInfo() << "视频文件成功打开!";
-    } else {
-        QMessageBox::warning(this, "文件夹不存在", "指定的文件夹路径不存在！");
-    }
+    // if (QDir(this->videoFolder).exists()) {
+    //     QDesktopServices::openUrl(QUrl::fromLocalFile(this->videoFolder));
+    //     qInfo() << "视频文件成功打开!";
+    // } else {
+    //     QMessageBox::warning(this, "文件夹不存在", "指定的文件夹路径不存在！");
+    // }
+    // QMessageBox::information(this,"1","1");
+
+    // QCommandLineParser parser;
+    // QCommandLineOption customAudioRoleOption("custom-audio-role",
+    //                                          "Set a custom audio role for the player.",
+    //                                          "role");
+    // parser.setApplicationDescription("Qt MultiMedia Player Example");
+    // parser.addHelpOption();
+    // parser.addVersionOption();
+    // parser.addOption(customAudioRoleOption);
+    // parser.addPositionalArgument("url", "The URL(s) to open.");
+    // parser.process(app);
+
+
+
+    // if (parser.isSet(customAudioRoleOption))
+    //     player.setCustomAudioRole(parser.value(customAudioRoleOption));
+
+    // if (!parser.positionalArguments().isEmpty() && player.isPlayerAvailable()) {
+    //     QList<QUrl> urls;
+    //     for (auto &a: parser.positionalArguments())
+    //         urls.append(QUrl::fromUserInput(a, QDir::currentPath(), QUrl::AssumeLocalFile));
+    //     player.addToPlaylist(urls);
+    // }
+
+    // player->show();
+
+    ui->page_9->setStyleSheet("");
+    player->setStyleSheet("");  // 清除继承的样式
+    ui->videoplayer->addWidget(player);
+    ui->stackedWidget->setCurrentIndex(11);
 }
 
 
@@ -349,6 +448,8 @@ void MainWindow::handleStateTransfer(const std::unordered_map<QString, QString> 
 
 
 }
+
+
 
 
 void MainWindow::on_pushButton_log_clicked()
@@ -475,6 +576,10 @@ void MainWindow::on_pushButton_location_clicked()
     // 创建 Web 视图
     QWebEngineView *webView = new QWebEngineView(ui->report);
 
+    QWebChannel *channel = new QWebChannel(webView);
+    QObject *handler = new PrintHandler(webView); // 自定义的打印处理类
+    channel->registerObject("qt", handler);
+    webView->page()->setWebChannel(channel);
 
     // 加载网页
     webView->load(QUrl(url));
@@ -494,24 +599,6 @@ void MainWindow::on_pushButton_location_clicked()
     ui->stackedWidget->setCurrentIndex(8);
     ui->label_title->setText("报告生成");
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -863,10 +950,124 @@ void MainWindow::onRtspFinished(FFmpegWidget *rtsp)
     if(rtsp == rtsp1){
         if(rtsp->isOpenSuccess) {
 
+
         } else {
-            QMessageBox::warning(this, "错误", "摄像头连接失败！请检查摄像头服务并重启系统！");
+            QMessageBox::warning(this, "错误", "A面单目摄像头1连接失败！请检查摄像头服务并重启系统！");
             qWarning() << "摄像头连接失败！请检查摄像头服务并重启系统！";
         }
+        emit onOpenCamera(1, rtsp->isOpenSuccess);
+
+    } else if(rtsp == rtsp2){
+        if(rtsp->isOpenSuccess) {
+
+
+        } else {
+            QMessageBox::warning(this, "错误", "A面单目摄像头2连接失败！请检查摄像头服务并重启系统！");
+            qWarning() << "摄像头连接失败！请检查摄像头服务并重启系统！";
+        }
+
+        emit onOpenCamera(2, rtsp->isOpenSuccess);
+
+    } else if(rtsp == rtsp3) {
+        if(rtsp->isOpenSuccess) {
+
+
+        } else {
+            QMessageBox::warning(this, "错误", "A面双目摄像头连接失败！请检查摄像头服务并重启系统！");
+            qWarning() << "摄像头连接失败！请检查摄像头服务并重启系统！";
+        }
+        emit onOpenCamera(3, rtsp->isOpenSuccess);
+
+    } else if(rtsp == rtsp4) {
+        if(rtsp->isOpenSuccess) {
+
+
+        } else {
+            QMessageBox::warning(this, "错误", "B面单目摄像头1连接失败！请检查摄像头服务并重启系统！");
+            qWarning() << "摄像头连接失败！请检查摄像头服务并重启系统！";
+        }
+
+        emit onOpenCamera(4, rtsp->isOpenSuccess);
+
+    } else if(rtsp == rtsp5) {
+        if(rtsp->isOpenSuccess) {
+
+
+        } else {
+            QMessageBox::warning(this, "错误", "B面双目摄像头2连接失败！请检查摄像头服务并重启系统！");
+            qWarning() << "摄像头连接失败！请检查摄像头服务并重启系统！";
+        }
+
+        emit onOpenCamera(5, rtsp->isOpenSuccess);
+
+    }
+}
+
+
+// 开关控制摄像头
+void MainWindow::onCameraControl(int i, bool state)
+{
+    switch (i) {
+    case 1:
+        if(state){
+            rtsp1->open();
+        } else {
+            rtsp1->close();
+        }
+        break;
+    case 2:
+        if(state){
+            rtsp2->open();
+        } else {
+            rtsp2->close();
+        }
+        break;
+    case 3:
+        if(state){
+            rtsp3->open();
+        } else {
+            rtsp3->close();
+        }
+        break;
+    case 4:
+        if(state){
+            rtsp4->open();
+        } else {
+            rtsp4->close();
+        }
+        break;
+    case 5:
+        if(state){
+            rtsp5->open();
+        } else {
+            rtsp5->close();
+        }
+        break;
+    default:
+        break;
+    }
+
+}
+
+
+// 视频录制
+void MainWindow::updateTimer()
+{
+    elapsedSeconds++;
+    ui->timeLabel->setText(QTime::fromMSecsSinceStartOfDay(elapsedSeconds * 1000).toString("HH:mm:ss"));
+}
+
+
+void MainWindow::on_record_toggled(bool checked)
+{
+    if(checked){
+        rtsp1->thread->startRecord(recordPath);
+        elapsedSeconds = 0;
+        timer->start(1000);
+    } else {
+        rtsp1->thread->stopRecord();
+        timer->stop();
+        ui->timeLabel->setText("00:00:00");
     }
 }
 
