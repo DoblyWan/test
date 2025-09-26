@@ -13,12 +13,17 @@
 
 #include "player/player.h"
 
+#include "./control/flightcontrol.h"
+
 using namespace std;
+
+#define CONTROL_CHOICE 1
 
 
 //全局变量
 // 控制控件
 Control *control;
+
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
@@ -26,7 +31,7 @@ MainWindow::MainWindow(QWidget *parent)
     , db(QSqlDatabase::addDatabase("QSQLITE"))
     , model(new QSqlQueryModel)
     , proxyModel(new QSortFilterProxyModel(this))
-    , videoFolder("../../../video")
+    , videoFolder("../../../videos")
     , rtsp(new FFmpegWidget(this))
     , ui(new Ui::MainWindow)
 {
@@ -34,18 +39,10 @@ MainWindow::MainWindow(QWidget *parent)
 
     ui->setupUi(this);
 
-    // 合并并清理路径
+    /* ------------------------------ 合并并清理路径 --------------------------------- */
     videoPath = QDir::cleanPath(QCoreApplication::applicationDirPath() + QDir::separator() + "../../../video");
     databasePath = QDir::cleanPath(QCoreApplication::applicationDirPath() + QDir::separator() + "../../../database");
     logPath = QDir::cleanPath(QCoreApplication::applicationDirPath() + QDir::separator() + logFilePath);
-
-
-    // 控制控件
-    control = new Control();
-
-
-    ui->gridLayout_20->addWidget(control->controlFrame());
-    ui->gridLayout_25->addWidget(control->infoWidget());
 
     /*   更新UI的前后端情况  */
     ui->gaugeCompassPan->raise();
@@ -62,12 +59,6 @@ MainWindow::MainWindow(QWidget *parent)
 
     // qDebug() << QDir::cleanPath(QCoreApplication::applicationDirPath() + QDir::separator() + logFilePath);
 
-    pythonworker = new PythonWorker(this);
-    pythonworker->setScriptPath("../../../ardusub_control/connect_main.py");
-    // pythonworker->setScriptPath("./release/connect_main.py");
-    pythonworker->start();
-
-
 
     // qDebug() << QCoreApplication::applicationDirPath();
 
@@ -76,17 +67,26 @@ MainWindow::MainWindow(QWidget *parent)
     qRegisterMetaType<std::unordered_map<QString, QString>>("std::unordered_map<QString,QString>&");
 
 
+    loadShortCutKey();
+
+
+}
+
+
+void MainWindow::loadShortCutKey()
+{
     // 创建快捷键 Ctrl+Alt+R
     QShortcut *shortcut = new QShortcut(QKeySequence("Ctrl+Shift+R"), this);
 
+
     // 连接快捷键信号到槽函数
     QObject::connect(shortcut, &QShortcut::activated, [&]() {
-        QMessageBox::information(this, "快捷键", "Ctrl+Shift+R 被按下!");
 
+
+        r->show();
         // 在这里打开你的界面
         // yourWindow->show();
     });
-
 }
 
 MainWindow::~MainWindow()
@@ -100,15 +100,19 @@ MainWindow::~MainWindow()
     pythonworker->terminate();
     pythonworker->wait();
 
+    delete flightcontrol;
+
     qDebug() << "Application ended.";
     qInfo() << "--------------------------------------------------";
     delete ui;
 }
 
 
-// 初始化控件
+/*----------------- 初始化控件 --------------------*/
 void MainWindow::initControl()
 {
+
+    // 初始化设置为在第一个主界面
     ui->stackedWidget->setCurrentIndex(0);
 
     ui->widget_14->setVisible(false);
@@ -122,8 +126,9 @@ void MainWindow::initControl()
     rtsp4 = new FFmpegWidget(this);
     rtsp5 = new FFmpegWidget(this);
 
-    // 设置标签显示图片
 
+
+#pragma region "设置标签显示图片" {
     // 构建pixmap
     QPixmap pixmap(":/images/icon.jpg");
 
@@ -137,6 +142,8 @@ void MainWindow::initControl()
 
     // 将pixmap设置到label
     ui->label_main->setPixmap(pixmap);
+
+#pragma endregion }
 
 
     /* ---------- logViwer初始化 ------------ */
@@ -155,81 +162,78 @@ void MainWindow::initControl()
     // setCentralWidget(centralWidget);
 
 
-    /* ----------- 录制视频初始化 ------------- */
-    // ui->record->setEnabled(false);
+    /* ----------------- 控制初始化 ----------------- */
 
 
-    recordPath = QDir::cleanPath(QCoreApplication::applicationDirPath() + QDir::separator() + recordFilePath);
+#if CONTROL_CHOICE
+    flightcontrol = new FlightControl();
+    ui->gridLayout_20->addWidget(flightcontrol->controlFrame());
+    ui->gridLayout_25->addWidget(flightcontrol->infoWidget());
+#endif
 
-    ui->record->setCheckable(true);
-    ui->record->setStyleSheet(
-        "QPushButton {"
-        "   background-color: rgb(62, 67, 75);"
-        "   border: 1px solid #333;"
-        "   border-radius: 10px;"
-        "   qproperty-icon: url(:/images/unrecord.png);"
-        "}"
-        "QPushButton:hover {"
-        "   background-color:rgb(72, 78, 88);"
-        "   icon: url(:/images/unrecordhover.png);"
-        "   icon-size: 30px 30px; "
-        "}"
-        "QPushButton:checked {"
-        "   background-color:  rgb(0, 120, 212);"
-        "   icon: url(:/images/recording.png);"
-        "   icon-size: 30px 30px; "
-        "}"
-        "QPushButton:checked:hover{"
-        "   background-color: rgb(62,67,65)"
-        "}"
-        );
+#if !CONTROL_CHOICE
+    // 控制控件
+    control = new Control();
+    ui->gridLayout_20->addWidget(control->controlFrame());
+    ui->gridLayout_25->addWidget(control->infoWidget());
 
-
-
-    ui->timeLabel->setText("00:00:00");
-
-    // 初始化计时器
-    timer = new QTimer(this);
-
+    // 启动Python connect程序
+    pythonworker = new PythonWorker(this);
+    pythonworker->setScriptPath("../../../ardusub_control/connect_main.py");
+    // pythonworker->setScriptPath("./release/connect_main.py");
+    pythonworker->start();
+#endif
 }
 
-// 初始化连接
+/*----------------- 初始化连接 --------------------*/
 void MainWindow::initConnect()
 {
     connect(configWindow.get(), SIGNAL(dataModified(const std::unordered_map<std::string, std::string>&)), this, SLOT(handleDataModified(const std::unordered_map<std::string, std::string>&)));  // 信息登记窗口信号接收-槽函数调用
-    // connect(control, SIGNAL(stateTransfer(const std::unordered_map<QString, QString>&)), this, SLOT(handleStateTransfer(const std::unordered_map<QString,QString>&))); // 状态数据信号接收-槽函数调用
     connect(control, &Control::stateTransfer, this, &MainWindow::handleStateTransfer);
 
-    // 视频流
+
+#pragma region "视频流" {
     connect(rtsp1, &FFmpegWidget::openFinished, this, &MainWindow::onRtspFinished);
     connect(rtsp2, &FFmpegWidget::openFinished, this, &MainWindow::onRtspFinished);
     connect(rtsp3, &FFmpegWidget::openFinished, this, &MainWindow::onRtspFinished);
     connect(rtsp4, &FFmpegWidget::openFinished, this, &MainWindow::onRtspFinished);
     connect(rtsp5, &FFmpegWidget::openFinished, this, &MainWindow::onRtspFinished);
-    connect(control, &Control::cameraStateChanged, this, &MainWindow::onCameraControl);
+
+    connect(rtsp1, &FFmpegWidget::closeFinished, this, &MainWindow::onRtspClosed);
+    connect(rtsp2, &FFmpegWidget::closeFinished, this, &MainWindow::onRtspClosed);
+    connect(rtsp3, &FFmpegWidget::closeFinished, this, &MainWindow::onRtspClosed);
+    connect(rtsp4, &FFmpegWidget::closeFinished, this, &MainWindow::onRtspClosed);
+    connect(rtsp5, &FFmpegWidget::closeFinished, this, &MainWindow::onRtspClosed);
 
     // 摄像头开关
     connect(this, &MainWindow::onOpenCamera, control, &Control::cameraControl);
+    connect(control, &Control::cameraStateChanged, this, &MainWindow::onCameraControl);
+
+    connect(flightcontrol, &FlightControl::cameraStateChanged, this, &MainWindow::onCameraControl);
+    connect(this, &MainWindow::onOpenCamera, flightcontrol, &FlightControl::cameraControl);
+
+
+#pragma endregion }
+
+
 
     fileWatcher = new QFileSystemWatcher(this);
     fileWatcher->addPath(logPath);
     // connect(fileWatcher, SIGNAL(fileChanged()), ui->tableView, SLOT(loadLogFile()));
 
     // turnOnCamera("","","192.168.1.28:8554/mystream",ui->gridLayout_31, rtsp1);
-    turnOnCamera("","","192.168.1.168:8554/0",ui->gridLayout_31, rtsp1);
-    // turnOnCamera("","","192.168.2.65",ui->gridLayout_31, rtsp1);
+    turnOnCamera("","","192.168.1.168:8554/0",ui->gridLayout_32, rtsp3);
+    turnOnCamera("","","192.168.2.65",ui->gridLayout_31, rtsp1);
     turnOnCamera("","","192.168.2.66",ui->gridLayout_37, rtsp2);
-    turnOnCamera("","","192.168.2.99:8554/stream",ui->gridLayout_32, rtsp3);
+    // turnOnCamera("","","192.168.2.99:8554/stream",ui->gridLayout_32, rtsp3);
     turnOnCamera("","","192.168.2.67",ui->gridLayout_42, rtsp4);
     turnOnCamera("","","192.168.2.68",ui->gridLayout_46, rtsp5);
 
-
-    connect(timer, &QTimer::timeout, this, &MainWindow::updateTimer);
-
-
+    r = new recorddialog(nullptr, rtsp1, rtsp2, rtsp3, rtsp4, rtsp5);
+    connect(this, &MainWindow::onOpenCamera, r, &recorddialog::cameraControl);
 }
 
-// 初始化数据库
+/*----------------- 数据库初始化 --------------------*/
 bool MainWindow::initDatabase()
 {
     // 设置表格行高自适应
@@ -248,13 +252,14 @@ bool MainWindow::initDatabase()
     }
 }
 
-
-
-
-
-
-// 可见性动画
-void fadeOutWidget(QWidget *widget, std::function<void()> callback = nullptr) {
+/**
+ * @brief 可见性动画
+ *
+ * @param widget 执行动画的控件
+ * @param callback 动画的回调函数
+ */
+void fadeOutWidget(QWidget *widget, std::function<void()> callback = nullptr)
+{
     QPropertyAnimation *animation = new QPropertyAnimation(widget, "windowOpacity");
     animation->setDuration(500);
     animation->setStartValue(1);
@@ -270,14 +275,17 @@ void fadeOutWidget(QWidget *widget, std::function<void()> callback = nullptr) {
     });
 }
 
-
-
+/**
+ * @brief 信息录入
+ */
 void MainWindow::on_pushButton_datainput_clicked()
 {
     configWindow->show();
 }
 
-
+/**
+ * @brief 数据查询
+ */
 void MainWindow::on_pushButton_datasearch_clicked()
 {
     if(!db.isOpen()) {  // 数据库未连接
@@ -296,7 +304,9 @@ void MainWindow::on_pushButton_datasearch_clicked()
     }
 }
 
-
+/**
+ * @brief 本地视频播放
+ */
 void MainWindow::on_pushButton_localvideo_clicked()
 {
     // 使用QDesktopServices打开指定路径的文件夹
@@ -340,7 +350,9 @@ void MainWindow::on_pushButton_localvideo_clicked()
 }
 
 
-
+/**
+ * @brief 机器人状态显示
+ */
 void MainWindow::on_pushButton_location_2_clicked()
 {
     ui->stackedWidget->setCurrentIndex(10);
@@ -362,7 +374,9 @@ void MainWindow::on_pushButton_transfor_clicked()
 
 }
 
-
+/**
+ * @brief 加载日志
+ */
 void MainWindow::loadLogFile()
 {
     QMutexLocker locker(&logMutex); // 使用全局锁确保线程安全
@@ -383,7 +397,11 @@ void MainWindow::loadLogFile()
     ui->logViewer->setTextCursor(cursor);
 }
 
-
+/**
+ * @brief 处理信息录入接受的数据
+ *
+ * @param modified 传输的数据
+ */
 void MainWindow::handleDataModified(const std::unordered_map<std::string, std::string> &modifiedData)
 {
     // sysStat.isInput = true;
@@ -411,6 +429,7 @@ void MainWindow::handleDataModified(const std::unordered_map<std::string, std::s
     // this->videoName = QString::fromStdString(modifiedData.at("startNum") + "-" + modifiedData.at("endNum"));
     // emit fileName(this->videoName.toStdString());
 }
+
 
 void MainWindow::handleStateTransfer(const std::unordered_map<QString, QString> &robotData)
 {
@@ -450,8 +469,9 @@ void MainWindow::handleStateTransfer(const std::unordered_map<QString, QString> 
 }
 
 
-
-
+/**
+ * @brief 显示日志
+ */
 void MainWindow::on_pushButton_log_clicked()
 {
     ui->stackedWidget->setCurrentIndex(3);
@@ -460,31 +480,36 @@ void MainWindow::on_pushButton_log_clicked()
 }
 
 
-// 设置界面
+/**
+ * @brief 系统设置
+ */
 void MainWindow::on_pushButton_setting_clicked()
 {
     ui->stackedWidget->setCurrentIndex(4);
     ui->label_title->setText("系统设置");
 }
 
-
+/**
+ * @brief A面
+ */
 void MainWindow::on_pushButton_front_clicked()
 {
     ui->stackedWidget->setCurrentIndex(2);
     ui->label_title->setText("A面");
-
-
-
 }
 
 
-// 退出程序
+/**
+ * @brief 退出程序
+ */
 void MainWindow::on_pushButton_exit_clicked()
 {
     close();
 }
 
-
+/**
+ * @brief B面
+ */
 void MainWindow::on_pushButton_behind_clicked()
 {
     ui->stackedWidget->setCurrentIndex(6);
@@ -499,7 +524,9 @@ void MainWindow::on_pushButton_transforToMono_clicked()
     // });
 }
 
-
+/**
+ * @brief A面单目摄像头转化为双目摄像头
+ */
 void MainWindow::on_pushButton_transfor_2_clicked()
 {
     fadeOutWidget(ui->widget_10, [this](){
@@ -508,14 +535,18 @@ void MainWindow::on_pushButton_transfor_2_clicked()
     });
 }
 
-
+/**
+ * @brief 主界面
+ */
 void MainWindow::on_pushButton_clicked()
 {
     ui->stackedWidget->setCurrentIndex(0);
     ui->label_title->setText("坝面扫描式智能检测机器人");
 }
 
-
+/**
+ * @brief A面双目摄像头转化为双单目摄像头
+ */
 void MainWindow::on_pushButton_transforToMono_3_clicked()
 {
     fadeOutWidget(ui->widget_14, [this](){
@@ -524,7 +555,9 @@ void MainWindow::on_pushButton_transforToMono_3_clicked()
     });
 }
 
-
+/**
+ * @brief 生成检测报告
+ */
 void MainWindow::on_pushButton_location_clicked()
 {
     // ui->stackedWidget->setCurrentIndex(7);
@@ -602,9 +635,18 @@ void MainWindow::on_pushButton_location_clicked()
 
 
 
-/* ---------- 摄像头 -------------- */
 
 
+/**
+ * @brief 打开摄像头视频流
+ *
+ * @param username 用户名
+ * @param password 密码
+ * @param ipaddress ip地址
+ * @param gridLayout 视频显示的控件
+ * @param rtsp 视频流
+ * @return
+ */
 bool MainWindow::turnOnCamera(QString username, QString password, QString ipaddress, QGridLayout *gridLayout, FFmpegWidget* rtsp)
 {
     QString urls = "rtsp://";
@@ -713,7 +755,8 @@ void MainWindow::on_Open_BT_3_clicked()
 
 
 // 报告
-QString MainWindow::renderTemplate(const QString& templatePath, const QVariantMap& data) {
+QString MainWindow::renderTemplate(const QString& templatePath, const QVariantMap& data)
+{
     QFile tpl(templatePath);
     tpl.open(QFile::ReadOnly);
     QString html = QString::fromUtf8(tpl.readAll());
@@ -755,6 +798,8 @@ void MainWindow::resizeEvent(QResizeEvent *event)
     //     btn->setIconSize(QSize(iconSize, iconSize));
     // }
 }
+
+
 
 
 
@@ -930,7 +975,10 @@ void MainWindow::on_pushButton_upload_clicked()
     QMessageBox::warning(this, "错误", "云端打开失败！请检查云端服务并重启系统！");
 }
 
-
+/**
+ * @brief 灯光1的值改变时的槽函数
+ * @param v改变后的值
+ */
 void MainWindow::on_verticalSlider_valueChanged(int value)
 {
     emit lightSignal(light_level, value, 1);
@@ -944,7 +992,10 @@ void MainWindow::on_verticalSlider_2_valueChanged(int value)
     light_AValue=value;
 }
 
-// 判断摄像头是否成功打开
+/**
+ * @brief 判断摄像头是否成功打开
+ * @param rtsp
+ */
 void MainWindow::onRtspFinished(FFmpegWidget *rtsp)
 {
     if(rtsp == rtsp1){
@@ -1003,8 +1054,31 @@ void MainWindow::onRtspFinished(FFmpegWidget *rtsp)
     }
 }
 
+/**
+ * @brief 摄像头关闭
+ * @param rtsp 摄像头视频流
+ */
+void MainWindow::onRtspClosed(FFmpegWidget *rtsp)
+{
+    if(rtsp == rtsp1){
+        emit onOpenCamera(1, false);
+    } else if(rtsp == rtsp2){
+        emit onOpenCamera(2, false);
+    } else if(rtsp == rtsp3) {
+        emit onOpenCamera(3, false);
+    } else if(rtsp == rtsp4) {
+        emit onOpenCamera(4, false);
+    } else if(rtsp == rtsp5) {
+        emit onOpenCamera(5, false);
+    }
+}
 
-// 开关控制摄像头
+
+/**
+ * @brief 开关控制摄像头
+ * @param i 第几个摄像头
+ * @param state 摄像头的状态
+ */
 void MainWindow::onCameraControl(int i, bool state)
 {
     switch (i) {
@@ -1050,24 +1124,4 @@ void MainWindow::onCameraControl(int i, bool state)
 }
 
 
-// 视频录制
-void MainWindow::updateTimer()
-{
-    elapsedSeconds++;
-    ui->timeLabel->setText(QTime::fromMSecsSinceStartOfDay(elapsedSeconds * 1000).toString("HH:mm:ss"));
-}
-
-
-void MainWindow::on_record_toggled(bool checked)
-{
-    if(checked){
-        rtsp1->thread->startRecord(recordPath);
-        elapsedSeconds = 0;
-        timer->start(1000);
-    } else {
-        rtsp1->thread->stopRecord();
-        timer->stop();
-        ui->timeLabel->setText("00:00:00");
-    }
-}
 

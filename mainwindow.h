@@ -1,7 +1,7 @@
 ﻿#ifndef MAINWINDOW_H
 #define MAINWINDOW_H
 
-#include "pythonworker.h"
+#include "./python/pythonworker.h"
 
 #include <QMainWindow>
 #include <QPropertyAnimation>
@@ -41,7 +41,11 @@
 
 // web界面
 #include <QWebEngineView>
-#include "printhandler.h"
+#include "./browser/printhandler.h"
+
+// 录制功能
+#include "./record/recorddialog.h"
+#include "./control/flightcontrol.h"
 
 #include "ffmpeg.h"
 #pragma execution_character_set("utf-8")
@@ -75,16 +79,6 @@ public:
     FFmpegWidget* rtsp4;
     FFmpegWidget* rtsp5;
 
-
-    // 视频录制
-    QTimer *timer;
-    qint64 startTime;
-    qint64 elapsedSeconds = 0;
-
-    QString RECORD_DIR = "../../../videos";
-    QString today_video = QDateTime::currentDateTime().toString("yyyy-MM-dd_hh-mm-ss");
-    QString recordFilePath = QString("%1/app_%2.mp4").arg(RECORD_DIR).arg(today_video);
-    QString recordPath;
     //void fadeOutWidget(QWidget *widget, std::function<void()> callback = nullptr);
 
 private:
@@ -123,6 +117,15 @@ private:
 
     Player *player = new Player();
 
+
+    //录制
+    recorddialog* r = nullptr;
+
+
+    FlightControl *flightcontrol;
+
+
+
 public:
     void initControl();
     void initConnect();
@@ -136,7 +139,10 @@ public:
 
     void resizeEvent(QResizeEvent *event) override;
 
+private:
 
+    // 快捷键功能
+    void loadShortCutKey();
 
 
 private slots:
@@ -190,9 +196,8 @@ private slots:
 
     void onRtspFinished(FFmpegWidget *rtsp);
 
-    void updateTimer();
+    void onRtspClosed(FFmpegWidget *rtsp);
 
-    void on_record_toggled(bool checked);
 
 public slots:
     void handleDataModified(const std::unordered_map<std::string, std::string>& modifiedData);

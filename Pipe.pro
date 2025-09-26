@@ -25,7 +25,10 @@ msvc {
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
+    browser/printhandler.cpp \
     control.cpp \
+    control/flightcontrol.cpp \
+    control/mavlinkcommunicator.cpp \
     customcontrol.cpp \
     dialog.cpp \
     main.cpp \
@@ -35,12 +38,16 @@ SOURCES += \
     player/playercontrols.cpp \
     player/playlistmodel.cpp \
     player/videowidget.cpp \
-    printhandler.cpp \
-    pythonworker.cpp \
-    recordthread.cpp
+    python/pythonworker.cpp \
+    record/record.cpp \
+    record/recorddialog.cpp \
+    record/recordthread.cpp
 
 HEADERS += \
+    browser/printhandler.h \
     control.h \
+    control/flightcontrol.h \
+    control/mavlinkcommunicator.h \
     customcontrol.h \
     include/dialog.h \
     mainwindow.h \
@@ -49,14 +56,18 @@ HEADERS += \
     player/playercontrols.h \
     player/playlistmodel.h \
     player/videowidget.h \
-    printhandler.h \
-    pythonworker.h \
-    recordthread.h
+    python/pythonworker.h \
+    record/record.h \
+    record/recorddialog.h \
+    record/recordthread.h
 
 FORMS += \
     control.ui \
+    control/flightcontrol.ui \
     dialog.ui \
-    mainwindow.ui
+    mainwindow.ui \
+    record/record.ui \
+    record/recorddialog.ui
 
 
 win32:CONFIG(release, debug|release): LIBS += -L$$PWD/qucsdk/ -lquc
@@ -68,6 +79,11 @@ DEPENDPATH += $$PWD/qucsdk
 
 INCLUDEPATH += $$PWD/qucinclude
 DEPENDPATH += $$PWD/qucinclude
+
+
+# mavlink
+INCLUDEPATH += $$PWD/mavlink
+INCLUDEPATH += $$PWD/mavlink/common
 
 #python
 INCLUDEPATH += D:/Tools/Python/Python39/include

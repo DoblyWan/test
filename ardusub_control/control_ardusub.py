@@ -115,6 +115,9 @@ set_button_function(master,9, 'lights2_dimmer')
 set_button_function(master,13, 'lights1_dimmer')
 set_button_function(master,14, 'lights1_brighter')
 
+set_button_function(master,4, "disarm")
+set_button_function(master,6, "arm")
+
 set_button_function(master,0, 'servo_3_min')
 set_button_function(master,3, 'servo_3_max')
 

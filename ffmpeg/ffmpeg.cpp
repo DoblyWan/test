@@ -479,6 +479,8 @@ void FFmpegWidget::close()
     }
 
     QTimer::singleShot(1, this, SLOT(clear()));
+    this->isOpenSuccess = false;
+    emit closeFinished(this);
 }
 
 void FFmpegWidget::clear()

@@ -37,8 +37,8 @@ int main(int argc, char *argv[])
     extern Control *control;
     QObject::connect(&w, &MainWindow::lightSignal, control, &Control::handleLightData);
 
-     // w.show();
-    w.showFullScreen();
+     w.show();
+    // w.showFullScreen();
 
     return a.exec();
 }
